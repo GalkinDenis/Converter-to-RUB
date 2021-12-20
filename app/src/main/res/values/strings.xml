@@ -1,0 +1,11 @@
+<resources>
+    <!-- APP -->
+    <string name="app_name">Converter to RUB</string>
+
+
+    <!-- VIEW MODEL FACTORY -->
+    <string name="undefined_model_class">Undefined model class</string>
+</resources>
+
+
+
