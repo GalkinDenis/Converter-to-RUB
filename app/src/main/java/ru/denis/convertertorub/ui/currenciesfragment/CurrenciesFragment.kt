@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
+import ru.denis.convertertorub.di.App
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
 import javax.inject.Inject
 
@@ -18,15 +19,14 @@ class CurrenciesFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by viewModels<CurrenciesFragmentViewModel> { viewModelFactory }
+    private val currenciesFragmentViewModel by viewModels<CurrenciesFragmentViewModel> { viewModelFactory }
 
     private var _binding: CurrenciesFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as App).appComponent.createValuteFragmentViewModelComponent()
-            .create().injectValuteListFragment(this)
+        (requireActivity().application as App).appComponent.injectCurrenciesFragment(this)
     }
 
     override fun onCreateView(

@@ -3,6 +3,9 @@
     <string name="app_name">Converter to RUB</string>
 
 
+    <!-- CBRF API -->
+    <string name="end_point">daily_json.js</string>
+
     <!-- VIEW MODEL FACTORY -->
     <string name="undefined_model_class">Undefined model class</string>
 </resources>

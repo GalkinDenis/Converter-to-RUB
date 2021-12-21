@@ -1,4 +1,6 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
-class ConverterFragmentViewModel {
+import androidx.lifecycle.ViewModel
+
+class ConverterFragmentViewModel : ViewModel(){
 }
