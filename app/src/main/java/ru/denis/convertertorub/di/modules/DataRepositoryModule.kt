@@ -2,8 +2,8 @@ package ru.denis.convertertorub.di.modules
 
 import dagger.Binds
 import dagger.Module
-import ru.denis.convertertorub.data.cbrfdatasource.CbRfDataSource
-import ru.denis.convertertorub.data.cbrfdatasource.CbRfDataSourceImpl
+import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSource
+import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSourceImpl
 
 @Module
 interface DataRepositoryModule {

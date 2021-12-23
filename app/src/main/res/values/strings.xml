@@ -2,6 +2,9 @@
     <!-- APP -->
     <string name="app_name">Converter to RUB</string>
 
+    <!-- CURRENCIES FRAGMENT -->
+    <string name="get_currencies_error">При попытке запросить данные по курсу валют, произошла ошибка,
+        проверьте подключение к интернету.</string>
 
     <!-- CBRF API -->
     <string name="end_point">daily_json.js</string>

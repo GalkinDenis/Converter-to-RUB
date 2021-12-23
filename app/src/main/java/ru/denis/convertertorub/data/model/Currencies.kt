@@ -1,11 +1,11 @@
-package ru.denis.convertertorub.domain.entity
+package ru.denis.convertertorub.data.model
 
 data class Currencies(
     val Date: String,
     val PreviousDate: String,
     val PreviousURL: String,
     val Timestamp: String,
-    val currency: Map<String, Currency>
+    val Valute : Map<String, Currency>
 )
 
 data class Currency(

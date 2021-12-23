@@ -3,15 +3,18 @@ package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import ru.denis.convertertorub.domain.usecases.GetCurrenciesFromRemoteUseCase
-import ru.denis.convertertorub.domain.usecases.SaveCurrenciesToLocalStorageUseCase
+import retrofit2.Response
+import ru.denis.convertertorub.data.model.Currencies
+import ru.denis.convertertorub.domain.usecases.GetCurrenciesUseCase
+import ru.denis.convertertorub.domain.usecases.SaveCurrenciesUseCase
 import ru.denis.convertertorub.presentation.SingleLiveEvent
 import javax.inject.Inject
 
 class CurrenciesFragmentViewModel @Inject constructor(
-    private val getCurrenciesFromRemoteUseCase: GetCurrenciesFromRemoteUseCase,
-    private val saveCurrenciesToLocalStorageUseCase: SaveCurrenciesToLocalStorageUseCase
+    private val getCurrenciesUseCase: GetCurrenciesUseCase,
+    private val saveCurrenciesUseCase: SaveCurrenciesUseCase
 
 ) : ViewModel() {
 
@@ -22,15 +25,18 @@ class CurrenciesFragmentViewModel @Inject constructor(
         _getCurrenciesError.value = exception
     }
 
-    suspend fun getCurrenciesFromRemote() {
+    fun getCurrencies() {
         viewModelScope.launch(getCurrenciesExceptionHandler) {
-            val responseFromRemote = getCurrenciesFromRemoteUseCase()
+            val response = async { getCurrenciesUseCase() }
+
+            val responseBody = response.await()
+            if (responseBody.isSuccessful) saveCurrencies(responseBody)
         }
     }
 
-    suspend fun saveCurrenciesToLocalStorage() {
+    private fun saveCurrencies(responseBody: Response<Currencies>) {
         viewModelScope.launch(getCurrenciesExceptionHandler) {
+            saveCurrenciesUseCase(responseBody)
         }
-
     }
 }
