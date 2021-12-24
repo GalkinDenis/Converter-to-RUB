@@ -43,25 +43,55 @@ class CurrenciesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViews()
+        initObservers()
         currenciesFragmentViewModel.getCurrencies()
+    }
 
+    private fun initObservers() {
+        with(currenciesFragmentViewModel) {
+            loadAllCurrencies.observe(viewLifecycleOwner) { listOfCurrencies ->
+                visibleRecyclerViewVisibility()
+                currenciesAdapter?.listOfCurrencies = listOfCurrencies
+                goneProgressbarVisibility()
+            }
+
+            loadCurrenciesError.observe(viewLifecycleOwner) {
+                showToast(getString(R.string.load_currencies_error))
+                goneProgressbarVisibility()
+            }
+
+            getCurrenciesError.observe(viewLifecycleOwner) {
+                showToast(getString(R.string.get_currencies_error))
+                goneProgressbarVisibility()
+            }
+
+            saveCurrenciesError.observe(viewLifecycleOwner) {
+                showToast(getString(R.string.save_currencies_error))
+                goneProgressbarVisibility()
+            }
+        }
+    }
+
+    private fun initViews() {
         binding.recyclerView.apply {
             currenciesAdapter = CurrenciesAdapter()
             adapter = currenciesAdapter
         }
-
-        initObservers()
     }
 
-    private fun initObservers() {
-        currenciesFragmentViewModel.getCurrenciesError.observe(this.viewLifecycleOwner) {
-            Toast.makeText(
-                context,
-                getString(R.string.get_currencies_error),
-                Toast.LENGTH_LONG
-            ).show()
-        }
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
+
+    private fun goneProgressbarVisibility() {
+        binding.progressBar.visibility = View.GONE
+    }
+
+    private fun visibleRecyclerViewVisibility() {
+        binding.recyclerView.visibility = View.VISIBLE
+    }
+
 /*
 
 

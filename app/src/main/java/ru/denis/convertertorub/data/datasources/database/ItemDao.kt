@@ -10,18 +10,18 @@ import kotlinx.coroutines.flow.Flow
 interface ItemDao {
 
     @Insert
-    suspend fun insert(item: CurrencyEntityDataBase)
+    suspend fun insert(item: CurrencyEntity)
 
     @Update
-    suspend fun update(item: CurrencyEntityDataBase)
+    suspend fun update(item: CurrencyEntity)
 
-    @Query("SELECT * from CurrencyTable")
-    suspend fun getItems(): Flow<List<CurrencyEntityDataBase>>
+    @Query("SELECT * from CurrencyEntity")
+    suspend fun getCurrencies(): Flow<List<CurrencyEntity>>
 
-    @Query("SELECT * FROM CurrencyTable WHERE name = :nameItem")
-    suspend fun getValue(nameItem: String): Flow<CurrencyEntityDataBase>
+    @Query("SELECT * FROM CurrencyEntity WHERE name = :nameItem")
+    suspend fun getValue(nameItem: String): Flow<CurrencyEntity>
 
-    @Query("DELETE FROM CurrencyTable")
+    @Query("DELETE FROM CurrencyEntity")
     suspend fun clearTable()
 
 }

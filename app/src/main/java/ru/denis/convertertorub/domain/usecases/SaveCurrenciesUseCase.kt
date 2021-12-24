@@ -6,11 +6,9 @@ import ru.denis.convertertorub.domain.repository.CurrenciesRepository
 import javax.inject.Inject
 
 class SaveCurrenciesUseCase @Inject constructor(
-    private val localRepository: CurrenciesRepository
+    private val currenciesRepository: CurrenciesRepository
 ) {
-
     suspend operator fun invoke(responseBody: Response<Currencies>) {
-        localRepository.saveCurrencies(responseBody)
+        currenciesRepository.saveCurrencies(responseBody)
     }
-
 }

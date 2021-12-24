@@ -1,7 +1,7 @@
 package ru.denis.convertertorub.data.model
 
 data class Currencies(
-    val Date: String,
+    val Date: String?,
     val PreviousDate: String,
     val PreviousURL: String,
     val Timestamp: String,
