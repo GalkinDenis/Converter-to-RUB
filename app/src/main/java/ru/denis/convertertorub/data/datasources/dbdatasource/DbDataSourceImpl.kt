@@ -16,6 +16,7 @@ class DbDataSourceImpl @Inject constructor(
     override suspend fun saveCurrencies(responseBody: Response<Currencies>) {
         withContext(Dispatchers.IO) {
             responseBody.body()?.Valute?.forEach { (_, currency) ->
+                if (currency.Nominal > 1) currency.Value /= currency.Nominal
                 dao.update(
                     CurrencyEntity(
                         _ID = currency.ID,
