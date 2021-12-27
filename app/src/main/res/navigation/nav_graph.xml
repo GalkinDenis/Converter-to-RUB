@@ -16,62 +16,7 @@
     <fragment
         android:id="@+id/converter_fragment"
         android:name="ru.denis.convertertorub.ui.converterfragment.ConverterFragment"
-        android:label="@string/converter">
-    </fragment>
-
-    <fragment
-        android:id="@+id/loans_request_fragment"
-        android:name="ru.denis.loans.ui.loans_request_fragment.LoansRequestFragment"
-        android:label="@string/loans_request">
-        <action
-            android:id="@+id/action_LoansRequestFragment_to_ShowAllRequestedLoansFragment"
-            app:destination="@id/show_all_requested_loans_fragment" />
-        <argument
-            android:name="token"
-            app:argType="string" />
-        <argument
-            android:name="firstName"
-            app:argType="string" />
-        <argument
-            android:name="lastName"
-            app:argType="string" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/show_all_requested_loans_fragment"
-        android:name="ru.denis.loans.ui.show_all_requested_fragment.ShowAllRequestedLoansFragment">
-        <action
-            android:id="@+id/action_ShowAllRequestedLoansFragment_to_DetailsLoanFragment"
-            app:destination="@id/show_details_loan_fragment" />
-        <argument
-            android:name="token"
-            app:argType="string" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/show_details_loan_fragment"
-        android:name="ru.denis.loans.ui.details_loan_fragment.DetailsLoanFragment">
-        <argument
-            android:name="id"
-            app:argType="long" />
-        <argument
-            android:name="amount"
-            app:argType="long" />
-        <argument
-            android:name="date"
-            app:argType="string" />
-        <argument
-            android:name="percent"
-            app:argType="string" />
-        <argument
-            android:name="period"
-            app:argType="string" />
-        <argument
-            android:name="phoneNumber"
-            app:argType="string" />
-        <argument
-            android:name="state"
-            app:argType="string" />
+        android:label="@string/currencies_converter">
     </fragment>
 
 </navigation>

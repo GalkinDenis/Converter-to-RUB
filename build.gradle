@@ -13,7 +13,7 @@ buildscript {
         nav_version = "2.3.5"
         fragment_version = "1.4.0"
         coroutines_version = "1.5.2"
-        room_version = "2.3.0"
+        room_version = "2.4.0"
         dagger_version = "2.35.1"
         dagger_compiler = "2.34"
         datastore_preferences_version = "1.0.0"

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "CurrencyEntity")
+@Entity(tableName = "currencyEntity")
 data class CurrencyEntity(
 
     @PrimaryKey(autoGenerate = true)
@@ -28,6 +28,6 @@ data class CurrencyEntity(
     @ColumnInfo(name = "Value")
     val Value: Double,
 
-    @ColumnInfo(name = "Previous")
-    val Previous: Double,
+    @ColumnInfo(name = "Difference")
+    val Difference: Double,
 )

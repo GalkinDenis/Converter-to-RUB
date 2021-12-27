@@ -3,12 +3,16 @@
     <string name="app_name">Converter to RUB</string>
 
     <!-- CURRENCIES FRAGMENT -->
+    <string name="currencies">Currencies</string>
     <string name="load_currencies_error">При попытке запросить данные из локального хранилища,
         по курсу валют, произошла ошибка.</string>
     <string name="get_currencies_error">При попытке запросить данные из сети, по курсу валют,
         произошла ошибка,проверьте подключение к интернету.</string>
     <string name="save_currencies_error">При попытке сохранить данные в локальном хранилище,
         по курсу валют, произошла ошибка.</string>
+
+    <!-- CURRENCIES CONVERTER -->
+    <string name="currencies_converter">Currencies converter</string>
 
     <!-- CBRF API -->
     <string name="end_point">daily_json.js</string>

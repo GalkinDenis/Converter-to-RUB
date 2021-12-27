@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
-import ru.denis.convertertorub.databinding.CurrenciesItemViewHolderBinding
+import ru.denis.convertertorub.databinding.ItemCurrenciesLayoutBinding
 
-class CurrenciesAdapter() :
+class CurrenciesAdapter(private val onClick: (CurrencyEntity) -> Unit) :
     RecyclerView.Adapter<CurrenciesViewHolder>() {
 
     var listOfCurrencies = emptyList<CurrencyEntity>()
@@ -19,11 +19,12 @@ class CurrenciesAdapter() :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrenciesViewHolder =
         CurrenciesViewHolder(
-            CurrenciesItemViewHolderBinding.inflate(
+            ItemCurrenciesLayoutBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            onClick
         )
 
     override fun onBindViewHolder(holder: CurrenciesViewHolder, position: Int) {

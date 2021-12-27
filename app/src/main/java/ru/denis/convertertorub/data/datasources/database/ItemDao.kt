@@ -15,13 +15,13 @@ interface ItemDao {
     @Update
     suspend fun update(item: CurrencyEntity)
 
-    @Query("SELECT * from CurrencyEntity")
-    suspend fun getCurrencies(): Flow<List<CurrencyEntity>>
+    @Query("SELECT * from currencyEntity")
+    fun getCurrencies(): Flow<List<CurrencyEntity>>
 
-    @Query("SELECT * FROM CurrencyEntity WHERE name = :nameItem")
-    suspend fun getValue(nameItem: String): Flow<CurrencyEntity>
+    @Query("SELECT * FROM currencyEntity WHERE name = :nameItem")
+    fun getValue(nameItem: String): Flow<CurrencyEntity>
 
-    @Query("DELETE FROM CurrencyEntity")
+    @Query("DELETE FROM currencyEntity")
     suspend fun clearTable()
 
 }

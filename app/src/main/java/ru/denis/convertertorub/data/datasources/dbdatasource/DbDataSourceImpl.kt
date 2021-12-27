@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.data.datasources.dbdatasource
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
@@ -15,9 +16,20 @@ class DbDataSourceImpl @Inject constructor(
 
     override suspend fun saveCurrencies(responseBody: Response<Currencies>) {
         withContext(Dispatchers.IO) {
+            Log.d(
+                "BAG",
+                "responseBody.body()?.Valute?.size =" +
+                        " ${responseBody.body()?.Valute?.size}"
+            )
+
+            responseBody.body()?.Valute?.size
             responseBody.body()?.Valute?.forEach { (_, currency) ->
-                if (currency.Nominal > 1) currency.Value /= currency.Nominal
-                dao.update(
+                if (currency.Nominal > 1) {
+                    currency.Value /= currency.Nominal
+                    currency.Previous /= currency.Nominal
+                    currency.Nominal = 1
+                }
+                dao.insert(
                     CurrencyEntity(
                         _ID = currency.ID,
                         NumCode = currency.NumCode,
@@ -25,7 +37,7 @@ class DbDataSourceImpl @Inject constructor(
                         Nominal = currency.Nominal,
                         Name = currency.Name,
                         Value = currency.Value,
-                        Previous = currency.Previous
+                        Difference = currency.Value - currency.Previous
                     )
                 )
             }

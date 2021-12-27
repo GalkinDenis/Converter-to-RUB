@@ -2,6 +2,7 @@ package ru.denis.convertertorub.ui.currenciesfragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,8 @@ class CurrenciesFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as App).appComponent.injectCurrenciesFragment(this)
+        (requireActivity().application as App)
+            .appComponent.injectCurrenciesFragment(this)
     }
 
     override fun onCreateView(
@@ -51,6 +53,7 @@ class CurrenciesFragment : Fragment() {
     private fun initObservers() {
         with(currenciesFragmentViewModel) {
             loadAllCurrencies.observe(viewLifecycleOwner) { listOfCurrencies ->
+                Log.d("BAG", "listOfCurrencies.size = ${listOfCurrencies.size}")
                 visibleRecyclerViewVisibility()
                 currenciesAdapter?.listOfCurrencies = listOfCurrencies
                 goneProgressbarVisibility()
@@ -75,7 +78,11 @@ class CurrenciesFragment : Fragment() {
 
     private fun initViews() {
         binding.recyclerView.apply {
-            currenciesAdapter = CurrenciesAdapter()
+            currenciesAdapter = CurrenciesAdapter(
+                onClick = { currencies ->
+                    println("111111111111111111111")
+                }
+            )
             adapter = currenciesAdapter
         }
     }

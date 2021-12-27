@@ -12,10 +12,7 @@ import ru.denis.convertertorub.data.datasources.dbdatasource.DbDataSourceImpl
 import javax.inject.Singleton
 
 @Module
-interface DataModule {
-
-    @Binds
-    fun provideDbDataSource(dataSource: DbDataSourceImpl): DbDataSource
+object DataModule {
 
     @Singleton
     @Provides

@@ -15,5 +15,5 @@ data class Currency(
     var Nominal: Int,
     val Name: String,
     var Value: Double,
-    val Previous: Double
+    var Previous: Double
 )

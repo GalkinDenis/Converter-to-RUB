@@ -17,13 +17,16 @@ interface PresentationModule {
     @Binds
     @IntoMap
     @ViewModelKey(CurrenciesFragmentViewModel::class)
-    fun provideAboutAppFragmentViewModel(viewModel: CurrenciesFragmentViewModel): ViewModel
+    fun provideCurrenciesFragmentViewModel(viewModel: CurrenciesFragmentViewModel): ViewModel
 
+    /*
     @Binds
     @IntoMap
     @ViewModelKey(ConverterFragmentViewModel::class)
     fun provideAboutAppFragmentViewModel(viewModel: ConverterFragmentViewModel): ViewModel
 
+
+     */
     @Binds
     @Singleton
     fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

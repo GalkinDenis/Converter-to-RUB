@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -46,9 +47,12 @@ class CurrenciesFragmentViewModel @Inject constructor(
 
     fun getCurrencies() {
         viewModelScope.launch(getCurrenciesExceptionHandler) {
+
             val response = async { getCurrenciesUseCase() }
 
             val responseBody = response.await()
+            Log.d("BAG", "$responseBody")
+
             if (responseBody.isSuccessful) saveCurrencies(responseBody)
         }
     }
@@ -62,6 +66,7 @@ class CurrenciesFragmentViewModel @Inject constructor(
 
     private fun saveCurrencies(responseBody: Response<Currencies>) {
         viewModelScope.launch(saveCurrenciesExceptionHandler) {
+            Log.d("BAG", "+++++++++++++")
             saveCurrenciesUseCase(responseBody)
         }
     }
