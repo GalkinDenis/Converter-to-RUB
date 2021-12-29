@@ -17,18 +17,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nominal_value"
-        android:layout_width="63dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:gravity="center"
-        android:text="1"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/code"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/currency_name"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
@@ -36,12 +24,12 @@
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/course"
-        app:layout_constraintStart_toEndOf="@+id/nominal_value"
+        app:layout_constraintStart_toEndOf="@+id/code"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/course"
-        android:layout_width="32dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:gravity="center"

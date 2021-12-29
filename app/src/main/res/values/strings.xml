@@ -4,6 +4,9 @@
 
     <!-- CURRENCIES FRAGMENT -->
     <string name="currencies">Currencies</string>
+
+    <string name="currencies_name">%1$s (НОМИНАЛ = 1)</string>
+
     <string name="load_currencies_error">При попытке запросить данные из локального хранилища,
         по курсу валют, произошла ошибка.</string>
     <string name="get_currencies_error">При попытке запросить данные из сети, по курсу валют,

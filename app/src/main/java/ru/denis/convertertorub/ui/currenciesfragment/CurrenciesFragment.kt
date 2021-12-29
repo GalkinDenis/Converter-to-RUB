@@ -2,7 +2,6 @@ package ru.denis.convertertorub.ui.currenciesfragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
 import ru.denis.convertertorub.di.App
@@ -44,19 +45,27 @@ class CurrenciesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initViews()
         initObservers()
-        currenciesFragmentViewModel.getCurrencies()
     }
 
     private fun initObservers() {
         with(currenciesFragmentViewModel) {
-            loadAllCurrencies.observe(viewLifecycleOwner) { listOfCurrencies ->
-                Log.d("BAG", "listOfCurrencies.size = ${listOfCurrencies.size}")
-                visibleRecyclerViewVisibility()
-                currenciesAdapter?.listOfCurrencies = listOfCurrencies
-                goneProgressbarVisibility()
+            lifecycleScope.launchWhenStarted {
+                viewActions().collect { listOfCurrencies ->
+                    listOfCurrencies?.let { list ->
+                        when (list.isEmpty()) {
+                            false -> {
+                                visibleRecyclerViewVisibility()
+                                goneProgressbarVisibility()
+                                currenciesAdapter?.listOfCurrencies = listOfCurrencies
+                            }
+                            true -> {
+                                getCurrencies()
+                            }
+                        }
+                    }
+                }
             }
 
             loadCurrenciesError.observe(viewLifecycleOwner) {

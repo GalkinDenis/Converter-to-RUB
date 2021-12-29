@@ -3,13 +3,12 @@ package ru.denis.convertertorub.data.datasources.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.math.BigDecimal
 
-@Entity(tableName = "currencyEntity")
+@Entity(tableName = "currency_entity")
 data class CurrencyEntity(
 
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-
+    @PrimaryKey
     @ColumnInfo(name = "_ID")
     val _ID: String,
 

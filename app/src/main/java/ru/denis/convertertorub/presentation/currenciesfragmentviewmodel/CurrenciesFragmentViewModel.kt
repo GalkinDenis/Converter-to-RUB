@@ -1,13 +1,12 @@
 package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
@@ -15,6 +14,7 @@ import ru.denis.convertertorub.data.model.Currencies
 import ru.denis.convertertorub.domain.usecases.GetCurrenciesUseCase
 import ru.denis.convertertorub.domain.usecases.LoadAllCurrenciesUseCase
 import ru.denis.convertertorub.domain.usecases.SaveCurrenciesUseCase
+import ru.denis.convertertorub.presentation.BaseFlowViewModel
 import ru.denis.convertertorub.presentation.SingleLiveEvent
 import javax.inject.Inject
 
@@ -22,10 +22,7 @@ class CurrenciesFragmentViewModel @Inject constructor(
     private val getCurrenciesUseCase: GetCurrenciesUseCase,
     private val saveCurrenciesUseCase: SaveCurrenciesUseCase,
     private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase
-) : ViewModel() {
-
-    private val _loadAllCurrencies = SingleLiveEvent<List<CurrencyEntity>>()
-    val loadAllCurrencies: SingleLiveEvent<List<CurrencyEntity>> = _loadAllCurrencies
+) : BaseFlowViewModel<List<CurrencyEntity>>() {
 
     private val _loadCurrenciesError = SingleLiveEvent<Throwable>()
     val loadCurrenciesError: SingleLiveEvent<Throwable> = _loadCurrenciesError
@@ -34,7 +31,8 @@ class CurrenciesFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             loadAllCurrenciesUseCase()
                 .catch { error -> _loadCurrenciesError.value = error }
-                .collect { listOfCurrencies -> _loadAllCurrencies.value = listOfCurrencies }
+                .flowOn(Dispatchers.IO)
+                .collect { listOfCurrencies -> viewAction = listOfCurrencies }
         }
     }
 
@@ -47,12 +45,8 @@ class CurrenciesFragmentViewModel @Inject constructor(
 
     fun getCurrencies() {
         viewModelScope.launch(getCurrenciesExceptionHandler) {
-
             val response = async { getCurrenciesUseCase() }
-
             val responseBody = response.await()
-            Log.d("BAG", "$responseBody")
-
             if (responseBody.isSuccessful) saveCurrencies(responseBody)
         }
     }
@@ -66,7 +60,6 @@ class CurrenciesFragmentViewModel @Inject constructor(
 
     private fun saveCurrencies(responseBody: Response<Currencies>) {
         viewModelScope.launch(saveCurrenciesExceptionHandler) {
-            Log.d("BAG", "+++++++++++++")
             saveCurrenciesUseCase(responseBody)
         }
     }

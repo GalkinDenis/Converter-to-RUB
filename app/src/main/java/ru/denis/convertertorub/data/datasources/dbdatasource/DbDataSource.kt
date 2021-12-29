@@ -8,4 +8,5 @@ import ru.denis.convertertorub.data.model.Currencies
 interface DbDataSource {
     suspend fun saveCurrencies(responseBody: Response<Currencies>)
     suspend fun loadAllCurrencies(): Flow<List<CurrencyEntity>>
+    fun trimSize(value: Double): Double
 }

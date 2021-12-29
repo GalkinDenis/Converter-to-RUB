@@ -1,27 +1,24 @@
 package ru.denis.convertertorub.data.datasources.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ItemDao {
 
-    @Insert
-    suspend fun insert(item: CurrencyEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCurrencies(item: CurrencyEntity)
 
     @Update
     suspend fun update(item: CurrencyEntity)
 
-    @Query("SELECT * from currencyEntity")
+    @Query("SELECT * from currency_entity")
     fun getCurrencies(): Flow<List<CurrencyEntity>>
 
-    @Query("SELECT * FROM currencyEntity WHERE name = :nameItem")
+    @Query("SELECT * FROM currency_entity WHERE name = :nameItem")
     fun getValue(nameItem: String): Flow<CurrencyEntity>
 
-    @Query("DELETE FROM currencyEntity")
+    @Query("DELETE FROM currency_entity")
     suspend fun clearTable()
 
 }

@@ -5,8 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
 import ru.denis.convertertorub.databinding.ItemCurrenciesLayoutBinding
+import javax.inject.Inject
 
-class CurrenciesAdapter(private val onClick: (CurrencyEntity) -> Unit) :
+class CurrenciesAdapter @Inject constructor(
+    private val onClick: (CurrencyEntity) -> Unit
+) :
     RecyclerView.Adapter<CurrenciesViewHolder>() {
 
     var listOfCurrencies = emptyList<CurrencyEntity>()
