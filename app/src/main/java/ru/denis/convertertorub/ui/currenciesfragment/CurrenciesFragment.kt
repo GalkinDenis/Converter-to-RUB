@@ -14,7 +14,10 @@ import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
 import ru.denis.convertertorub.di.App
+import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class CurrenciesFragment : Fragment() {
@@ -38,7 +41,7 @@ class CurrenciesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = CurrenciesFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -51,37 +54,36 @@ class CurrenciesFragment : Fragment() {
 
     private fun initObservers() {
         with(currenciesFragmentViewModel) {
+
             lifecycleScope.launchWhenStarted {
-                viewActions().collect { listOfCurrencies ->
+                getListOfCurrencies().collect { listOfCurrencies ->
                     listOfCurrencies?.let { list ->
-                        when (list.isEmpty()) {
-                            false -> {
-                                visibleRecyclerViewVisibility()
-                                goneProgressbarVisibility()
-                                currenciesAdapter?.listOfCurrencies = listOfCurrencies
-                            }
-                            true -> {
-                                getCurrencies()
-                            }
-                        }
+                        visibleRecyclerViewVisibility()
+                        currenciesAdapter?.listOfCurrencies = list
                     }
+                    goneProgressbarVisibility()
                 }
             }
 
-            loadCurrenciesError.observe(viewLifecycleOwner) {
-                showToast(getString(R.string.load_currencies_error))
+            lifecycleScope.launchWhenStarted {
+            showDate().collect { date ->
+                    binding.lastDateUpdate.text =
+                        getString(R.string.last_date_update, date)
+                }
+            }
+
+
+
+            showError().observe(viewLifecycleOwner) { errorType ->
+                when (errorType) {
+                    ErrorType.GET_ERROR -> showToast(getString(R.string.show_currencies_error))
+                    ErrorType.LOAD_ERROR -> showToast(getString(R.string.load_currencies_error))
+                    ErrorType.INSERT_ERROR -> showToast(getString(R.string.save_currencies_error))
+                    else -> return@observe
+                }
                 goneProgressbarVisibility()
             }
 
-            getCurrenciesError.observe(viewLifecycleOwner) {
-                showToast(getString(R.string.get_currencies_error))
-                goneProgressbarVisibility()
-            }
-
-            saveCurrenciesError.observe(viewLifecycleOwner) {
-                showToast(getString(R.string.save_currencies_error))
-                goneProgressbarVisibility()
-            }
         }
     }
 

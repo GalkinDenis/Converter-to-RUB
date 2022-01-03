@@ -8,7 +8,6 @@ import java.math.BigDecimal
 @Entity(tableName = "currency_entity")
 data class CurrencyEntity(
 
-    @PrimaryKey
     @ColumnInfo(name = "_ID")
     val _ID: String,
 
@@ -18,15 +17,13 @@ data class CurrencyEntity(
     @ColumnInfo(name = "CharCode")
     val CharCode: String,
 
-    @ColumnInfo(name = "Nominal")
-    val Nominal: Int,
-
     @ColumnInfo(name = "Name")
     val Name: String,
 
+    @PrimaryKey
     @ColumnInfo(name = "Value")
-    val Value: Double,
+    val Value: String,
 
     @ColumnInfo(name = "Difference")
-    val Difference: Double,
+    val Difference: String,
 )

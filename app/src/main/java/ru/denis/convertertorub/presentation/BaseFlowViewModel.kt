@@ -6,34 +6,49 @@ import kotlinx.coroutines.flow.StateFlow
 
 abstract class BaseFlowViewModel<A> : ViewModel() {
 
-    private val _viewActions: MutableStateFlow<A?> = MutableStateFlow(null)
-    fun viewActions(): StateFlow<A?> = _viewActions
+    private val _getListOfCurrencies: MutableStateFlow<A?> = MutableStateFlow(null)
+    fun getListOfCurrencies(): StateFlow<A?> = _getListOfCurrencies
 
-    protected var viewAction: A
-        get() = _viewActions.value
-            ?: throw UninitializedPropertyAccessException("\"viewAction\" was queried before being initialized")
+    protected var getListOfCurrencies: A
+        get() = _getListOfCurrencies.value
+            ?: throw UninitializedPropertyAccessException(
+                "Was queried before being initialized"
+            )
         set(value) {
-            /** StateFlow doesn't work with same values */
-            if (_viewActions.value == value) {
-                _viewActions.value = null
+            if (_getListOfCurrencies.value == value) {
+                _getListOfCurrencies.value = null
             }
-            _viewActions.value = value
+            _getListOfCurrencies.value = value
         }
 
-    //private val TAG = BaseFlowViewModel::class.java.simpleName
-    //private val _viewStates: MutableStateFlow<S?> = MutableStateFlow(null)
-    //fun viewStates(): StateFlow<S?> = _viewStates
-/*
-    protected var viewState: S
-        get() = _viewStates.value
-            ?: throw UninitializedPropertyAccessException("\"viewState\" was queried before being initialized")
+    private val _errorHandler = SingleLiveEvent<ErrorType?>()
+    fun showError(): SingleLiveEvent<ErrorType?> = _errorHandler
+
+    protected var errorHandler: ErrorType
+        get() = _errorHandler.value
+            ?: throw UninitializedPropertyAccessException(
+                "Was queried before being initialized"
+            )
         set(value) {
-            /** StateFlow doesn't work with same values */
-            if (_viewStates.value == value) {
-                _viewStates.value = null
+            if (_errorHandler.value == value) {
+                _errorHandler.value = null
             }
-            _viewStates.value = value
+            _errorHandler.value = value
         }
 
- */
+    private val _currentDate: MutableStateFlow<String?> = MutableStateFlow(null)
+    fun showDate(): MutableStateFlow<String?> = _currentDate
+
+    protected var currentDate: String
+        get() = _currentDate.value
+            ?: throw UninitializedPropertyAccessException(
+                "Was queried before being initialized"
+            )
+        set(value) {
+            if (_currentDate.value == value) {
+                _currentDate.value = null
+            }
+            _currentDate.value = value
+        }
+
 }

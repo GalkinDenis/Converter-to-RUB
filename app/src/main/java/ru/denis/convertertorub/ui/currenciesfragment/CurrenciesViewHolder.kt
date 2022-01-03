@@ -1,10 +1,9 @@
 package ru.denis.convertertorub.ui.currenciesfragment
 
-import android.content.Context
 import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import ru.denis.convertertorub.R
+import kotlinx.coroutines.flow.StateFlow
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
 import ru.denis.convertertorub.databinding.ItemCurrenciesLayoutBinding
 
@@ -17,10 +16,9 @@ class CurrenciesViewHolder(
         with(binding) {
             code.text = currencies.CharCode
             currencyName.text = currencies.Name
-            course.text = currencies.Value.toString()
-            val difference = currencies.Difference
-            if (difference >= 0) changing.setTextColor(Color.GREEN) else changing.setTextColor(Color.RED)
-            changing.text = difference.toString()
+            course.text = currencies.Value
+            if (currencies.Difference.startsWith("-")) changing.setTextColor(Color.RED) else changing.setTextColor(Color.GREEN)
+            changing.text = currencies.Difference
         }
 
         itemView.setOnClickListener {

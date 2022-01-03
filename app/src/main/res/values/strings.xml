@@ -2,16 +2,19 @@
     <!-- APP -->
     <string name="app_name">Converter to RUB</string>
 
+    <!-- PREFERENCES -->
+    <string name="current_date">current_date</string>
+
     <!-- CURRENCIES FRAGMENT -->
-    <string name="currencies">Currencies</string>
+    <string name="currencies">Курсы валют</string>
+    <string name="plus">+</string>
+    <string name="last_date_update">Последнее обновление валют: %1$s</string>
 
-    <string name="currencies_name">%1$s (НОМИНАЛ = 1)</string>
-
-    <string name="load_currencies_error">При попытке запросить данные из локального хранилища,
-        по курсу валют, произошла ошибка.</string>
-    <string name="get_currencies_error">При попытке запросить данные из сети, по курсу валют,
+    <string name="load_currencies_error">При попытке запросить данные из сети, по курсу валют,
         произошла ошибка,проверьте подключение к интернету.</string>
-    <string name="save_currencies_error">При попытке сохранить данные в локальном хранилище,
+    <string name="show_currencies_error">При попытке запросить данные из локального хранилища,
+        по курсу валют, произошла ошибка.</string>
+    <string name="save_currencies_error">При попытке сохранить данные в локальное хранилище,
         по курсу валют, произошла ошибка.</string>
 
     <!-- CURRENCIES CONVERTER -->

@@ -12,35 +12,46 @@ import retrofit2.Response
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
 import ru.denis.convertertorub.data.model.Currencies
 import ru.denis.convertertorub.domain.usecases.GetCurrenciesUseCase
+import ru.denis.convertertorub.domain.usecases.GetSavedDataUseCase
 import ru.denis.convertertorub.domain.usecases.LoadAllCurrenciesUseCase
 import ru.denis.convertertorub.domain.usecases.SaveCurrenciesUseCase
 import ru.denis.convertertorub.presentation.BaseFlowViewModel
-import ru.denis.convertertorub.presentation.SingleLiveEvent
+import ru.denis.convertertorub.presentation.ErrorType
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class CurrenciesFragmentViewModel @Inject constructor(
     private val getCurrenciesUseCase: GetCurrenciesUseCase,
     private val saveCurrenciesUseCase: SaveCurrenciesUseCase,
-    private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase
+    private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase,
+    private val getSavedDataUseCase: GetSavedDataUseCase
 ) : BaseFlowViewModel<List<CurrencyEntity>>() {
-
-    private val _loadCurrenciesError = SingleLiveEvent<Throwable>()
-    val loadCurrenciesError: SingleLiveEvent<Throwable> = _loadCurrenciesError
 
     init {
         viewModelScope.launch {
             loadAllCurrenciesUseCase()
-                .catch { error -> _loadCurrenciesError.value = error }
+                .catch { errorHandler = ErrorType.GET_ERROR }
                 .flowOn(Dispatchers.IO)
-                .collect { listOfCurrencies -> viewAction = listOfCurrencies }
+                .collect { listOfCurrencies ->
+                    if (compareDates()) {
+                        getCurrencies()
+                        return@collect
+                    }
+                    getListOfCurrencies = listOfCurrencies
+                }
         }
     }
 
-    private val _getCurrenciesError = SingleLiveEvent<Throwable>()
-    val getCurrenciesError: SingleLiveEvent<Throwable> = _getCurrenciesError
+    private suspend fun compareDates(): Boolean {
+        val date = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+        val savedDate = getSavedDataUseCase().split("T")[0]
+        currentDate = savedDate
+        return savedDate != date
+    }
 
-    private val getCurrenciesExceptionHandler = CoroutineExceptionHandler { _, exception ->
-        _getCurrenciesError.value = exception
+    private val getCurrenciesExceptionHandler = CoroutineExceptionHandler { _, _ ->
+        errorHandler = ErrorType.LOAD_ERROR
     }
 
     fun getCurrencies() {
@@ -51,11 +62,8 @@ class CurrenciesFragmentViewModel @Inject constructor(
         }
     }
 
-    private val _saveCurrenciesError = SingleLiveEvent<Throwable>()
-    val saveCurrenciesError: SingleLiveEvent<Throwable> = _saveCurrenciesError
-
-    private val saveCurrenciesExceptionHandler = CoroutineExceptionHandler { _, exception ->
-        _saveCurrenciesError.value = exception
+    private val saveCurrenciesExceptionHandler = CoroutineExceptionHandler { _, _ ->
+        errorHandler = ErrorType.INSERT_ERROR
     }
 
     private fun saveCurrencies(responseBody: Response<Currencies>) {
