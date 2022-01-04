@@ -6,8 +6,9 @@
     <string name="current_date">current_date</string>
 
     <!-- CURRENCIES FRAGMENT -->
-    <string name="currencies">Курсы валют</string>
-    <string name="plus">+</string>
+    <string name="currencies">Курсы валют в рублях</string>
+    <string name="plus">+%1$s</string>
+    <string name="rub">%1$s p</string>
     <string name="last_date_update">Последнее обновление валют: %1$s</string>
 
     <string name="load_currencies_error">При попытке запросить данные из сети, по курсу валют,

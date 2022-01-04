@@ -35,8 +35,8 @@ class LocalDataSourceImpl @Inject constructor(
                         NumCode = currency.NumCode,
                         CharCode = currency.CharCode,
                         Name = currency.Name,
-                        Value = trimSize(currency.Value),
-                        Difference = getPrefixValue(currency.Value - currency.Previous)
+                        Value = context.getString(R.string.rub, trimSize(currency.Value)),
+                        Difference = context.getString(R.string.rub, getPrefixValue(currency.Value - currency.Previous))
                     )
                 )
             }
@@ -45,7 +45,7 @@ class LocalDataSourceImpl @Inject constructor(
 
     override fun getPrefixValue(value: Double): String {
         return when {
-            value > 0 -> "${context.getString(R.string.plus)} ${trimSize(value)}"
+            value > 0 -> context.getString(R.string.plus, trimSize(value))
             else -> trimSize(value)
         }
     }

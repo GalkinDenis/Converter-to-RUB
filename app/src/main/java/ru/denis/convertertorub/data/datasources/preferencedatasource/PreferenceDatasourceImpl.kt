@@ -18,7 +18,7 @@ class PreferenceDatasourceImpl @Inject constructor(
         withContext(Dispatchers.IO) {
             date?.let {
                 prefsDataStore.edit { prefs ->
-                    prefs[stringPreferencesKey(key)] = "2022-01-03"
+                    prefs[stringPreferencesKey(key)] = "2022-01-04"
                 }
             }
         }
