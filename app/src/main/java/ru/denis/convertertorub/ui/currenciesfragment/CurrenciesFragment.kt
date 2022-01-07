@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
 import ru.denis.convertertorub.di.App
 import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
@@ -50,6 +50,7 @@ class CurrenciesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         initObservers()
+        initClickListeners()
     }
 
     private fun initObservers() {
@@ -66,13 +67,11 @@ class CurrenciesFragment : Fragment() {
             }
 
             lifecycleScope.launchWhenStarted {
-            showDate().collect { date ->
+                showDate().collect { date ->
                     binding.lastDateUpdate.text =
                         getString(R.string.last_date_update, date)
                 }
             }
-
-
 
             showError().observe(viewLifecycleOwner) { errorType ->
                 when (errorType) {
@@ -98,6 +97,20 @@ class CurrenciesFragment : Fragment() {
         }
     }
 
+    private fun initClickListeners() {
+        binding.goToConverter.setOnClickListener {
+            showConverterScreen()
+        }
+    }
+
+    private fun showConverterScreen() {
+        findNavController()
+            .navigate(
+                CurrenciesFragmentDirections
+                    .actionCurrenciesFragmentToConverterFragment()
+            )
+    }
+
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
@@ -109,88 +122,5 @@ class CurrenciesFragment : Fragment() {
     private fun visibleRecyclerViewVisibility() {
         binding.recyclerView.visibility = View.VISIBLE
     }
-
-/*
-
-
-        val adapter = ValuteListAdapter()
-        binding.recyclerView.adapter = adapter
-
-        val progressbar = binding.progressBar
-
-        //Обновление списка валют из базы данных.
-        viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
-            when {
-
-                //Заполнение списка данными из базы данных, если она не пустая.
-                items.isNotEmpty() -> {
-                    binding.note.visibility = View.INVISIBLE
-                    ItemRoomDatabase.tableIsDefined = true
-                }
-
-                //Загрузка списка валют из сети, если база данных пустая и не очищена вручную.
-                (items.isEmpty() && !viewModel.clearState) -> {
-                    viewModel.fillingOfList()
-                }
-
-                //Отображение сообщения о возможности загрузить список валют.
-                viewModel.clearState -> {
-                    binding.note.visibility = View.VISIBLE
-                    ItemRoomDatabase.tableIsDefined = false
-                }
-            }
-
-            //Обновление списка.
-            items.let {
-                adapter.submitList(it)
-            }
-        }
-
-        //Демонстрация прогресса загрузки, предоставляемая ProgressBar.
-        viewModel.getPercentOfLoad().observe(this.viewLifecycleOwner) {
-            progressbar.visibility = View.VISIBLE
-            progressbar.progress = (((it.toDouble()) / 34.0) * 100.0).toInt()
-            if (progressbar.progress == 100) progressbar.visibility = View.GONE
-        }
-
-
-        //Вывод всплывающего сообщения в случае неудачи сетевого запроса.
-        viewModel.networkResponse.observe(this.viewLifecycleOwner) { networkResponse ->
-            when (networkResponse) {
-                ValutesApiStatus.ERROR -> {
-                    binding.note.visibility = View.VISIBLE
-                    ItemRoomDatabase.tableIsDefined = false
-
-                    Toast.makeText(
-                        context,
-                        getString(R.string.network_error),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                else -> return@observe
-            }
-        }
-
-        binding.reloadButton.setOnClickListener {
-            //Функция заполнение списка валют.
-            if (!ItemRoomDatabase.tableIsDefined) {
-                //SQL -> insert.
-                viewModel.fillingOfList()
-            } else {
-                //SQL -> update.
-                viewModel.updatingOfList()
-
-            }
-        }
-
-        binding.clearButton.setOnClickListener {
-            //Функция очистки списка валют.
-            viewModel.clearTable()
-            binding.note.visibility = View.VISIBLE
-            ItemRoomDatabase.tableIsDefined = false
-        }
-
- */
-
 
 }

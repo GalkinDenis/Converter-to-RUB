@@ -7,7 +7,7 @@
 
     <!-- CURRENCIES FRAGMENT -->
     <string name="currencies">Курсы валют в рублях</string>
-    <string name="plus">+%1$s</string>
+    <string name="plus_and_rub">+%1$s</string>
     <string name="rub">%1$s p</string>
     <string name="last_date_update">Последнее обновление валют: %1$s</string>
 
@@ -19,13 +19,52 @@
         по курсу валют, произошла ошибка.</string>
 
     <!-- CURRENCIES CONVERTER -->
-    <string name="currencies_converter">Currencies converter</string>
+    <string name="currencies_converter">Конвертер валют</string>
 
     <!-- CBRF API -->
     <string name="end_point">daily_json.js</string>
 
     <!-- VIEW MODEL FACTORY -->
     <string name="undefined_model_class">Undefined model class</string>
+
+    <!-- ПУНКТЫ МЕНЮ ВЫБОРА ЦЕЛЕВОЙ ВАЛЮТЫ ДЛЯ КОНВЕРТАЦИИ -->
+    <string-array name="currencies_name_list">
+        <item>Австралийский доллар</item>
+        <item>Азербайджанский манат</item>
+        <item>Фунт стерлингов Соединенного королевства</item>
+        <item>Армянских драмов</item>
+        <item>Белорусский рубль</item>
+        <item>Болгарский лев</item>
+        <item>Бразильский реал</item>
+        <item>Венгерских форинтов</item>
+        <item>Гонконгских долларов</item>
+        <item>Датская крона</item>
+        <item>Доллар США</item>
+        <item>Евро</item>
+        <item>Индийских рупий</item>
+        <item>Казахстанских тенге</item>
+        <item>Канадский доллар</item>
+        <item>Киргизских сомов</item>
+        <item>Китайский юань</item>
+        <item>Молдавских леев</item>
+        <item>Норвежских крон</item>
+        <item>Польский злотый</item>
+        <item>Румынский лей</item>
+        <item>СДР (специальные права заимствования)</item>
+        <item>Сингапурский доллар</item>
+        <item>Таджикских сомони</item>
+        <item>Турецких лир</item>
+        <item>Новый туркменский манат</item>
+        <item>Узбекских сумов</item>
+        <item>Украинских гривен</item>
+        <item>Чешских крон</item>
+        <item>Шведских крон</item>
+        <item>Швейцарский франк</item>
+        <item>Южноафриканских рэндов</item>
+        <item>Вон Республики Корея</item>
+        <item>Японских иен</item>
+    </string-array>
+
 </resources>
 
 

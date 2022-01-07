@@ -35,23 +35,23 @@ class LocalDataSourceImpl @Inject constructor(
                         NumCode = currency.NumCode,
                         CharCode = currency.CharCode,
                         Name = currency.Name,
-                        Value = context.getString(R.string.rub, trimSize(currency.Value)),
-                        Difference = context.getString(R.string.rub, getPrefixValue(currency.Value - currency.Previous))
+                        Value = trimSize(currency.Value),
+                        Difference = getPrefixValue(currency.Value - currency.Previous)
                     )
                 )
             }
         }
     }
 
+    override fun trimSize(value: Double) =
+        context.getString(R.string.rub, value.toBigDecimal().setScale(2, RoundingMode.UP))
+
     override fun getPrefixValue(value: Double): String {
         return when {
-            value > 0 -> context.getString(R.string.plus, trimSize(value))
+            value > 0 -> context.getString(R.string.plus_and_rub, trimSize(value))
             else -> trimSize(value)
         }
     }
-
-    override fun trimSize(value: Double) =
-        value.toBigDecimal().setScale(2, RoundingMode.UP).toString()
 
     override suspend fun saveCurrentDate(body: Currencies?) {
         preferenceDatasource.saveCurrentDate(

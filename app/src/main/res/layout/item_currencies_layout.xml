@@ -2,27 +2,34 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="70dp"
+
+    >
 
     <TextView
         android:id="@+id/code"
-        android:layout_width="25dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/roboto_slab_bold"
         android:gravity="center"
+
         android:text="AAA"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/currency_name"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/currency_name"
         android:layout_width="165dp"
+        android:padding="10dp"
+        android:layout_marginEnd="9dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_slab_bold"
         android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
         android:textSize="11sp"
-        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/course"
         app:layout_constraintStart_toEndOf="@+id/code"
@@ -30,24 +37,33 @@
 
     <TextView
         android:id="@+id/course"
-        android:layout_width="45dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="23dp"
+        android:fontFamily="@font/roboto_slab_bold"
         android:text="-8,424"
+        android:padding="5dp"
+
         android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/currency_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/changing"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/changing"
-        android:layout_width="74dp"
+        android:layout_width="85dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/roboto_slab_bold"
         android:gravity="center"
+        android:padding="10dp"
+
         android:text="-8,424"
         android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/course"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

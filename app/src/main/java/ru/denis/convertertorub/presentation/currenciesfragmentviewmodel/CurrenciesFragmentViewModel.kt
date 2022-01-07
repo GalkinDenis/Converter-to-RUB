@@ -43,13 +43,6 @@ class CurrenciesFragmentViewModel @Inject constructor(
         }
     }
 
-    private suspend fun compareDates(): Boolean {
-        val date = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
-        val savedDate = getSavedDataUseCase().split("T")[0]
-        currentDate = savedDate
-        return savedDate != date
-    }
-
     private val getCurrenciesExceptionHandler = CoroutineExceptionHandler { _, _ ->
         errorHandler = ErrorType.LOAD_ERROR
     }
@@ -70,5 +63,12 @@ class CurrenciesFragmentViewModel @Inject constructor(
         viewModelScope.launch(saveCurrenciesExceptionHandler) {
             saveCurrenciesUseCase(responseBody)
         }
+    }
+
+    private suspend fun compareDates(): Boolean {
+        val date = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+        val savedDate = getSavedDataUseCase().split("T")[0]
+        currentDate = savedDate
+        return savedDate != date
     }
 }

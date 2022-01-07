@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import ru.denis.convertertorub.di.modules.*
+import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
 import ru.denis.convertertorub.ui.currenciesfragment.CurrenciesFragment
 import javax.inject.Singleton
 
@@ -26,7 +27,7 @@ interface AppComponent {
     }
 
     fun injectCurrenciesFragment(fragment: CurrenciesFragment)
-    //fun injectLoginRegistrationFragment(fragment: LoginRegistrationFragment)
+    fun injectConverterFragment(fragment: ConverterFragment)
 
 }
 

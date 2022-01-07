@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp"
+            android:background="@drawable/custom_shadow_layout"
+            android:elevation="15dp"
+            android:gravity="center">
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/item_price_label"
+        style="@style/Widget.Inventory.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="3333333"
+        app:layout_constraintBottom_toTopOf="@+id/mark"
+        app:layout_constraintEnd_toEndOf="@+id/mark"
+        app:layout_constraintStart_toStartOf="@+id/mark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:prefixText="wwwwwww">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/field_of_rub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/target_value"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="3333333"
+        app:layout_constraintEnd_toEndOf="@+id/mark"
+        app:layout_constraintStart_toStartOf="@+id/mark"
+        app:layout_constraintTop_toBottomOf="@+id/item_price_label">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/field_of_target_valute"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/result_value"
+        style="@style/toResult"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="hhhhh"
+        android:textColor="@color/purple_500"
+        app:layout_constraintStart_toStartOf="@+id/target_value"
+        app:layout_constraintTop_toBottomOf="@+id/target_value">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/result_value_show"
+        style="@style/toResult"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/target_value"
+        app:layout_constraintStart_toEndOf="@+id/result_value"
+        app:layout_constraintTop_toBottomOf="@+id/target_value">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/convert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="dddd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mark">
+
+    </Button>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

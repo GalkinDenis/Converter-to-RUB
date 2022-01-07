@@ -4,63 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/playfair_display_sc_bold"
-        android:padding="5dp"
-        android:text="КОД"
-        android:textColor="#546e7a"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/currency_name"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/playfair_display_sc_bold"
-        android:gravity="start"
-        android:padding="5dp"
-        android:text="ВАЛЮТА (НОМИНАЛ = 1)"
-        android:textColor="#546e7a"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/course"
-        app:layout_constraintStart_toEndOf="@+id/code"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/course"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/playfair_display_sc_bold"
-        android:padding="5dp"
-        android:text="КУРС"
-        android:textColor="#546e7a"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/changing"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/changing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:fontFamily="@font/playfair_display_sc_bold"
-        android:padding="5dp"
-        android:text="ИЗМЕНЕНИЕ"
-        android:textColor="#546e7a"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -79,12 +22,97 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:layout_marginTop="23dp"
         android:scrollbars="vertical"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/currency_name" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_shadow_layout"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/code"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Код"
+            android:textColor="#546e7a"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_shadow_layout"
+        android:gravity="start"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/currency_name"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:text="Валюта"
+            android:textColor="#546e7a"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_shadow_layout"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/course"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:text="Курс"
+            android:textColor="#546e7a"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_shadow_layout"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/changing"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:text="Изменение"
+            android:textColor="#546e7a"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/go_to_converter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -92,6 +120,7 @@
         android:backgroundTint="#e8f5e9"
         android:clickable="true"
         android:focusable="true"
+        android:src="@drawable/ic_baseline_currency_ruble_24"
         app:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -101,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="33dp"
         android:backgroundTint="#e8f5e9"
         app:cardCornerRadius="8dp"
         app:cardElevation="15dp"
