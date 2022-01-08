@@ -2,6 +2,7 @@ package ru.denis.convertertorub.data.datasources.database
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
+import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
 
 @Dao
 interface ItemDao {
@@ -15,10 +16,7 @@ interface ItemDao {
     @Query("SELECT * from currency_entity")
     fun getCurrencies(): Flow<List<CurrencyEntity>>
 
-    @Query("SELECT * FROM currency_entity WHERE name = :nameItem")
-    fun getValue(nameItem: String): Flow<CurrencyEntity>
-
-    @Query("DELETE FROM currency_entity")
-    suspend fun clearTable()
+    @Query("SELECT CharCode, Value FROM currency_entity WHERE name = :nameItem")
+    suspend fun getCodeAndValueCurrency(nameItem: String): CodeAndValueCurrency
 
 }

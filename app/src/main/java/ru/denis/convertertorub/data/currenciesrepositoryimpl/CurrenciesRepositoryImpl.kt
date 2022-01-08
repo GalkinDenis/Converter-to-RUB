@@ -21,4 +21,8 @@ class CurrenciesRepositoryImpl @Inject constructor(
     override suspend fun loadAllCurrencies() = localDataSource.loadAllCurrencies()
 
     override suspend fun getSavedDate() = localDataSource.getSavedDate()
+
+    override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
+        localDataSource.getCodeAndValueCurrency(targetCurrencyName)
+
 }

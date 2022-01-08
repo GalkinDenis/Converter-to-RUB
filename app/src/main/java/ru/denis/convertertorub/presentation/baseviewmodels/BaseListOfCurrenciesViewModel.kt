@@ -1,10 +1,12 @@
-package ru.denis.convertertorub.presentation
+package ru.denis.convertertorub.presentation.baseviewmodels
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import ru.denis.convertertorub.presentation.ErrorType
+import ru.denis.convertertorub.presentation.SingleLiveEvent
 
-abstract class BaseFlowViewModel<A> : ViewModel() {
+abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
 
     private val _getListOfCurrencies: MutableStateFlow<A?> = MutableStateFlow(null)
     fun getListOfCurrencies(): StateFlow<A?> = _getListOfCurrencies

@@ -15,8 +15,8 @@ import ru.denis.convertertorub.domain.usecases.GetCurrenciesUseCase
 import ru.denis.convertertorub.domain.usecases.GetSavedDataUseCase
 import ru.denis.convertertorub.domain.usecases.LoadAllCurrenciesUseCase
 import ru.denis.convertertorub.domain.usecases.SaveCurrenciesUseCase
-import ru.denis.convertertorub.presentation.BaseFlowViewModel
 import ru.denis.convertertorub.presentation.ErrorType
+import ru.denis.convertertorub.presentation.baseviewmodels.BaseListOfCurrenciesViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -26,7 +26,7 @@ class CurrenciesFragmentViewModel @Inject constructor(
     private val saveCurrenciesUseCase: SaveCurrenciesUseCase,
     private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase,
     private val getSavedDataUseCase: GetSavedDataUseCase
-) : BaseFlowViewModel<List<CurrencyEntity>>() {
+) : BaseListOfCurrenciesViewModel<List<CurrencyEntity>>() {
 
     init {
         viewModelScope.launch {

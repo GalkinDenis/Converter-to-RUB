@@ -12,18 +12,18 @@ data class CurrencyEntity(
     val _ID: String,
 
     @ColumnInfo(name = "NumCode")
-    val NumCode: String,
+    val numCode: String,
 
     @ColumnInfo(name = "CharCode")
-    val CharCode: String,
+    val charCode: String,
 
     @ColumnInfo(name = "Name")
-    val Name: String,
+    val name: String,
 
     @PrimaryKey
     @ColumnInfo(name = "Value")
-    val Value: String,
+    val value: String,
 
     @ColumnInfo(name = "Difference")
-    val Difference: String,
+    val difference: String,
 )

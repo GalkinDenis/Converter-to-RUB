@@ -14,11 +14,11 @@ class CurrenciesViewHolder(
 
     fun bind(itemView: View, currencies: CurrencyEntity) {
         with(binding) {
-            code.text = currencies.CharCode
-            currencyName.text = currencies.Name
-            course.text = currencies.Value
-            if (currencies.Difference.startsWith("-")) changing.setTextColor(Color.RED) else changing.setTextColor(Color.GREEN)
-            changing.text = currencies.Difference
+            code.text = currencies.charCode
+            currencyName.text = currencies.name
+            course.text = currencies.value
+            if (currencies.difference.startsWith("-")) changing.setTextColor(Color.RED) else changing.setTextColor(Color.GREEN)
+            changing.text = currencies.difference
         }
 
         itemView.setOnClickListener {

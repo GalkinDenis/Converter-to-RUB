@@ -37,13 +37,13 @@
 
     <TextView
         android:id="@+id/course"
-        android:layout_width="60dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_slab_bold"
+        android:fontFamily="@font/roboto_medium"
         android:text="-8,424"
         android:padding="5dp"
-
-        android:textSize="11sp"
+        android:textStyle="bold"
+        android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@+id/currency_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/changing"
@@ -53,12 +53,12 @@
         android:id="@+id/changing"
         android:layout_width="85dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_slab_bold"
+        android:fontFamily="@font/roboto_medium"
+        android:textStyle="bold"
         android:gravity="center"
         android:padding="10dp"
-
         android:text="-8,424"
-        android:textSize="11sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@+id/course"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

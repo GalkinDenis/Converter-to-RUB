@@ -32,11 +32,11 @@ class LocalDataSourceImpl @Inject constructor(
                 dao.insertCurrencies(
                     CurrencyEntity(
                         _ID = currency.ID,
-                        NumCode = currency.NumCode,
-                        CharCode = currency.CharCode,
-                        Name = currency.Name,
-                        Value = trimSize(currency.Value),
-                        Difference = getPrefixValue(currency.Value - currency.Previous)
+                        numCode = currency.NumCode,
+                        charCode = currency.CharCode,
+                        name = currency.Name,
+                        value = trimSize(currency.Value),
+                        difference = getPrefixValue(currency.Value - currency.Previous)
                     )
                 )
             }
@@ -54,12 +54,21 @@ class LocalDataSourceImpl @Inject constructor(
     }
 
     override suspend fun saveCurrentDate(body: Currencies?) {
-        preferenceDatasource.saveCurrentDate(
-            body?.Date,
-            context.getString(R.string.current_date)
-        )
+        withContext(Dispatchers.IO) {
+            preferenceDatasource.saveCurrentDate(
+                body?.Date,
+                context.getString(R.string.current_date)
+            )
+        }
     }
 
     override suspend fun getSavedDate() =
-        preferenceDatasource.getSavedDate(context.getString(R.string.current_date))
+        withContext(Dispatchers.IO) {
+            preferenceDatasource.getSavedDate(context.getString(R.string.current_date))
+        }
+
+    override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
+        withContext(Dispatchers.IO) {
+            dao.getCodeAndValueCurrency(targetCurrencyName)
+        }
 }
