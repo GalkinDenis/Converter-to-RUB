@@ -20,6 +20,16 @@
 
     <!-- CURRENCIES CONVERTER -->
     <string name="currencies_converter">Конвертер валют</string>
+    <string name="enter_rub_value">Введите значение в рублях</string>
+    <string name="rubles">Рублей</string>
+    <string name="select_target_currency_name">Конвертировать в</string>
+    <string name="convert">Конвертировать</string>
+    <string name="result">Результат:</string>
+
+
+
+
+
 
     <!-- CBRF API -->
     <string name="end_point">daily_json.js</string>

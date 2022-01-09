@@ -45,14 +45,14 @@ class ConverterFragmentViewModel @Inject constructor(
 
     private suspend fun convert(
         fieldOfRub: String,
-        codeAndValueCurrency: CodeAndValueCurrency
+        charCodeAndValueCurrency: CodeAndValueCurrency
     ) {
         withContext(Dispatchers.IO) {
             divisionResult =
-                (fieldOfRub.toDouble() / codeAndValueCurrency.value.split(" ")[0].toDouble())
+                (fieldOfRub.toDouble() / charCodeAndValueCurrency.value.split(" ")[0].toDouble())
                     .toBigDecimal()
                     .setScale(2, RoundingMode.UP)
-                    .toString() + " " + codeAndValueCurrency.charCode
+                    .toString() + " " + charCodeAndValueCurrency.charCode
         }
     }
 

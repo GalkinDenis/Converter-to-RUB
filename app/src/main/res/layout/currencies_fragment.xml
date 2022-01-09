@@ -122,7 +122,6 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="#e8f5e9"
         android:clickable="true"
-        android:focusable="true"
         android:src="@drawable/ic_baseline_currency_ruble_24"
         app:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
