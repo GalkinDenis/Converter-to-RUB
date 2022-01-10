@@ -23,10 +23,10 @@ abstract class BaseConverterViewModel<A> : ViewModel() {
             _divisionResult.value = value
         }
 
-    private val _errorHandler = SingleLiveEvent<ErrorType?>()
-    fun showError(): SingleLiveEvent<ErrorType?> = _errorHandler
+    private val _errorHandler = SingleLiveEvent<Throwable?>()
+    fun showError(): SingleLiveEvent<Throwable?> = _errorHandler
 
-    protected var errorHandler: ErrorType
+    protected var errorHandler: Throwable
         get() = _errorHandler.value
             ?: throw UninitializedPropertyAccessException(
                 "Was queried before being initialized"

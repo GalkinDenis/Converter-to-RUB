@@ -56,7 +56,7 @@ class LocalDataSourceImpl @Inject constructor(
     override suspend fun saveCurrentDate(body: Currencies?) {
         withContext(Dispatchers.IO) {
             preferenceDatasource.saveCurrentDate(
-                body?.Date,
+                body?.Timestamp,
                 context.getString(R.string.current_date)
             )
         }
@@ -68,7 +68,8 @@ class LocalDataSourceImpl @Inject constructor(
         }
 
     override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
-        withContext(Dispatchers.IO) {
-            dao.getCodeAndValueCurrency(targetCurrencyName)
-        }
+        dao.getCodeAndValueCurrency(targetCurrencyName)
+
 }
+
+

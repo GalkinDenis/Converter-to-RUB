@@ -71,4 +71,5 @@ class CurrenciesFragmentViewModel @Inject constructor(
         currentDate = savedDate
         return savedDate != date
     }
+
 }

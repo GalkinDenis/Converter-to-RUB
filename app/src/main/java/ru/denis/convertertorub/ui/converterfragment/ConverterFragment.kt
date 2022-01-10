@@ -46,7 +46,7 @@ class ConverterFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        createTargetCurrencyAdapter()
+        //createTargetCurrencyAdapter()
         initObservers()
         initClickListeners()
     }
@@ -98,7 +98,7 @@ when {
         adapter = activity?.let {
             ArrayAdapter.createFromResource(
                 it.applicationContext,
-                converterFragmentViewModel.inputField,
+                R.array.currencies_name_list,
                 android.R.layout.simple_spinner_dropdown_item
             )
         }
@@ -111,14 +111,7 @@ when {
             lifecycleScope.launchWhenStarted {
                 divisionResult().collect { result ->
                     binding.resultValueShow.text = result
-                    adapter = activity?.let {
-                        ArrayAdapter.createFromResource(
-                            it.applicationContext,
-                            converterFragmentViewModel.inputField,
-                            android.R.layout.simple_spinner_dropdown_item
-                        )
-                    }
-                    binding.fieldOfTargetValute.setAdapter(adapter)
+                    createTargetCurrencyAdapter()
                 }
             }
 
