@@ -122,16 +122,26 @@ when {
         }
     }
 
+
     private fun initClickListeners() {
-        binding.convertButton.setOnClickListener {
-            val targetValuteName = binding.fieldOfTargetValute.text.toString()
-            val fieldOfRub = binding.fieldOfRub.text.toString()
+        with(binding) {
+            convertButton.setOnClickListener {
+                val targetCurrencyName = fieldOfTargetValute.text.toString()
+                val fieldOfRub = fieldOfRub.text.toString()
+                when {
+                    (fieldOfRub.isBlank() || targetCurrencyName.isBlank()) ->
+                        Toast.makeText(
+                            context,
+                            getString(R.string.some_fields_is_empty),
+                            Toast.LENGTH_LONG
+                        ).show()
 
-            Log.d("TAG", "TEST = $targetValuteName, $fieldOfRub")
-
-            converterFragmentViewModel.convert(fieldOfRub, targetValuteName)
+                    else -> converterFragmentViewModel.convert(fieldOfRub, targetCurrencyName)
+                }
+            }
         }
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()

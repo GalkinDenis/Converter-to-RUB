@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -11,10 +12,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
 import ru.denis.convertertorub.data.model.Currencies
-import ru.denis.convertertorub.domain.usecases.GetCurrenciesUseCase
-import ru.denis.convertertorub.domain.usecases.GetSavedDataUseCase
-import ru.denis.convertertorub.domain.usecases.LoadAllCurrenciesUseCase
-import ru.denis.convertertorub.domain.usecases.SaveCurrenciesUseCase
+import ru.denis.convertertorub.domain.usecases.*
 import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.baseviewmodels.BaseListOfCurrenciesViewModel
 import java.text.SimpleDateFormat
@@ -25,7 +23,8 @@ class CurrenciesFragmentViewModel @Inject constructor(
     private val getCurrenciesUseCase: GetCurrenciesUseCase,
     private val saveCurrenciesUseCase: SaveCurrenciesUseCase,
     private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase,
-    private val getSavedDataUseCase: GetSavedDataUseCase
+    private val getSavedDataUseCase: GetSavedDataUseCase,
+    private var getNetworkStatusUseCase: GetNetworkStatusUseCase
 ) : BaseListOfCurrenciesViewModel<List<CurrencyEntity>>() {
 
     init {
@@ -35,9 +34,14 @@ class CurrenciesFragmentViewModel @Inject constructor(
                 .flowOn(Dispatchers.IO)
                 .collect { listOfCurrencies ->
                     if (compareDates()) {
-                        getCurrencies()
-                        return@collect
+                        if (getNetworkStatusUseCase()) {
+                            getCurrencies()
+                            return@collect
+                        } else {
+                            errorHandler = ErrorType.GET_ERROR
+                        }
                     }
+                    //Log.i("Internet", "getNetworkStatusUseCase = ${getNetworkStatusUseCase()}")
                     getListOfCurrencies = listOfCurrencies
                 }
         }

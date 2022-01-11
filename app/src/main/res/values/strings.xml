@@ -25,6 +25,7 @@
     <string name="select_target_currency_name">Конвертировать в</string>
     <string name="convert">Конвертировать</string>
     <string name="result">Результат:</string>
+    <string name="some_fields_is_empty">Не все поля заполненны</string>
 
 
 

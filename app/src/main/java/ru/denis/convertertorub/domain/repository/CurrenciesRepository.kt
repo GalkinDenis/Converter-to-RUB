@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.domain.repository
 
+import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
@@ -12,4 +13,5 @@ interface CurrenciesRepository {
     suspend fun getSavedDate(): String
     suspend fun loadAllCurrencies(): Flow<List<CurrencyEntity>>
     suspend fun getCodeAndValueCurrency(targetCurrencyName: String): CodeAndValueCurrency
+    suspend fun isOnline(): Boolean
 }
