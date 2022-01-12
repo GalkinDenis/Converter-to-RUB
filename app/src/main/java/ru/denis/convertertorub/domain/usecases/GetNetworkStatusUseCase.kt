@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetNetworkStatusUseCase @Inject constructor(
     private val currenciesRepository: CurrenciesRepository
 ) {
-    suspend operator fun invoke() = currenciesRepository.isOnline()
+    suspend operator fun invoke() = currenciesRepository.checkOnline()
 }

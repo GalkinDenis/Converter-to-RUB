@@ -25,6 +25,6 @@ class CurrenciesRepositoryImpl @Inject constructor(
     override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
         localDataSource.getCodeAndValueCurrency(targetCurrencyName)
 
-    override suspend fun isOnline() = localDataSource.isOnline()
+    override suspend fun checkOnline() = localDataSource.checkOnline()
 
 }

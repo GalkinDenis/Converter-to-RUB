@@ -1,6 +1,5 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
@@ -15,7 +14,6 @@ class ConverterFragmentViewModel @Inject constructor(
 
     private val getTargetCurrencyValueExceptionHandler = CoroutineExceptionHandler { _, error ->
         errorHandler = error
-        //Log.d("TAG", "error = $error")
     }
 
     fun convert(fieldOfRub: String, targetCurrencyName: String) {

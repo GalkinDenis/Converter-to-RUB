@@ -2,7 +2,6 @@ package ru.denis.convertertorub.ui.converterfragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.ConverterFragmentBinding
 import ru.denis.convertertorub.di.App
 import ru.denis.convertertorub.presentation.converterfragmentviewmodel.ConverterFragmentViewModel
-import ru.denis.convertertorub.ui.currenciesfragment.CurrenciesAdapter
 import javax.inject.Inject
 
 class ConverterFragment : Fragment() {
@@ -46,53 +44,9 @@ class ConverterFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //createTargetCurrencyAdapter()
         initObservers()
         initClickListeners()
     }
-
-    /*
-when {
-    (ItemRoomDatabase.tableIsDefined && fieldOfRubIsEmpty.isNotBlank() && targetValuteName.isNotBlank()) ->
-        //Слушатель получения элемента базы данных.
-        viewModel.getItemValue(targetValuteName).observe(this.viewLifecycleOwner) {
-                itemTableValue ->
-            //Функция конвертации.
-            viewModel.toDevide(fieldOfRubIsEmpty, itemTableValue)
-            //Вывод результат конвертации.
-            binding.resultValueShow.text = viewModel.resultOfDevide
-        }
-
-    //Если оба поля пустые.
-    (fieldOfRubIsEmpty.isBlank() && targetValuteName.isBlank()) -> Toast.makeText(
-        context,
-        getString(R.string.rub_and_valute_empty),
-        Toast.LENGTH_LONG
-    ).show()
-
-    //Если данные не были загружены.
-    !ItemRoomDatabase.tableIsDefined -> Toast.makeText(
-        context,
-        getString(R.string.data_was_do_not_loaded),
-        Toast.LENGTH_LONG
-    ).show()
-
-    //Если поле - "ЦЕЛЕВАЯ ВАЛЮТА ДЛЯ КОНВЕРТАЦИИ" пустое.
-    targetValuteName.isBlank() -> Toast.makeText(
-        context,
-        getString(R.string.target_convert_valute_empty),
-        Toast.LENGTH_LONG
-    ).show()
-
-    //Если поле - ЗНАЧЕНИЕ В РУБЛЯХ пустое
-    fieldOfRubIsEmpty.isBlank() -> Toast.makeText(
-        context,
-        getString(R.string.rub_field_empty),
-        Toast.LENGTH_LONG
-    ).show()
-}
-
-     */
 
     private fun createTargetCurrencyAdapter() {
         adapter = activity?.let {
@@ -122,7 +76,6 @@ when {
         }
     }
 
-
     private fun initClickListeners() {
         with(binding) {
             convertButton.setOnClickListener {
@@ -130,18 +83,12 @@ when {
                 val fieldOfRub = fieldOfRub.text.toString()
                 when {
                     (fieldOfRub.isBlank() || targetCurrencyName.isBlank()) ->
-                        Toast.makeText(
-                            context,
-                            getString(R.string.some_fields_is_empty),
-                            Toast.LENGTH_LONG
-                        ).show()
-
+                        showToast(getString(R.string.some_fields_is_empty))
                     else -> converterFragmentViewModel.convert(fieldOfRub, targetCurrencyName)
                 }
             }
         }
     }
-
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()

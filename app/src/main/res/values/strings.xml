@@ -11,12 +11,12 @@
     <string name="rub">%1$s p</string>
     <string name="last_date_update">Последнее обновление валют: %1$s</string>
 
-    <string name="load_currencies_error">При попытке запросить данные из сети, по курсу валют,
+    <string name="load_currencies_error">При попытке загрузить данные из сети, по курсам валют,
         произошла ошибка,проверьте подключение к интернету.</string>
-    <string name="show_currencies_error">При попытке запросить данные из локального хранилища,
-        по курсу валют, произошла ошибка.</string>
+    <string name="show_currencies_error">При попытке загрузить данные из локального хранилища,
+        по курсам валют, произошла ошибка.</string>
     <string name="save_currencies_error">При попытке сохранить данные в локальное хранилище,
-        по курсу валют, произошла ошибка.</string>
+        по курсам валют, произошла ошибка.</string>
 
     <!-- CURRENCIES CONVERTER -->
     <string name="currencies_converter">Конвертер валют</string>
@@ -27,13 +27,12 @@
     <string name="result">Результат:</string>
     <string name="some_fields_is_empty">Не все поля заполненны</string>
 
-
-
-
-
-
     <!-- CBRF API -->
     <string name="end_point">daily_json.js</string>
+
+    <!-- ACTION BAR MENU -->
+    <string name="contacts">Контакты</string>
+    <string name="about">Исходный код</string>
 
     <!-- VIEW MODEL FACTORY -->
     <string name="undefined_model_class">Undefined model class</string>

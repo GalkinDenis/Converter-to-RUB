@@ -78,7 +78,7 @@ class LocalDataSourceImpl @Inject constructor(
     override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
         dao.getCodeAndValueCurrency(targetCurrencyName)
 
-    override suspend fun isOnline(): Boolean {
+    override suspend fun checkOnline(): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (connectivityManager != null) {

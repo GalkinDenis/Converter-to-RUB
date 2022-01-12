@@ -1,6 +1,5 @@
 package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -38,10 +37,9 @@ class CurrenciesFragmentViewModel @Inject constructor(
                             getCurrencies()
                             return@collect
                         } else {
-                            errorHandler = ErrorType.GET_ERROR
+                            errorHandler = ErrorType.LOAD_ERROR
                         }
                     }
-                    //Log.i("Internet", "getNetworkStatusUseCase = ${getNetworkStatusUseCase()}")
                     getListOfCurrencies = listOfCurrencies
                 }
         }

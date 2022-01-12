@@ -1,6 +1,5 @@
 package ru.denis.convertertorub.data.datasources.localdatasource
 
-import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
@@ -15,5 +14,5 @@ interface LocalDataSource {
     suspend fun saveCurrentDate(body: Currencies?)
     suspend fun getSavedDate(): String
     suspend fun getCodeAndValueCurrency(targetCurrencyName: String): CodeAndValueCurrency
-    suspend fun isOnline(): Boolean
+    suspend fun checkOnline(): Boolean
 }
