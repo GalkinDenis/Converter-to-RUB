@@ -28,7 +28,7 @@ class LocalDataSourceImpl @Inject constructor(
         withContext(Dispatchers.IO) {
             //val body = responseBody.
             //saveCurrentDate(body)
-            currency?.let {
+            //currency.let {
                 if (currency.Nominal > 1) {
                     currency.Value /= currency.Nominal
                     currency.Previous /= currency.Nominal
@@ -43,7 +43,7 @@ class LocalDataSourceImpl @Inject constructor(
                         difference = getPrefixValue(currency.Value - currency.Previous)
                     )
                 )
-            }
+          //  }
         }
     }
 

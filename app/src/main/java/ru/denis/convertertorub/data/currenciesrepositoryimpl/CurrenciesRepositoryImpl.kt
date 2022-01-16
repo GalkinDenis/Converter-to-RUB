@@ -2,7 +2,6 @@ package ru.denis.convertertorub.data.currenciesrepositoryimpl
 
 import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSource
 import ru.denis.convertertorub.data.datasources.localdatasource.LocalDataSource
-import ru.denis.convertertorub.data.model.CurrencyEntity
 import ru.denis.convertertorub.data.model.toCurrencies
 import ru.denis.convertertorub.data.model.toCurrenciesEntity
 import ru.denis.convertertorub.domain.entities.Currency
