@@ -1,16 +1,15 @@
 package ru.denis.convertertorub.domain.repository
 
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
-import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
-import ru.denis.convertertorub.data.model.Currencies
-import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
+import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
+import ru.denis.convertertorub.data.model.CodeAndValueCurrencyEntity
+import ru.denis.convertertorub.domain.entities.Currency
 
 interface CurrenciesRepository {
-    suspend fun getCurrencies(): Response<Currencies>
-    suspend fun saveCurrencies(responseBody: Response<Currencies>)
+    suspend fun getCurrencies(): List<Currency>?
+    suspend fun saveCurrencies(currencies: List<Currency>?)
     suspend fun getSavedDate(): String
-    suspend fun loadAllCurrencies(): Flow<List<CurrencyEntity>>
-    suspend fun getCodeAndValueCurrency(targetCurrencyName: String): CodeAndValueCurrency
+    suspend fun loadAllCurrencies(): Flow<List<CurrencyEntityTable>>
+    suspend fun getCodeAndValueCurrency(targetCurrencyName: String): CodeAndValueCurrencyEntity
     suspend fun checkOnline(): Boolean
 }

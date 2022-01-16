@@ -6,24 +6,24 @@ import androidx.room.PrimaryKey
 import java.math.BigDecimal
 
 @Entity(tableName = "currency_entity")
-data class CurrencyEntity(
+data class CurrencyEntityTable(
 
     @ColumnInfo(name = "_ID")
-    val _ID: String,
+    var _ID: String,
 
     @ColumnInfo(name = "NumCode")
-    val numCode: String,
+    var numCode: String,
 
     @ColumnInfo(name = "CharCode")
-    val charCode: String,
-
-    @ColumnInfo(name = "Name")
-    val name: String,
+    var charCode: String,
 
     @PrimaryKey
+    @ColumnInfo(name = "Name")
+    var name: String,
+
     @ColumnInfo(name = "Value")
-    val value: String,
+    var value: String,
 
     @ColumnInfo(name = "Difference")
-    val difference: String,
+    var difference: String,
 )

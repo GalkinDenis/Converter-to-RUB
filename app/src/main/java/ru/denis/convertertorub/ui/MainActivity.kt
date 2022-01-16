@@ -1,15 +1,18 @@
 package ru.denis.convertertorub.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import ru.denis.convertertorub.databinding.ActivityMainBinding
-import android.view.MenuItem
 import ru.denis.convertertorub.R
+import ru.denis.convertertorub.databinding.ActivityMainBinding
 import ru.denis.convertertorub.ui.currenciesfragment.CurrenciesFragmentDirections
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -43,12 +46,16 @@ class MainActivity : AppCompatActivity() {
                 navController
                     .navigate(
                         CurrenciesFragmentDirections
-                            .actionCurrenciesFragmentToConverterFragment()
+                            .actionCurrenciesFragmentToContactsFragment()
                     )
                 true
             }
-            R.id.about -> {
-
+            R.id.source_code -> {
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(getString(R.string.reference_on_my_github))
+                )
+                startActivity(browserIntent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

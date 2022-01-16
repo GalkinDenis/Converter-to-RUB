@@ -30,12 +30,21 @@
     <!-- CBRF API -->
     <string name="end_point">daily_json.js</string>
 
+    <!-- CONTACTS FRAGMENT -->
+    <string name="my_contacts">Mои контакты</string>
+    <string name="phone_number">Phone number: +79231078819</string>
+    <string name="email">Email: denisgalkin287@gmail.com</string>
+    <string name="telegram">Telegram: @Denis_Galkin_1990</string>
+
     <!-- ACTION BAR MENU -->
     <string name="contacts">Контакты</string>
-    <string name="about">Исходный код</string>
+    <string name="source_code">Исходный код</string>
 
     <!-- VIEW MODEL FACTORY -->
     <string name="undefined_model_class">Undefined model class</string>
+
+    <string name="reference_on_my_github">https://github.com/GalkinDenis/Converter-to-RUB/tree/master</string>
+
 
     <!-- ПУНКТЫ МЕНЮ ВЫБОРА ЦЕЛЕВОЙ ВАЛЮТЫ ДЛЯ КОНВЕРТАЦИИ -->
     <string-array name="currencies_name_list">

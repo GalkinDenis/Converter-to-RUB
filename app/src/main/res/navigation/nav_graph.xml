@@ -19,4 +19,14 @@
         android:label="@string/currencies_converter">
     </fragment>
 
+    <fragment
+        android:id="@+id/contacts_fragment"
+        android:name="ru.denis.convertertorub.ui.contactsfragment.ContactsFragment"
+        android:label="@string/my_contacts">
+    </fragment>
+
+    <action
+        android:id="@+id/action_currenciesFragment_to_contactsFragment"
+        app:destination="@id/contacts_fragment" />
+
 </navigation>

@@ -20,13 +20,12 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginTop="23dp"
         android:scrollbars="vertical"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -34,15 +33,15 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_shadow_layout"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/code"
             android:layout_width="45dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:padding="10dp"
             android:text="Код"
             android:textColor="#546e7a"
@@ -53,6 +52,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:background="@drawable/custom_shadow_layout"
         android:gravity="start"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
@@ -61,7 +61,7 @@
 
         <TextView
             android:id="@+id/currency_name"
-            android:layout_width="165dp"
+            android:layout_width="155dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:padding="10dp"
@@ -76,17 +76,17 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_shadow_layout"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/course"
-            android:layout_width="60dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:padding="10dp"
             android:gravity="center"
+            android:padding="10dp"
             android:text="Курс"
             android:textColor="#546e7a"
             android:textSize="12sp" />
@@ -98,8 +98,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_shadow_layout"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -107,8 +107,8 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:padding="10dp"
             android:gravity="center"
+            android:padding="10dp"
             android:text="Изменение"
             android:textColor="#546e7a"
             android:textSize="12sp" />
@@ -128,7 +128,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/last_date_update324234"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

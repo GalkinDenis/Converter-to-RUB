@@ -3,14 +3,12 @@ package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
-import ru.denis.convertertorub.data.model.Currencies
+import ru.denis.convertertorub.domain.entities.Currencies
 import ru.denis.convertertorub.domain.usecases.*
 import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.baseviewmodels.BaseListOfCurrenciesViewModel
@@ -51,9 +49,7 @@ class CurrenciesFragmentViewModel @Inject constructor(
 
     fun getCurrencies() {
         viewModelScope.launch(getCurrenciesExceptionHandler) {
-            val response = async { getCurrenciesUseCase() }
-            val responseBody = response.await()
-            if (responseBody.isSuccessful) saveCurrencies(responseBody)
+            saveCurrencies(getCurrenciesUseCase())
         }
     }
 
@@ -61,9 +57,9 @@ class CurrenciesFragmentViewModel @Inject constructor(
         errorHandler = ErrorType.INSERT_ERROR
     }
 
-    private fun saveCurrencies(responseBody: Response<Currencies>) {
+    private fun saveCurrencies(currencies: List<Currency>?) {
         viewModelScope.launch(saveCurrenciesExceptionHandler) {
-            saveCurrenciesUseCase(responseBody)
+            saveCurrenciesUseCase(currencies)
         }
     }
 
