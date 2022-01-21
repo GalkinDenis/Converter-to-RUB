@@ -1,13 +1,13 @@
 package ru.denis.convertertorub.data.currenciesrepositoryimpl
 
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.map
 import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSource
+import ru.denis.convertertorub.data.datasources.database.toReadyCurrencies
 import ru.denis.convertertorub.data.datasources.localdatasource.LocalDataSource
 import ru.denis.convertertorub.data.model.toCodeAndValueCurrency
 import ru.denis.convertertorub.data.model.toCurrencies
 import ru.denis.convertertorub.data.model.toCurrenciesEntity
 import ru.denis.convertertorub.domain.entities.Currency
-import ru.denis.convertertorub.domain.entities.toReadyCurrencies
 import ru.denis.convertertorub.domain.repository.CurrenciesRepository
 import javax.inject.Inject
 
@@ -17,10 +17,8 @@ class CurrenciesRepositoryImpl @Inject constructor(
 ) : CurrenciesRepository {
 
     override suspend fun loadAllCurrencies() =
-        localDataSource.loadAllCurrencies().onEach { flowCurrencies ->
-            flowCurrencies.forEach { currency ->
-                currency.toReadyCurrencies()
-            }
+        localDataSource.loadAllCurrencies().map { listCurrencies ->
+            listCurrencies.map { currency -> currency.toReadyCurrencies() }
         }
 
     override suspend fun saveCurrentDate(currentDate: String?) {

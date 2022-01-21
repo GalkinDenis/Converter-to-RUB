@@ -3,7 +3,6 @@ package ru.denis.convertertorub.data.datasources.database
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import ru.denis.convertertorub.data.model.CodeAndValueCurrencyEntity
-import ru.denis.convertertorub.data.model.CurrenciesEntity
 
 @Dao
 interface ItemDao {

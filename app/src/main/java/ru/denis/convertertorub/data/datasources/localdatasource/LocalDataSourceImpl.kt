@@ -12,7 +12,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
-import ru.denis.convertertorub.data.model.CurrenciesEntity
 import ru.denis.convertertorub.data.model.CurrencyEntity
 
 
@@ -26,9 +25,6 @@ class LocalDataSourceImpl @Inject constructor(
 
     override suspend fun saveCurrencies(currency: CurrencyEntity) {
         withContext(Dispatchers.IO) {
-            //val body = responseBody.
-            //saveCurrentDate(body)
-            //currency.let {
             if (currency.Nominal > 1) {
                 currency.Value /= currency.Nominal
                 currency.Previous /= currency.Nominal
@@ -43,7 +39,6 @@ class LocalDataSourceImpl @Inject constructor(
                     difference = getPrefixValue(currency.Value - currency.Previous)
                 )
             )
-            //  }
         }
     }
 

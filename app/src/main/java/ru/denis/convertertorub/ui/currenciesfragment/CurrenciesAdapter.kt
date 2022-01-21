@@ -3,14 +3,12 @@ package ru.denis.convertertorub.ui.currenciesfragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
 import ru.denis.convertertorub.databinding.ItemCurrenciesLayoutBinding
-import javax.inject.Inject
+import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 
-class CurrenciesAdapter @Inject constructor() :
-    RecyclerView.Adapter<CurrenciesViewHolder>() {
+class CurrenciesAdapter : RecyclerView.Adapter<CurrenciesViewHolder>() {
 
-    var listOfCurrencies = emptyList<CurrencyEntityTable>()
+    var listOfCurrencies = emptyList<ReadyCurrencies>()
         set(value) {
             field = value
             notifyDataSetChanged()

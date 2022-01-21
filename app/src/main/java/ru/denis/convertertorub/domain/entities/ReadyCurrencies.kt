@@ -11,13 +11,3 @@ data class ReadyCurrencies(
     var difference: String,
 )
 
-fun CurrencyEntityTable.toReadyCurrencies(): ReadyCurrencies {
-    return ReadyCurrencies(
-        _ID = this._ID,
-        numCode = this.numCode,
-        charCode = this.charCode,
-        name = this.name,
-        value = this.value,
-        difference = this.difference
-    )
-}

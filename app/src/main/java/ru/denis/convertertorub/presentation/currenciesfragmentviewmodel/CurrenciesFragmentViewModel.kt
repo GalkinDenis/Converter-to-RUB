@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
 import ru.denis.convertertorub.domain.entities.Currency
+import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 import ru.denis.convertertorub.domain.usecases.*
 import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.baseviewmodels.BaseListOfCurrenciesViewModel
@@ -22,7 +23,7 @@ class CurrenciesFragmentViewModel @Inject constructor(
     private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase,
     private val getSavedDataUseCase: GetSavedDataUseCase,
     private var getNetworkStatusUseCase: GetNetworkStatusUseCase
-) : BaseListOfCurrenciesViewModel<List<CurrencyEntityTable>>() {
+) : BaseListOfCurrenciesViewModel<List<ReadyCurrencies>>() {
 
     init {
         viewModelScope.launch {
