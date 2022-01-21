@@ -3,16 +3,14 @@ package ru.denis.convertertorub.ui.currenciesfragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.denis.convertertorub.data.datasources.database.CurrencyEntity
+import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
 import ru.denis.convertertorub.databinding.ItemCurrenciesLayoutBinding
 import javax.inject.Inject
 
-class CurrenciesAdapter @Inject constructor(
-    private val onClick: (CurrencyEntity) -> Unit
-) :
+class CurrenciesAdapter @Inject constructor() :
     RecyclerView.Adapter<CurrenciesViewHolder>() {
 
-    var listOfCurrencies = emptyList<CurrencyEntity>()
+    var listOfCurrencies = emptyList<CurrencyEntityTable>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -26,11 +24,10 @@ class CurrenciesAdapter @Inject constructor(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ),
-            onClick
+            )
         )
 
     override fun onBindViewHolder(holder: CurrenciesViewHolder, position: Int) {
-        holder.bind(holder.itemView, listOfCurrencies[position])
+        holder.bind(listOfCurrencies[position])
     }
 }

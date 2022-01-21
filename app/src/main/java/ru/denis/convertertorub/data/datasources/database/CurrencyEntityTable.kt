@@ -3,6 +3,8 @@ package ru.denis.convertertorub.data.datasources.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.denis.convertertorub.data.model.CurrencyEntity
+import ru.denis.convertertorub.domain.entities.Currency
 import java.math.BigDecimal
 
 @Entity(tableName = "currency_entity")
@@ -27,3 +29,5 @@ data class CurrencyEntityTable(
     @ColumnInfo(name = "Difference")
     var difference: String,
 )
+
+

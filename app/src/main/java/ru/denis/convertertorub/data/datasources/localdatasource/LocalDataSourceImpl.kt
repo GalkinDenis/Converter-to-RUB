@@ -29,21 +29,21 @@ class LocalDataSourceImpl @Inject constructor(
             //val body = responseBody.
             //saveCurrentDate(body)
             //currency.let {
-                if (currency.Nominal > 1) {
-                    currency.Value /= currency.Nominal
-                    currency.Previous /= currency.Nominal
-                }
-                dao.insertCurrencies(
-                    CurrencyEntityTable(
-                        _ID = currency.ID,
-                        numCode = currency.NumCode,
-                        charCode = currency.CharCode,
-                        name = currency.Name,
-                        value = trimSize(currency.Value),
-                        difference = getPrefixValue(currency.Value - currency.Previous)
-                    )
+            if (currency.Nominal > 1) {
+                currency.Value /= currency.Nominal
+                currency.Previous /= currency.Nominal
+            }
+            dao.insertCurrencies(
+                CurrencyEntityTable(
+                    _ID = currency.ID,
+                    numCode = currency.NumCode,
+                    charCode = currency.CharCode,
+                    name = currency.Name,
+                    value = trimSize(currency.Value),
+                    difference = getPrefixValue(currency.Value - currency.Previous)
                 )
-          //  }
+            )
+            //  }
         }
     }
 
@@ -57,10 +57,10 @@ class LocalDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun saveCurrentDate(body: Currencies?) {
+    override suspend fun saveCurrentDate(currentDate: String?) {
         withContext(Dispatchers.IO) {
             preferenceDatasource.saveCurrentDate(
-                body?.Timestamp,
+                currentDate,
                 context.getString(R.string.current_date)
             )
         }

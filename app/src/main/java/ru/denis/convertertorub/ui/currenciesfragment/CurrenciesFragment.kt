@@ -88,11 +88,7 @@ class CurrenciesFragment : Fragment() {
 
     private fun initViews() {
         binding.recyclerView.apply {
-            currenciesAdapter = CurrenciesAdapter(
-                onClick = { currencies ->
-                    println("111111111111111111111")
-                }
-            )
+            currenciesAdapter = CurrenciesAdapter()
             adapter = currenciesAdapter
         }
     }
