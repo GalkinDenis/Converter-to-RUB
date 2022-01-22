@@ -2,19 +2,23 @@ package ru.denis.convertertorub.ui.currenciesfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import ru.denis.convertertorub.databinding.ItemCurrenciesLayoutBinding
 import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 
-class CurrenciesAdapter : RecyclerView.Adapter<CurrenciesViewHolder>() {
+class CurrenciesAdapter
+    : ListAdapter<ReadyCurrencies, CurrenciesViewHolder>(CurrenciesDiffUtils) {
 
+    /*
     var listOfCurrencies = emptyList<ReadyCurrencies>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    override fun getItemCount() = listOfCurrencies.size
+     */
+
+    //override fun getItemCount() = listOfCurrencies.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrenciesViewHolder =
         CurrenciesViewHolder(
@@ -26,6 +30,6 @@ class CurrenciesAdapter : RecyclerView.Adapter<CurrenciesViewHolder>() {
         )
 
     override fun onBindViewHolder(holder: CurrenciesViewHolder, position: Int) {
-        holder.bind(listOfCurrencies[position])
+        holder.bind(getItem(position))
     }
 }

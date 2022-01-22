@@ -14,7 +14,6 @@ import android.util.Log
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
 import ru.denis.convertertorub.data.model.CurrencyEntity
 
-
 class LocalDataSourceImpl @Inject constructor(
     private val context: Context,
     private var dao: ItemDao,
@@ -72,18 +71,31 @@ class LocalDataSourceImpl @Inject constructor(
     override suspend fun checkOnline(): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivityManager != null) {
-            val capabilities =
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            if (capabilities != null) {
-                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+
+        if (capabilities != null) {
+            when {
+                (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) -> {
+                    Log.i(
+                        context.getString(R.string.Internet),
+                        context.getString(R.string.TRANSPORT_CELLULAR)
+                    )
                     return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                }
+                (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) -> {
+                    Log.i(
+                        context.getString(R.string.Internet),
+                        context.getString(R.string.TRANSPORT_WIFI)
+                    )
                     return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                }
+                (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) -> {
+                    Log.i(
+                        context.getString(R.string.Internet),
+                        context.getString(R.string.TRANSPORT_ETHERNET)
+                    )
                     return true
                 }
             }

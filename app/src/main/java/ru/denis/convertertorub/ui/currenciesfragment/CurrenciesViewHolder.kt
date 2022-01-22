@@ -14,7 +14,8 @@ class CurrenciesViewHolder(
             code.text = currencies.charCode
             currencyName.text = currencies.name
             course.text = currencies.value
-            if (currencies.difference.startsWith("-")) changing.setTextColor(Color.RED) else changing.setTextColor(Color.GREEN)
+            if (currencies.difference.startsWith("-")) changing.setTextColor(Color.RED)
+            else changing.setTextColor(Color.GREEN)
             changing.text = currencies.difference
         }
     }

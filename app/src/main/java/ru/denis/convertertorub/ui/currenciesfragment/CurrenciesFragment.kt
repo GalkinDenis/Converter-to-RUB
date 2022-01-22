@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.ui.currenciesfragment
 
+import android.app.ActionBar
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,6 +20,10 @@ import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
 import java.util.*
 import javax.inject.Inject
+import android.graphics.drawable.ColorDrawable
+
+
+
 
 class CurrenciesFragment : Fragment() {
 
@@ -60,7 +65,7 @@ class CurrenciesFragment : Fragment() {
                 getListOfCurrencies().collect { listOfCurrencies ->
                     listOfCurrencies?.let { list ->
                         visibleRecyclerViewVisibility()
-                        currenciesAdapter?.listOfCurrencies = list
+                        currenciesAdapter?.submitList(list)
                     }
                     goneProgressbarVisibility()
                 }

@@ -1,8 +1,5 @@
 package ru.denis.convertertorub.data.model
 
-import ru.denis.convertertorub.domain.entities.Currency
-
-
 data class CurrenciesEntity(
     val Date: String?,
     val PreviousDate: String,
@@ -20,28 +17,3 @@ data class CurrencyEntity(
     var Value: Double,
     var Previous: Double
 )
-
-
-fun CurrencyEntity.toCurrencies(): Currency {
-    return Currency(
-        ID = this.ID,
-        NumCode = this.NumCode,
-        CharCode = this.CharCode,
-        Nominal = this.Nominal,
-        Name = this.Name,
-        Value = this.Value,
-        Previous = this.Previous
-    )
-}
-
-fun Currency.toCurrenciesEntity(): CurrencyEntity {
-    return CurrencyEntity(
-        ID = this.ID,
-        NumCode = this.NumCode,
-        CharCode = this.CharCode,
-        Nominal = this.Nominal,
-        Name = this.Name,
-        Value = this.Value,
-        Previous = this.Previous
-    )
-}
