@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +23,7 @@ class CurrenciesFragmentViewModel @Inject constructor(
     private val saveCurrenciesUseCase: SaveCurrenciesUseCase,
     private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase,
     private val getSavedDataUseCase: GetSavedDataUseCase,
+    private val savedDateUseCase: SaveDateUseCase,
     private var getNetworkStatusUseCase: GetNetworkStatusUseCase
 ) : BaseListOfCurrenciesViewModel<List<ReadyCurrencies>>() {
 
@@ -31,13 +33,14 @@ class CurrenciesFragmentViewModel @Inject constructor(
                 .catch { errorHandler = ErrorType.GET_ERROR }
                 .flowOn(Dispatchers.IO)
                 .collect { listOfCurrencies ->
-                    if (compareDates()) {
-                        if (getNetworkStatusUseCase()) {
+                    if (getNetworkStatusUseCase()) {
+                        if (compareDates()) {
                             getCurrencies()
                             return@collect
-                        } else {
-                            errorHandler = ErrorType.LOAD_ERROR
                         }
+                    } else {
+                        currentDate = getSavedDataUseCase()
+                        if (listOfCurrencies.isEmpty()) errorHandler = ErrorType.LOAD_ERROR
                     }
                     getListOfCurrencies = listOfCurrencies
                 }
@@ -65,10 +68,21 @@ class CurrenciesFragmentViewModel @Inject constructor(
     }
 
     private suspend fun compareDates(): Boolean {
-        val date = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
-        val savedDate = getSavedDataUseCase().split("T")[0]
-        currentDate = savedDate
-        return savedDate != date
+        val current = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+        val savedDate = getSavedDataUseCase()
+
+        currentDate = current
+
+        return if (current != savedDate) {
+            savedDateUseCase(current)
+            true
+        } else {
+            false
+        }
+
+
+        //currentDate = savedDate
+        //return savedDate != currentDate
     }
 
 }

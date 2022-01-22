@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.data.currenciesrepositoryimpl
 
+import android.util.Log
 import kotlinx.coroutines.flow.map
 import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSource
 import ru.denis.convertertorub.data.datasources.database.toReadyCurrencies
@@ -18,7 +19,10 @@ class CurrenciesRepositoryImpl @Inject constructor(
 
     override suspend fun loadAllCurrencies() =
         localDataSource.loadAllCurrencies().map { listCurrencies ->
-            listCurrencies.map { currency -> currency.toReadyCurrencies() }
+            Log.d("TAG", "$listCurrencies")
+            listCurrencies.map { currency ->
+                Log.d("TAG", "$listCurrencies")
+                currency.toReadyCurrencies() }
         }
 
     override suspend fun saveCurrentDate(currentDate: String?) {
@@ -26,9 +30,9 @@ class CurrenciesRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getCurrencies(): List<Currency>? {
-        val responseFromCbrfApi = cbRfDataSource.getCurrencies().body()
-        saveCurrentDate(responseFromCbrfApi?.Timestamp)
-        return responseFromCbrfApi?.Valute?.map { currencyEntity ->
+        //val responseFromCbrfApi = cbRfDataSource.getCurrencies().body()
+        //saveCurrentDate(responseFromCbrfApi?.Timestamp)
+        return cbRfDataSource.getCurrencies().body()?.Valute?.map { currencyEntity ->
             currencyEntity.value.toCurrencies()
         }
     }

@@ -38,17 +38,15 @@ abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
             _errorHandler.value = value
         }
 
-    private val _currentDate: MutableStateFlow<String?> = MutableStateFlow(null)
+    private val _currentDate: MutableStateFlow<String?> = MutableStateFlow("")
     fun showDate(): MutableStateFlow<String?> = _currentDate
 
     protected var currentDate: String
         get() = _currentDate.value
-            ?: throw UninitializedPropertyAccessException(
-                "Was queried before being initialized"
-            )
+            ?: ""
         set(value) {
             if (_currentDate.value == value) {
-                _currentDate.value = null
+                _currentDate.value = ""
             }
             _currentDate.value = value
         }
