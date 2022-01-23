@@ -11,6 +11,5 @@ interface CurrenciesRepository {
     suspend fun getSavedDate(): String
     suspend fun loadAllCurrencies(): Flow<List<ReadyCurrencies>>
     suspend fun getCodeAndValueCurrency(targetCurrencyName: String): CodeAndValueCurrency
-    suspend fun checkOnline(): Boolean
     suspend fun saveCurrentDate(currentDate: String?)
 }

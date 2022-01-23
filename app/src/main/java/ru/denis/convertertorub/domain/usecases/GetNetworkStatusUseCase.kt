@@ -1,10 +1,10 @@
 package ru.denis.convertertorub.domain.usecases
 
-import ru.denis.convertertorub.domain.repository.CurrenciesRepository
+import ru.denis.convertertorub.presentation.CheckNetWork
 import javax.inject.Inject
 
 class GetNetworkStatusUseCase @Inject constructor(
-    private val currenciesRepository: CurrenciesRepository
+    private val currenciesRepository: CheckNetWork
 ) {
-    suspend operator fun invoke() = currenciesRepository.checkOnline()
+    operator fun invoke() = currenciesRepository.checkOnline()
 }

@@ -13,5 +13,4 @@ interface LocalDataSource {
     suspend fun saveCurrentDate(currentDate: String?)
     suspend fun getSavedDate(): String
     suspend fun getCodeAndValueCurrency(targetCurrencyName: String): CodeAndValueCurrencyEntity
-    suspend fun checkOnline(): Boolean
 }

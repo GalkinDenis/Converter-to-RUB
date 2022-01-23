@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
+    <style name="Theme.ConverterToRUB" parent="Theme.AppCompat">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#4a626d</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

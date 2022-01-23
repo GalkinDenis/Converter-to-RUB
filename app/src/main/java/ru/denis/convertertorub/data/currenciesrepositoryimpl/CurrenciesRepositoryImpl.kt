@@ -45,6 +45,4 @@ class CurrenciesRepositoryImpl @Inject constructor(
 
     override suspend fun getSavedDate() = localDataSource.getSavedDate()
 
-    override suspend fun checkOnline() = localDataSource.checkOnline()
-
 }
