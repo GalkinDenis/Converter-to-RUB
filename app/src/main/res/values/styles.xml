@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <style name="gg" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@color/light_green</item>
+
+    </style>
+
 
     <style name="Widget.ListItemTextViewHeader" parent="Widget.MaterialComponents.TextView">
         <item name="android:gravity">start</item>

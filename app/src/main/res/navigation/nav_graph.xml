@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/list_of_currencies_fragment"
         android:name="ru.denis.convertertorub.ui.currenciesfragment.CurrenciesFragment"
-        android:label="@string/currencies">
+        >
         <action
             android:id="@+id/action_currenciesFragment_to_converterFragment"
             app:destination="@id/converter_fragment" />
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/converter_fragment"
         android:name="ru.denis.convertertorub.ui.converterfragment.ConverterFragment"
-        android:label="@string/currencies_converter">
+        >
     </fragment>
 
     <fragment

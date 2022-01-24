@@ -1,17 +1,13 @@
 package ru.denis.convertertorub.ui.currenciesfragment
 
-import android.app.ActionBar
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
@@ -20,10 +16,11 @@ import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
 import java.util.*
 import javax.inject.Inject
-import android.graphics.drawable.ColorDrawable
-
-
-
+import android.net.Uri
+import android.view.*
+import androidx.fragment.app.commit
+import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
+import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
 
 class CurrenciesFragment : Fragment() {
 
@@ -57,6 +54,27 @@ class CurrenciesFragment : Fragment() {
         initObservers()
         initClickListeners()
     }
+
+    private fun onMenuItemClickListener(item: MenuItem) =
+        when (item.itemId) {
+            R.id.contacts -> {
+                parentFragmentManager.commit {
+                    replace(R.id.nav_host_fragment, ContactsFragment())
+                    setReorderingAllowed(true)
+                    addToBackStack("ContactsFragment")
+                }
+                true
+            }
+            R.id.source_code -> {
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(getString(R.string.reference_on_my_github))
+                )
+                startActivity(browserIntent)
+                true
+            }
+            else -> false
+        }
 
     private fun initObservers() {
         with(currenciesFragmentViewModel) {
@@ -99,17 +117,16 @@ class CurrenciesFragment : Fragment() {
     }
 
     private fun initClickListeners() {
-        binding.goToConverter.setOnClickListener {
-            showConverterScreen()
-        }
+        binding.goToConverter.setOnClickListener { showConverterScreen() }
+        binding.topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
     }
 
     private fun showConverterScreen() {
-        findNavController()
-            .navigate(
-                CurrenciesFragmentDirections
-                    .actionCurrenciesFragmentToConverterFragment()
-            )
+            parentFragmentManager.commit {
+                replace(R.id.nav_host_fragment, ConverterFragment())
+                setReorderingAllowed(true)
+                addToBackStack("ConverterFragment")
+            }
     }
 
     private fun showToast(message: String) {

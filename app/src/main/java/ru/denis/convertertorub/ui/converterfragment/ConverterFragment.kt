@@ -1,6 +1,7 @@
 package ru.denis.convertertorub.ui.converterfragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
-import ru.denis.convertertorub.databinding.ConverterFragmentBinding
 import ru.denis.convertertorub.di.App
 import ru.denis.convertertorub.presentation.converterfragmentviewmodel.ConverterFragmentViewModel
 import javax.inject.Inject
+import android.net.Uri
+import android.view.MenuItem
+import androidx.fragment.app.commit
+import ru.denis.convertertorub.databinding.ConverterFragmentBinding
+import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 
 class ConverterFragment : Fragment() {
 
@@ -46,6 +51,7 @@ class ConverterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initObservers()
         initClickListeners()
+        binding.topAppBar.ff
     }
 
     private fun createTargetCurrencyAdapter() {
@@ -58,6 +64,28 @@ class ConverterFragment : Fragment() {
         }
         binding.fieldOfTargetValute.setAdapter(adapter)
     }
+
+
+    private fun onMenuItemClickListener(item: MenuItem) =
+        when (item.itemId) {
+            R.id.contacts -> {
+                parentFragmentManager.commit {
+                    replace(R.id.nav_host_fragment, ContactsFragment())
+                    setReorderingAllowed(true)
+                    addToBackStack("ContactsFragment")
+                }
+                true
+            }
+            R.id.source_code -> {
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(getString(R.string.reference_on_my_github))
+                )
+                startActivity(browserIntent)
+                true
+            }
+            else -> false
+        }
 
     private fun initObservers() {
         with(converterFragmentViewModel) {
@@ -72,12 +100,14 @@ class ConverterFragment : Fragment() {
             showError().observe(viewLifecycleOwner) {
                 showToast(getString(R.string.show_currencies_error))
             }
-
         }
     }
 
     private fun initClickListeners() {
         with(binding) {
+            binding.topAppBar?.setOnMenuItemClickListener { onMenuItemClickListener(it) }
+            topAppBar?.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+
             convertButton.setOnClickListener {
                 val targetCurrencyName = fieldOfTargetValute.text.toString()
                 val fieldOfRub = fieldOfRub.text.toString()
