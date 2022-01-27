@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorOnPrimary">
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/app_name"
-            app:popupTheme="@style/Platform.MaterialComponents.Light"
             android:background="?attr/colorPrimary"
-            app:titleTextColor="?attr/colorOnPrimary"
             app:menu="@menu/menu_item"
-        />
+            app:title="@string/currencies"
+            app:titleTextColor="?attr/colorOnPrimary"
+            />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -33,8 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -65,7 +64,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Код"
-            android:textColor="?attr/colorOnSecondary"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -86,7 +85,7 @@
             android:fontFamily="@font/roboto_medium"
             android:padding="10dp"
             android:text="Валюта"
-            android:textColor="?attr/colorOnSecondary"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -108,7 +107,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Курс"
-            android:textColor="?attr/colorOnSecondary"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -130,7 +129,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Изменение"
-            android:textColor="?attr/colorOnSecondary"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -139,8 +138,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="?attr/colorSecondary"
+        android:layout_marginBottom="33dp"
+        android:backgroundTint="?attr/colorPrimary"
         android:src="@drawable/ic_baseline_currency_ruble_24"
         app:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -150,8 +149,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="33dp"
-        android:backgroundTint="?attr/colorSecondary"
+        android:layout_marginBottom="46dp"
+        android:backgroundTint="?attr/colorPrimary"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -164,10 +163,9 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:padding="5dp"
             android:text="@string/last_date_update"
-            android:textColor="?attr/colorOnSecondary"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="12sp"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

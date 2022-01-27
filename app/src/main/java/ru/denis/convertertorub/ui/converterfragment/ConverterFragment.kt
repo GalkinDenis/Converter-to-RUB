@@ -51,7 +51,6 @@ class ConverterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initObservers()
         initClickListeners()
-        binding.topAppBar.ff
     }
 
     private fun createTargetCurrencyAdapter() {
@@ -64,28 +63,6 @@ class ConverterFragment : Fragment() {
         }
         binding.fieldOfTargetValute.setAdapter(adapter)
     }
-
-
-    private fun onMenuItemClickListener(item: MenuItem) =
-        when (item.itemId) {
-            R.id.contacts -> {
-                parentFragmentManager.commit {
-                    replace(R.id.nav_host_fragment, ContactsFragment())
-                    setReorderingAllowed(true)
-                    addToBackStack("ContactsFragment")
-                }
-                true
-            }
-            R.id.source_code -> {
-                val browserIntent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(getString(R.string.reference_on_my_github))
-                )
-                startActivity(browserIntent)
-                true
-            }
-            else -> false
-        }
 
     private fun initObservers() {
         with(converterFragmentViewModel) {
@@ -105,8 +82,8 @@ class ConverterFragment : Fragment() {
 
     private fun initClickListeners() {
         with(binding) {
-            binding.topAppBar?.setOnMenuItemClickListener { onMenuItemClickListener(it) }
-            topAppBar?.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+            binding.topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
+            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
             convertButton.setOnClickListener {
                 val targetCurrencyName = fieldOfTargetValute.text.toString()
@@ -119,6 +96,19 @@ class ConverterFragment : Fragment() {
             }
         }
     }
+
+    private fun onMenuItemClickListener(item: MenuItem) =
+        when (item.itemId) {
+            R.id.contacts -> {
+                parentFragmentManager.commit {
+                    replace(R.id.nav_host_fragment, ContactsFragment())
+                    setReorderingAllowed(true)
+                    addToBackStack("ContactsFragment")
+                }
+                true
+            }
+            else -> false
+        }
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()

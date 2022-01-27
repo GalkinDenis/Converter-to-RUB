@@ -9,17 +9,6 @@ import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 class CurrenciesAdapter
     : ListAdapter<ReadyCurrencies, CurrenciesViewHolder>(CurrenciesDiffUtils) {
 
-    /*
-    var listOfCurrencies = emptyList<ReadyCurrencies>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-     */
-
-    //override fun getItemCount() = listOfCurrencies.size
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrenciesViewHolder =
         CurrenciesViewHolder(
             ItemCurrenciesLayoutBinding.inflate(

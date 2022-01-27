@@ -9,16 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            android:background="@color/teal_200"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/purple_500"
-            app:menu="@menu/menu_item"
-
+            app:navigationIconTint="?attr/colorOnPrimary"
+            app:title="@string/my_contacts"
+            app:titleTextColor="?attr/colorOnPrimary"
             />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -26,7 +26,7 @@
         android:id="@+id/phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#e8f5e9"
+        android:backgroundTint="?attr/colorPrimary"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
         app:layout_constraintBottom_toTopOf="@+id/email"
@@ -39,17 +39,16 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:padding="5dp"
             android:text="@string/phone_number"
-            android:textColor="#546e7a"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#e8f5e9"
+        android:backgroundTint="?attr/colorPrimary"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
         app:layout_constraintBottom_toTopOf="@+id/telegram"
@@ -63,7 +62,7 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:padding="5dp"
             android:text="@string/email"
-            android:textColor="#546e7a"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
@@ -72,10 +71,10 @@
         android:id="@+id/telegram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#e8f5e9"
+        android:backgroundTint="?attr/colorPrimary"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/move_to_source"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email">
 
@@ -85,8 +84,30 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:padding="5dp"
             android:text="@string/telegram"
-            android:textColor="#546e7a"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/move_to_source"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:backgroundTint="?attr/colorPrimary"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/telegram"
+        app:layout_constraintTop_toBottomOf="@+id/telegram">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:focusableInTouchMode="true"
+            android:text="@string/sources"
+            android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="18sp"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
 

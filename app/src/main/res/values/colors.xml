@@ -7,12 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-
-
     <color name="green">#25aa77</color>
     <color name="dark_green">#007a4b</color>
     <color name="light_green">#e8f5e9</color>
     <color name="grey">#546e7a</color>
+    <color name="light_grey">#90a4ae</color>
+    <color name="blackForNightTheme">#102027</color>
+    <color name="lightBlackForNightTheme">#37474f</color>
+    <color name="veryLightBlackForNightTheme">#263238</color>
+    <color name="greyForNightTheme">#62727b</color>
+    <color name="darkWhite">#c1d5e0</color>
+
+
 
 </resources>

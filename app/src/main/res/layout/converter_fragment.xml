@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            android:background="@color/teal_200"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/purple_500"
+            android:background="?attr/colorPrimary"
             app:menu="@menu/menu_item"
-
-            />
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            app:navigationIconTint="?attr/colorOnPrimary"
+            app:title="@string/currencies_converter"
+            app:titleTextColor="?attr/colorOnPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
@@ -31,9 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/item_price_label"
@@ -41,15 +37,14 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/enter_rub_value"
-        android:textColorHint="#25aa77"
-        app:boxStrokeColor="#25aa77"
-
+        android:textColorHint="?attr/colorPrimary"
+        app:boxStrokeColor="?attr/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/mark"
         app:layout_constraintEnd_toEndOf="@+id/mark"
         app:layout_constraintStart_toStartOf="@+id/mark"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
         app:suffixText="@string/rubles"
-        app:suffixTextColor="#546e7a">
+        app:suffixTextColor="?attr/colorOnSecondary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/field_of_rub"
@@ -57,7 +52,8 @@
             android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:textColor="#546e7a" />
+            android:textColor="?attr/colorSecondary"
+            app:suffixTextColor="?attr/colorOnSecondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -66,21 +62,21 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        app:boxStrokeColor="#25aa77"
         android:hint="@string/select_target_currency_name"
-        android:textColorHint="#25aa77"
+        android:textColorHint="?attr/colorPrimary"
+        app:boxStrokeColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/mark"
         app:layout_constraintStart_toStartOf="@+id/mark"
         app:layout_constraintTop_toBottomOf="@+id/item_price_label"
-        app:suffixTextColor="#546e7a">
+        app:suffixTextColor="?attr/colorOnSecondary">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/field_of_target_valute"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none"
             android:focusableInTouchMode="true"
-            android:textColor="#546e7a" />
+            android:inputType="none"
+            android:textColor="?attr/colorSecondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -98,22 +94,21 @@
             android:fontFamily="@font/roboto_condensed_bold"
             android:gravity="top"
             android:text="@string/result"
-            android:textColor="#90a4ae"
+            android:textColor="?attr/colorSecondary"
             android:textSize="18sp">
 
         </TextView>
 
-
         <TextView
             android:id="@+id/result_value_show"
             style="@style/toResult"
-            android:maxLines="7"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:fontFamily="@font/roboto_condensed_bold"
             android:gravity="top"
-            android:textColor="#546e7a">
+            android:maxLines="7"
+            android:textColor="?attr/colorSecondary">
 
         </TextView>
     </LinearLayout>
@@ -124,28 +119,23 @@
         android:layout_height="45dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="33dp"
-        android:backgroundTint="#25aa77"
+        android:backgroundTint="?attr/colorPrimary"
         app:cardCornerRadius="5dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        >
+        app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/q"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="5dp"
             android:focusableInTouchMode="true"
+            android:padding="5dp"
             android:text="@string/convert"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorSecondaryVariant"
             android:textSize="18sp"
             android:textStyle="bold" />
-
-
     </com.google.android.material.card.MaterialCardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

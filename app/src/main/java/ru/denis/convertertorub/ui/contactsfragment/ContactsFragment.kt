@@ -21,34 +21,25 @@ class ContactsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ContactsFragmentBinding.inflate(inflater, container, false)
-        return binding.root    }
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
+        initClickListeners()
+    }
 
-       // topAppBar?.setNavigationOnClickListener {
-         //   parentFragmentManager.popBackStack()
-        //}
-        binding.topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
-        binding.topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
-    }
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
-        menu.findItem(R.id.contacts).isVisible = false
-    }
-    private fun onMenuItemClickListener(item: MenuItem) =
-        when (item.itemId) {
-            R.id.source_code -> {
+    private fun initClickListeners() {
+        with(binding) {
+            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+            moveToSource.setOnClickListener {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
                     Uri.parse(getString(R.string.reference_on_my_github))
                 )
                 startActivity(browserIntent)
-                true
             }
-            else -> false
         }
-
+    }
 
 }
