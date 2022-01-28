@@ -14,12 +14,12 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorPrimaryVariant"
             app:menu="@menu/menu_item"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            app:navigationIconTint="?attr/colorOnPrimary"
+            app:navigationIconTint="@color/white"
             app:title="@string/currencies_converter"
-            app:titleTextColor="?attr/colorOnPrimary" />
+            app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
@@ -38,22 +38,24 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/enter_rub_value"
-        android:textColorHint="?attr/colorPrimary"
+        android:textColorHint="?attr/colorSecondaryVariant"
+        app:boxStrokeColor="?attr/colorOnSecondary"
         app:layout_constraintBottom_toTopOf="@+id/result_value"
         app:layout_constraintEnd_toStartOf="@+id/target_value"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
         app:suffixText="@string/rubles"
-        app:suffixTextColor="?attr/colorOnSecondary">
+        app:suffixTextColor="?attr/colorSecondaryVariant">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/field_of_rub"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="numberDecimal"
-            android:textColor="?attr/colorSecondary"
             android:singleLine="true"
-            app:suffixTextColor="?attr/colorOnSecondary" />
+            android:textColorHighlight="?attr/colorSecondaryVariant"
+            android:textColor="?attr/colorOnSecondary"
+            app:suffixTextColor="?attr/colorSecondaryVariant"  />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,13 +64,14 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/select_target_currency_name"
-        android:textColorHint="?attr/colorPrimary"
-        app:boxStrokeColor="?attr/colorPrimary"
+        android:textColorHint="?attr/colorSecondaryVariant"
+        app:boxStrokeColor="?attr/colorOnSecondary"
+        app:counterTextColor="?attr/colorSecondaryVariant"
         app:layout_constraintBottom_toTopOf="@+id/result_value"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_price_label"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
-        app:suffixTextColor="?attr/colorOnSecondary">
+        app:suffixTextColor="?attr/colorSecondaryVariant">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/field_of_target_valute"
@@ -76,7 +79,8 @@
             android:layout_height="match_parent"
             android:focusableInTouchMode="true"
             android:inputType="none"
-            android:textColor="?attr/colorSecondary" />
+            android:textColorHighlight="?attr/colorSecondaryVariant"
+            android:textColor="?attr/colorOnSecondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -86,7 +90,7 @@
         android:fontFamily="@font/roboto_condensed_bold"
         android:gravity="top"
         android:text="@string/result"
-        android:textColor="?attr/colorSecondary"
+        android:textColor="?attr/colorOnSecondary"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/convert_button"
         app:layout_constraintStart_toStartOf="@+id/item_price_label"
@@ -112,7 +116,7 @@
         android:id="@+id/convert_button"
         android:layout_width="160dp"
         android:layout_height="45dp"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorSecondary"
         app:cardCornerRadius="5dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,10 +127,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:focusableInTouchMode="true"
             android:padding="5dp"
             android:text="@string/convert"
-            android:textColor="?attr/colorSecondaryVariant"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="18sp"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>

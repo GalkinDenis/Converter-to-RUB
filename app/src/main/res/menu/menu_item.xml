@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/contacts"
-        android:iconTint="?attr/colorOnPrimary"
+        android:iconTint="?attr/colorOnSecondary"
         android:title="@string/contacts"
         android:icon="@drawable/ic_baseline_error_outline_24"
         app:showAsAction="ifRoom"/>

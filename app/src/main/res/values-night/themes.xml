@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.ConverterToRUB" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lightBlackForNightTheme</item>
-        <item name="colorPrimaryVariant">@color/blackForNightTheme</item>
+        <item name="colorPrimary">@color/darkWhite</item>
+        <item name="colorPrimaryVariant">@color/lightBlackForNightTheme</item>
         <item name="colorOnPrimary">@color/blackForNightTheme</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/darkWhite</item>
+        <item name="colorSecondary">@color/lightBlackForNightTheme</item>
         <item name="colorSecondaryVariant">@color/darkWhite</item>
         <item name="colorOnSecondary">@color/darkWhite</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

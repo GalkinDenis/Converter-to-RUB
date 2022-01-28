@@ -16,10 +16,10 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorPrimaryVariant"
             app:menu="@menu/menu_item"
             app:title="@string/currencies"
-            app:titleTextColor="?attr/colorOnPrimary"
+            app:titleTextColor="@color/white"
             />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Код"
-            android:textColor="?attr/colorOnPrimary"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -85,7 +85,7 @@
             android:fontFamily="@font/roboto_medium"
             android:padding="10dp"
             android:text="Валюта"
-            android:textColor="?attr/colorOnPrimary"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -107,7 +107,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Курс"
-            android:textColor="?attr/colorOnPrimary"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -129,7 +129,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Изменение"
-            android:textColor="?attr/colorOnPrimary"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="33dp"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorSecondary"
         android:src="@drawable/ic_baseline_currency_ruble_24"
         app:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -150,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="46dp"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorSecondary"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -163,7 +163,7 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:padding="5dp"
             android:text="@string/last_date_update"
-            android:textColor="?attr/colorOnPrimary"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
