@@ -15,6 +15,7 @@ import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.Currenci
 import javax.inject.Inject
 import android.view.*
 import androidx.fragment.app.commit
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
@@ -71,7 +72,7 @@ class CurrenciesFragment : Fragment() {
             lifecycleScope.launchWhenStarted {
                 getListOfCurrencies().collect { listOfCurrencies ->
                     listOfCurrencies?.let { list ->
-                        visibleRecyclerViewVisibility()
+                        showRecyclerView()
                         currenciesAdapter?.submitList(list)
                     }
                     goneProgressbarVisibility()
@@ -126,8 +127,13 @@ class CurrenciesFragment : Fragment() {
         binding.progressBar.visibility = View.GONE
     }
 
-    private fun visibleRecyclerViewVisibility() {
+    private fun showRecyclerView() {
         binding.recyclerView.visibility = View.VISIBLE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

@@ -91,14 +91,15 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/move_to_source"
-        android:layout_width="140dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:backgroundTint="?attr/colorSecondary"
-        app:cardCornerRadius="5dp"
+        app:cardCornerRadius="0dp"
         app:cardElevation="20dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/telegram"
-        app:layout_constraintTop_toBottomOf="@+id/telegram">
+        >
 
         <TextView
             android:layout_width="wrap_content"

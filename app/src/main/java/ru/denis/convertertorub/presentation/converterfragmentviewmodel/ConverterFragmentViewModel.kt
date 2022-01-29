@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency

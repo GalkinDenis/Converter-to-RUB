@@ -41,8 +41,7 @@
     <string name="phone_number">Phone number: +79231078819</string>
     <string name="email">Email: denisgalkin287@gmail.com</string>
     <string name="telegram">Telegram: @Denis_Galkin_1990</string>
-    <string name="sources">Source code</string>
-
+    <string name="sources">Исходники на Github</string>
 
     <!-- ACTION BAR MENU -->
     <string name="contacts">Контакты</string>
@@ -50,9 +49,7 @@
 
     <!-- VIEW MODEL FACTORY -->
     <string name="undefined_model_class">Undefined model class</string>
-
     <string name="reference_on_my_github">https://github.com/GalkinDenis/Converter-to-RUB/tree/master</string>
-
 
     <!-- ПУНКТЫ МЕНЮ ВЫБОРА ЦЕЛЕВОЙ ВАЛЮТЫ ДЛЯ КОНВЕРТАЦИИ -->
     <string-array name="currencies_name_list">

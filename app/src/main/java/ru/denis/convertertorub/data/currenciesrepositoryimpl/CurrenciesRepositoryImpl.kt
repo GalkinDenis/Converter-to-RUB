@@ -14,16 +14,6 @@ class CurrenciesRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : CurrenciesRepository {
 
-    override suspend fun loadAllCurrencies() =
-        localDataSource.loadAllCurrencies().map { listCurrencies ->
-            listCurrencies.map { currency ->
-                currency.toReadyCurrencies()
-            }
-        }
-
-    override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
-        localDataSource.getCodeAndValueCurrency(targetCurrencyName).toCodeAndValueCurrency()
-
     override suspend fun getCurrencies() {
         val responseFromCbRfApi = cbRfDataSource.getCurrencies().body()
         val currentDate = responseFromCbRfApi?.Timestamp?.split("T")?.get(0)
@@ -34,6 +24,16 @@ class CurrenciesRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun loadAllCurrencies() =
+        localDataSource.loadAllCurrencies().map { listCurrencies ->
+            listCurrencies.map { currency ->
+                currency.toReadyCurrencies()
+            }
+        }
+
+    override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
+        localDataSource.getCodeAndValueCurrency(targetCurrencyName).toCodeAndValueCurrency()
 
     override suspend fun saveCurrencies(currencies: CurrencyEntity) {
         localDataSource.saveCurrencies(currencies)

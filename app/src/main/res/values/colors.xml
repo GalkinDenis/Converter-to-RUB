@@ -9,7 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#25aa77</color>
     <color name="dark_green">#007a4b</color>
-    <color name="light_green">#e8f5e9</color>
+    <color name="light_green">#e7ffe8</color>
+    <color name="light_green_2">#c8e6c9</color>
+
     <color name="grey">#546e7a</color>
     <color name="light_grey">#90a4ae</color>
     <color name="blackForNightTheme">#102027</color>
