@@ -15,7 +15,6 @@ import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.Currenci
 import javax.inject.Inject
 import android.view.*
 import androidx.fragment.app.commit
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
@@ -109,14 +108,15 @@ class CurrenciesFragment : Fragment() {
     private fun initClickListeners() {
         binding.goToConverter.setOnClickListener { showConverterScreen() }
         binding.topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
+        binding.topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
     }
 
     private fun showConverterScreen() {
-            parentFragmentManager.commit {
-                replace(R.id.nav_host_fragment, ConverterFragment())
-                setReorderingAllowed(true)
-                addToBackStack("ConverterFragment")
-            }
+        parentFragmentManager.commit {
+            replace(R.id.nav_host_fragment, ConverterFragment())
+            setReorderingAllowed(true)
+            addToBackStack("ConverterFragment")
+        }
     }
 
     private fun showToast(message: String) {

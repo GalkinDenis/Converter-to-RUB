@@ -13,9 +13,7 @@ abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
 
     protected var getListOfCurrencies: A
         get() = _getListOfCurrencies.value
-            ?: throw UninitializedPropertyAccessException(
-                "Was queried before being initialized"
-            )
+            ?: throw UninitializedPropertyAccessException()
         set(value) {
             if (_getListOfCurrencies.value == value) {
                 _getListOfCurrencies.value = null
@@ -28,9 +26,7 @@ abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
 
     protected var errorHandler: ErrorType
         get() = _errorHandler.value
-            ?: throw UninitializedPropertyAccessException(
-                "Was queried before being initialized"
-            )
+            ?: throw UninitializedPropertyAccessException()
         set(value) {
             if (_errorHandler.value == value) {
                 _errorHandler.value = null

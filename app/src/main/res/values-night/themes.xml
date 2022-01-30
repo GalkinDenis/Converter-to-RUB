@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.ConverterToRUB" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
+        <item name="android:windowBackground">@drawable/logo</item>
         <item name="colorPrimary">@color/darkWhite</item>
         <item name="colorPrimaryVariant">@color/lightBlackForNightTheme</item>
         <item name="colorOnPrimary">@color/blackForNightTheme</item>

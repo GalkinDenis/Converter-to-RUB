@@ -9,7 +9,7 @@
     <string name="currencies">Курсы валют в рублях</string>
     <string name="plus_and_rub">+%1$s</string>
     <string name="rub">%1$s p</string>
-    <string name="last_date_update">Последнее обновление валют: %1$s</string>
+    <string name="last_date_update">Последнее обновление: %1$s</string>
 
     <string name="load_currencies_error">Проверьте подключение к интернету,
         возможно дынные по курсам были обновлены.</string>

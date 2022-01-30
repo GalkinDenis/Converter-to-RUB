@@ -1,13 +1,11 @@
 package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 import ru.denis.convertertorub.domain.usecases.*
 import ru.denis.convertertorub.presentation.ErrorType
