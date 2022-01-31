@@ -14,12 +14,13 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimaryVariant"
+            android:background="?attr/colorOnPrimary"
             app:menu="@menu/menu_item"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            app:navigationIconTint="@color/white"
+            app:navigationIconTint="?attr/colorOnSecondary"
             app:title="@string/currencies_converter"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="?attr/colorOnSecondary"
+            />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
@@ -124,7 +125,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="33dp"
         android:backgroundTint="?attr/colorSecondary"
-        app:cardCornerRadius="5dp"
+        app:cardCornerRadius="8dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

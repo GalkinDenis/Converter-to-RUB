@@ -4,6 +4,6 @@
     <item
         android:id="@+id/contacts"
         android:title="@string/contacts"
-        android:icon="@drawable/ic_baseline_error_outline_24"
+        android:icon="?attr/icon"
         app:showAsAction="ifRoom"/>
 </menu>

@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/purple_200</item>
-        <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryVariant">@color/green</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/light_green</item>
-        <item name="colorSecondaryVariant">@color/green</item>
-        <item name="colorOnSecondary">@color/grey</item>
-
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/dark_green</item>
-    </style>
-
+<resources>
     <style name="Widget.ListItemTextViewHeader" parent="Widget.MaterialComponents.TextView">
         <item name="android:gravity">start</item>
         <item name="android:layout_height">wrap_content</item>
@@ -26,6 +12,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
+
     <style name="Widget.ListItemTextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">80dp</item>
@@ -42,14 +29,12 @@
     </style>
 
     <style name="Widget.Inventory.Header" parent="Widget.MaterialComponents.TextView">
-            <item name="android:gravity">center_vertical</item>
-            <item name="android:textSize">8sp</item>
-            <item name="android:layout_height">wrap_content</item>
-            <item name="android:textAppearance">?attr/textAppearanceOverline</item>
-        </style>
-
-    <style name="Widget.Inventory.TextInputLayout.OutlinedBox"
-        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceOverline</item>
     </style>
+
+    <style name="Widget.Inventory.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox"></style>
 
 </resources>

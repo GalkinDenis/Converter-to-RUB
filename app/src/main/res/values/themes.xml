@@ -2,9 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.ConverterToRUB" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:windowBackground">@drawable/logo</item>
         <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryVariant">@color/green</item>
+        <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/light_green</item>
@@ -12,7 +11,10 @@
         <item name="colorOnSecondary">@color/grey</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/dark_green</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <!-- Customize your theme here. -->
+        <item name="icon">@drawable/ic_baseline_error_outline_24_2</item>
+        <item name="android:windowBackground">@drawable/lg</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
