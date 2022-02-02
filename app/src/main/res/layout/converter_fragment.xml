@@ -4,11 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
@@ -20,8 +15,8 @@
             app:navigationIconTint="?attr/colorOnSecondary"
             app:title="@string/currencies_converter"
             app:titleTextColor="?attr/colorOnSecondary"
+            app:layout_constraintTop_toTopOf="parent"
             />
-    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/mark"
@@ -44,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/mark"
         app:layout_constraintEnd_toEndOf="@+id/mark"
         app:layout_constraintStart_toStartOf="@+id/mark"
-        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
         app:suffixText="@string/rubles"
         app:suffixTextColor="?attr/colorSecondaryVariant">
 
