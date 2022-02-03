@@ -1,6 +1,5 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
@@ -13,18 +12,88 @@ class ConverterFragmentViewModel @Inject constructor(
     private val getCodeAndValueCurrencyUseCase: GetCodeAndValueCurrencyUseCase
 ) : BaseConverterViewModel<String>() {
 
+    private lateinit var codeAndValueCurrency: CodeAndValueCurrency
+
+    fun changeCurrencyToConvert(
+        otherCurrency: String,
+        convertFrom: String,
+        fieldOfTargetValute: String
+    ) {
+        convertFromRubles = !convertFromRubles
+        otherCurrencyState = otherCurrency
+        convertFromState = convertFrom
+        if(fieldOfTargetValute.isNotBlank()) {
+            getCodeAndValueCurrency(fieldOfTargetValute)
+        }else {
+            suffixText = "-"
+        }
+    }
+
+    fun getCodeAndValueCurrency(fieldOfTargetValute: String) {
+        viewModelScope.launch(getTargetCurrencyValueExceptionHandler) {
+            codeAndValueCurrency = getCodeAndValueCurrencyUseCase(fieldOfTargetValute)
+            suffixText = codeAndValueCurrency.charCode
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     private val getTargetCurrencyValueExceptionHandler = CoroutineExceptionHandler { _, error ->
         errorHandler = error
     }
 
+
+
+
+
+
+
+
+
+
     fun convert(fieldOfRub: String, targetCurrencyName: String) {
-        viewModelScope.launch(getTargetCurrencyValueExceptionHandler) {
-            val codeAndValueCurrency = async { getCodeAndValueCurrencyUseCase(targetCurrencyName) }
-            convert(fieldOfRub, codeAndValueCurrency.await())
+        when(convertFromRubles) {
+            true -> {
+                viewModelScope.launch(getTargetCurrencyValueExceptionHandler) {
+                    val codeAndValueCurrency = async { getCodeAndValueCurrencyUseCase(targetCurrencyName) }
+                    convertFromRubles(fieldOfRub, codeAndValueCurrency.await())
+                }
+            }
+            false -> {
+                convertToRubles(fieldOfRub, codeAndValueCurrency)
+            }
         }
     }
 
-    private suspend fun convert(
+
+    private fun convertToRubles(fieldOfRub: String, codeAndValueCurrency: CodeAndValueCurrency) {
+        val endPoint = codeAndValueCurrency.value.split(" ")
+        divisionResult = (fieldOfRub.toDouble() * endPoint[0].toDouble())
+            .toBigDecimal()
+            .setScale(2, RoundingMode.UP)
+            .toString() + endPoint[1]
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private suspend fun convertFromRubles(
         fieldOfRub: String,
         charCodeAndValueCurrency: CodeAndValueCurrency
     ) {

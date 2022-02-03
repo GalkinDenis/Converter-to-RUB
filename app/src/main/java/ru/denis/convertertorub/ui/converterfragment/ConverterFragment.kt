@@ -1,7 +1,6 @@
 package ru.denis.convertertorub.ui.converterfragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +16,8 @@ import ru.denis.convertertorub.R
 import ru.denis.convertertorub.di.App
 import ru.denis.convertertorub.presentation.converterfragmentviewmodel.ConverterFragmentViewModel
 import javax.inject.Inject
-import android.net.Uri
 import android.view.MenuItem
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.commit
 import ru.denis.convertertorub.databinding.ConverterFragmentBinding
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
@@ -53,6 +52,29 @@ class ConverterFragment : Fragment() {
         initClickListeners()
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private fun createTargetCurrencyAdapter() {
         adapter = activity?.let {
             ArrayAdapter.createFromResource(
@@ -64,8 +86,86 @@ class ConverterFragment : Fragment() {
         binding.fieldOfTargetValute.setAdapter(adapter)
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private fun changeCurrencyToConvert() {
+        converterFragmentViewModel.changeCurrencyToConvert(
+            getString(R.string.other_currency),
+            getString(R.string.convert_from),
+            binding.fieldOfTargetValute.text.toString()
+        )
+    }
+
     private fun initObservers() {
         with(converterFragmentViewModel) {
+
+            lifecycleScope.launchWhenStarted {
+                otherCurrency().collect { result ->
+                    if(result.isNotBlank())
+                        binding.itemPriceLabel.hint = result
+                }
+            }
+
+            lifecycleScope.launchWhenStarted {
+                convertFrom().collect { result ->
+                    if(result.isNotBlank())
+                        binding.targetValue.hint = result
+                }
+            }
+
+            lifecycleScope.launchWhenStarted {
+                suffixText().collect { result ->
+                    if(result.isNotBlank())
+                        binding.itemPriceLabel.suffixText = result
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             lifecycleScope.launchWhenStarted {
                 divisionResult().collect { result ->
@@ -73,6 +173,9 @@ class ConverterFragment : Fragment() {
                     createTargetCurrencyAdapter()
                 }
             }
+
+
+
 
             showError().observe(viewLifecycleOwner) {
                 showToast(getString(R.string.show_currencies_error))
@@ -82,9 +185,18 @@ class ConverterFragment : Fragment() {
 
     private fun initClickListeners() {
         with(binding) {
-            binding.topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
-            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+            buttone?.setOnClickListener { changeCurrencyToConvert() }
+            fieldOfTargetValute.doAfterTextChanged {
+                converterFragmentViewModel.getCodeAndValueCurrency(binding.fieldOfTargetValute.text.toString())
+            }
 
+
+
+
+
+
+            topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
+            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
             convertButton.setOnClickListener {
                 val targetCurrencyName = fieldOfTargetValute.text.toString()
                 val fieldOfRub = fieldOfRub.text.toString()

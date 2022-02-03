@@ -74,7 +74,7 @@ class CurrenciesFragment : Fragment() {
                         showRecyclerView()
                         currenciesAdapter?.submitList(list)
                     }
-                    goneProgressbarVisibility()
+                    binding.swiperefresh.isRefreshing = false
                 }
             }
 
@@ -92,9 +92,7 @@ class CurrenciesFragment : Fragment() {
                     ErrorType.INSERT_ERROR -> showToast(getString(R.string.save_currencies_error))
                     else -> return@observe
                 }
-                goneProgressbarVisibility()
             }
-
         }
     }
 
@@ -106,9 +104,17 @@ class CurrenciesFragment : Fragment() {
     }
 
     private fun initClickListeners() {
-        binding.goToConverter.setOnClickListener { showConverterScreen() }
-        binding.topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
-        binding.topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+        with(binding) {
+            swiperefresh.setOnRefreshListener {
+                currenciesFragmentViewModel.getCurrencies()
+                if(recyclerView.adapter?.itemCount != 0) {
+                    swiperefresh.isRefreshing = false
+                }
+            }
+            goToConverter.setOnClickListener { showConverterScreen() }
+            topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
+            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+        }
     }
 
     private fun showConverterScreen() {
@@ -121,10 +127,6 @@ class CurrenciesFragment : Fragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-    }
-
-    private fun goneProgressbarVisibility() {
-        binding.progressBar.visibility = View.GONE
     }
 
     private fun showRecyclerView() {
