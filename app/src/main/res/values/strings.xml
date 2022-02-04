@@ -34,7 +34,9 @@
     <string name="some_fields_is_empty">Не все поля заполненны</string>
     <string name="other_currency">Введите сумму в валюте</string>
     <string name="convert_from">Конвертировать из</string>
-
+    <string name="rub_currency">Введите сумму в рублях</string>
+    <string name="convert_to">Конвертировать в</string>
+    <string name="dash">-</string>
 
     <!-- CBRF API -->
     <string name="end_point">daily_json.js</string>

@@ -3,7 +3,6 @@ package ru.denis.convertertorub.presentation.baseviewmodels
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.SingleLiveEvent
 
 abstract class BaseConverterViewModel<A> : ViewModel() {
@@ -34,64 +33,30 @@ abstract class BaseConverterViewModel<A> : ViewModel() {
             _errorHandler.value = value
         }
 
+    protected var convertFromRubles: Boolean = false
 
+    private val _aTypeCurrenciesToEnter: MutableStateFlow<String> = MutableStateFlow("")
+    fun aTypeCurrenciesToEnter(): StateFlow<String> = _aTypeCurrenciesToEnter
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    protected var convertFromRubles: Boolean = true
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private val _otherCurrencyState: MutableStateFlow<String> = MutableStateFlow("")
-    fun otherCurrency(): StateFlow<String> = _otherCurrencyState
-
-    protected var otherCurrencyState: String
-        get() = _otherCurrencyState.value
+    protected var aTypeCurrenciesToEnter: String
+        get() = _aTypeCurrenciesToEnter.value
         set(value) {
-            if (_otherCurrencyState.value == value) {
-                _otherCurrencyState.value = ""
+            if (_aTypeCurrenciesToEnter.value == value) {
+                _aTypeCurrenciesToEnter.value = ""
             }
-            _otherCurrencyState.value = value
+            _aTypeCurrenciesToEnter.value = value
         }
 
-    private val _convertFromState: MutableStateFlow<String> = MutableStateFlow("")
-    fun convertFrom(): StateFlow<String> = _convertFromState
+    private val _convertToOrFromState: MutableStateFlow<String> = MutableStateFlow("")
+    fun convertToOrFromState(): StateFlow<String> = _convertToOrFromState
 
-    protected var convertFromState: String
-        get() = _convertFromState.value
+    protected var convertToOrFromState: String
+        get() = _convertToOrFromState.value
         set(value) {
-            if (_convertFromState.value == value) {
-                _convertFromState.value = ""
+            if (_convertToOrFromState.value == value) {
+                _convertToOrFromState.value = ""
             }
-            _convertFromState.value = value
+            _convertToOrFromState.value = value
         }
 
     private val _suffixText: MutableStateFlow<String> = MutableStateFlow("")

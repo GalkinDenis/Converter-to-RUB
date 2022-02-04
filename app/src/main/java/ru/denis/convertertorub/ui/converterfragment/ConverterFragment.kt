@@ -52,120 +52,26 @@ class ConverterFragment : Fragment() {
         initClickListeners()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private fun createTargetCurrencyAdapter() {
-        adapter = activity?.let {
-            ArrayAdapter.createFromResource(
-                it.applicationContext,
-                R.array.currencies_name_list,
-                android.R.layout.simple_spinner_dropdown_item
-            )
-        }
-        binding.fieldOfTargetValute.setAdapter(adapter)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private fun changeCurrencyToConvert() {
-        converterFragmentViewModel.changeCurrencyToConvert(
-            getString(R.string.other_currency),
-            getString(R.string.convert_from),
-            binding.fieldOfTargetValute.text.toString()
-        )
-    }
-
     private fun initObservers() {
         with(converterFragmentViewModel) {
 
             lifecycleScope.launchWhenStarted {
-                otherCurrency().collect { result ->
-                    if(result.isNotBlank())
+                aTypeCurrenciesToEnter().collect { result ->
                         binding.itemPriceLabel.hint = result
                 }
             }
 
             lifecycleScope.launchWhenStarted {
-                convertFrom().collect { result ->
-                    if(result.isNotBlank())
+                convertToOrFromState().collect { result ->
                         binding.targetValue.hint = result
                 }
             }
 
             lifecycleScope.launchWhenStarted {
                 suffixText().collect { result ->
-                    if(result.isNotBlank())
                         binding.itemPriceLabel.suffixText = result
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             lifecycleScope.launchWhenStarted {
                 divisionResult().collect { result ->
@@ -173,9 +79,6 @@ class ConverterFragment : Fragment() {
                     createTargetCurrencyAdapter()
                 }
             }
-
-
-
 
             showError().observe(viewLifecycleOwner) {
                 showToast(getString(R.string.show_currencies_error))
@@ -185,26 +88,30 @@ class ConverterFragment : Fragment() {
 
     private fun initClickListeners() {
         with(binding) {
-            buttone?.setOnClickListener { changeCurrencyToConvert() }
-            fieldOfTargetValute.doAfterTextChanged {
-                converterFragmentViewModel.getCodeAndValueCurrency(binding.fieldOfTargetValute.text.toString())
-            }
+            with(converterFragmentViewModel) {
 
-
-
-
-
-
-            topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
-            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
-            convertButton.setOnClickListener {
-                val targetCurrencyName = fieldOfTargetValute.text.toString()
-                val fieldOfRub = fieldOfRub.text.toString()
-                when {
-                    (fieldOfRub.isBlank() || targetCurrencyName.isBlank()) ->
-                        showToast(getString(R.string.some_fields_is_empty))
-                    else -> converterFragmentViewModel.convert(fieldOfRub, targetCurrencyName)
+                fieldOfTargetValute.doAfterTextChanged {
+                    getCodeAndValueCurrency(binding.fieldOfTargetValute.text.toString())
                 }
+
+                topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
+
+                topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+
+                changeConverterType?.setOnClickListener {
+                            changeTypeConverter(binding.fieldOfTargetValute.text.toString())
+                        }
+
+                convertButton.setOnClickListener {
+                    val targetCurrencyName = fieldOfTargetValute.text.toString()
+                    val fieldOfRub = fieldOfRub.text.toString()
+                    when {
+                        (fieldOfRub.isBlank() || targetCurrencyName.isBlank()) ->
+                            showToast(getString(R.string.some_fields_is_empty))
+                        else -> convert(fieldOfRub)
+                    }
+                }
+
             }
         }
     }
@@ -221,6 +128,17 @@ class ConverterFragment : Fragment() {
             }
             else -> false
         }
+
+    private fun createTargetCurrencyAdapter() {
+        adapter = activity?.let {
+            ArrayAdapter.createFromResource(
+                it.applicationContext,
+                R.array.currencies_name_list,
+                android.R.layout.simple_spinner_dropdown_item
+            )
+        }
+        binding.fieldOfTargetValute.setAdapter(adapter)
+    }
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
