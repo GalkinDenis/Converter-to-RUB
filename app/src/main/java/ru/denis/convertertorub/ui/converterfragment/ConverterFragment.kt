@@ -56,20 +56,21 @@ class ConverterFragment : Fragment() {
         with(converterFragmentViewModel) {
 
             lifecycleScope.launchWhenStarted {
-                aTypeCurrenciesToEnter().collect { result ->
-                        binding.itemPriceLabel.hint = result
+                aTypeCurrencyInFirstField().collect { result ->
+                    binding.itemPriceLabel.hint = result
                 }
             }
 
             lifecycleScope.launchWhenStarted {
                 convertToOrFromState().collect { result ->
-                        binding.targetValue.hint = result
+                    binding.targetValue.hint = result
+                    binding.targetValue.refreshDrawableState()
                 }
             }
 
             lifecycleScope.launchWhenStarted {
                 suffixText().collect { result ->
-                        binding.itemPriceLabel.suffixText = result
+                    binding.itemPriceLabel.suffixText = result
                 }
             }
 
@@ -91,22 +92,21 @@ class ConverterFragment : Fragment() {
             with(converterFragmentViewModel) {
 
                 fieldOfTargetValute.doAfterTextChanged {
-                    getCodeAndValueCurrency(binding.fieldOfTargetValute.text.toString())
+                    getCodeAndValueCurrency(fieldOfTargetValute.text.toString())
                 }
 
                 topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
 
                 topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
-                changeConverterType?.setOnClickListener {
-                            changeTypeConverter(binding.fieldOfTargetValute.text.toString())
-                        }
+                changeConverterType.setOnClickListener {
+                    changeTypeConverter(fieldOfTargetValute.text.toString())
+                }
 
                 convertButton.setOnClickListener {
-                    val targetCurrencyName = fieldOfTargetValute.text.toString()
                     val fieldOfRub = fieldOfRub.text.toString()
                     when {
-                        (fieldOfRub.isBlank() || targetCurrencyName.isBlank()) ->
+                        (fieldOfRub.isBlank() || fieldOfTargetValute.text.toString().isBlank()) ->
                             showToast(getString(R.string.some_fields_is_empty))
                         else -> convert(fieldOfRub)
                     }

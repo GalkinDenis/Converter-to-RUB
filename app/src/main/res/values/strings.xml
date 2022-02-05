@@ -10,6 +10,7 @@
     <string name="plus_and_rub">+%1$s</string>
     <string name="rub">%1$s p</string>
     <string name="last_date_update">Последнее обновление: %1$s</string>
+    <string name="go_to_converter">Перейти на экран конвертера валют</string>
 
     <string name="load_currencies_error">Проверьте подключение к интернету,
         возможно дынные по курсам были обновлены.</string>
@@ -25,15 +26,17 @@
     <string name="TRANSPORT_ETHERNET">NetworkCapabilities.TRANSPORT_ETHERNET</string>
 
     <!-- CURRENCIES CONVERTER -->
+    <string name="change_type_convert">Изменить тип конвертации</string>
+    <string name="to_convert">Конвертировать</string>
     <string name="currencies_converter">Конвертер валют</string>
     <string name="enter_rub_value">Введите значение в рублях</string>
-    <string name="rubles">Рублей</string>
+    <string name="rubles">RUB</string>
     <string name="select_target_currency_name">Конвертировать в</string>
     <string name="convert">Конвертировать</string>
     <string name="result">Результат:</string>
     <string name="some_fields_is_empty">Не все поля заполненны</string>
     <string name="other_currency">Введите сумму в валюте</string>
-    <string name="convert_from">Конвертировать из</string>
+    <string name="convert_from">Конвертировать в рубли из</string>
     <string name="rub_currency">Введите сумму в рублях</string>
     <string name="convert_to">Конвертировать в</string>
     <string name="dash">-</string>

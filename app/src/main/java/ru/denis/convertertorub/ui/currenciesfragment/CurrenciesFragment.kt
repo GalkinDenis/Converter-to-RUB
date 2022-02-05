@@ -65,6 +65,13 @@ class CurrenciesFragment : Fragment() {
             else -> false
         }
 
+    private fun initViews() {
+        binding.recyclerView.run {
+            currenciesAdapter = CurrenciesAdapter()
+            adapter = currenciesAdapter
+        }
+    }
+
     private fun initObservers() {
         with(currenciesFragmentViewModel) {
 
@@ -86,6 +93,7 @@ class CurrenciesFragment : Fragment() {
             }
 
             showError().observe(viewLifecycleOwner) { errorType ->
+                binding.swiperefresh.isRefreshing = false
                 when (errorType) {
                     ErrorType.GET_ERROR -> showToast(getString(R.string.show_currencies_error))
                     ErrorType.LOAD_ERROR -> showToast(getString(R.string.load_currencies_error))
@@ -93,13 +101,6 @@ class CurrenciesFragment : Fragment() {
                     else -> return@observe
                 }
             }
-        }
-    }
-
-    private fun initViews() {
-        binding.recyclerView.apply {
-            currenciesAdapter = CurrenciesAdapter()
-            adapter = currenciesAdapter
         }
     }
 

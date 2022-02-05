@@ -28,24 +28,27 @@ class ConverterFragmentViewModel @Inject constructor(
         convertFromRubles = !convertFromRubles
         when (convertFromRubles) {
             false -> {
-                aTypeCurrenciesToEnter = getResourcesStringsUseCase().getOtherCurrency()
+                aTypeCurrencyInFirstField = getResourcesStringsUseCase().getOtherCurrency()
                 convertToOrFromState = getResourcesStringsUseCase().getConvertFrom()
             }
             true -> {
-                aTypeCurrenciesToEnter = getResourcesStringsUseCase().getRubCurrency()
+                aTypeCurrencyInFirstField = getResourcesStringsUseCase().getRubCurrency()
                 convertToOrFromState = getResourcesStringsUseCase().getConvertTo()
             }
         }
         when {
             (convertFromRubles) -> suffixText = getResourcesStringsUseCase().getRubles()
-            (fieldOfTargetCurrency.isBlank() && !convertFromRubles) -> suffixText = getResourcesStringsUseCase().getDash()
+            fieldOfTargetCurrency.isBlank() && !convertFromRubles -> suffixText = getResourcesStringsUseCase().getDash()
+            fieldOfTargetCurrency.isNotBlank() && !convertFromRubles -> suffixText = codeAndValueCurrency.charCode
         }
     }
 
     fun getCodeAndValueCurrency(fieldOfTargetCurrency: String) {
-        viewModelScope.launch(converterCurrencyExceptionHandler) {
-            codeAndValueCurrency = getCodeAndValueCurrencyUseCase(fieldOfTargetCurrency)
-            if(!convertFromRubles) suffixText = codeAndValueCurrency.charCode
+        if(fieldOfTargetCurrency.isNotBlank()) {
+            viewModelScope.launch(converterCurrencyExceptionHandler) {
+                codeAndValueCurrency = getCodeAndValueCurrencyUseCase(fieldOfTargetCurrency)
+                if (!convertFromRubles) suffixText = codeAndValueCurrency.charCode
+            }
         }
     }
 

@@ -50,7 +50,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Код"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -71,7 +70,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:padding="10dp"
-            android:text="Валюта"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -93,7 +91,6 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Курс"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -115,7 +112,6 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Изменение"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -130,7 +126,8 @@
         android:src="@drawable/ic_baseline_currency_ruble_24"
         app:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/go_to_converter" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
