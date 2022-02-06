@@ -78,7 +78,6 @@ class CurrenciesFragment : Fragment() {
             lifecycleScope.launchWhenStarted {
                 getListOfCurrencies().collect { listOfCurrencies ->
                     listOfCurrencies?.let { list ->
-                        showRecyclerView()
                         currenciesAdapter?.submitList(list)
                     }
                     binding.swiperefresh.isRefreshing = false
@@ -128,10 +127,6 @@ class CurrenciesFragment : Fragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-    }
-
-    private fun showRecyclerView() {
-        binding.recyclerView.visibility = View.VISIBLE
     }
 
     override fun onDestroy() {

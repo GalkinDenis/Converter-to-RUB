@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
+            android:text="@string/code"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -70,6 +71,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:padding="10dp"
+            android:text="@string/currency"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -91,6 +93,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:padding="10dp"
+            android:text="@string/value"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -111,6 +114,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
+            android:text="@string/change"
             android:padding="10dp"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="12sp" />

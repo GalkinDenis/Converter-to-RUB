@@ -85,7 +85,6 @@
             android:id="@+id/field_of_target_valute"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusableInTouchMode="true"
             android:inputType="none"
             android:textColorHighlight="?attr/colorSecondaryVariant"
             android:textColor="?attr/colorOnSecondary" />
@@ -94,9 +93,9 @@
     <TextView
         android:id="@+id/result_value"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="26dp"
         android:fontFamily="@font/roboto_condensed_bold"
-        android:gravity="top"
+        android:focusable="true"
         android:text="@string/result"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="18sp"
@@ -113,9 +112,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/roboto_condensed_bold"
-        android:gravity="top"
-        android:maxLines="3"
-        android:textColor="?attr/colorOnSecondary"
+        android:maxLines="7"
+        android:textColor="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/result_value"
         app:layout_constraintStart_toEndOf="@+id/result_value">
     </TextView>

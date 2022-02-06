@@ -83,7 +83,7 @@ class ConverterFragmentViewModel @Inject constructor(
             divisionResult = (fieldOfRub.toDouble() * valueWithType[0].toDouble())
                 .toBigDecimal()
                 .setScale(2, RoundingMode.UP)
-                .toString() + valueWithType[1]
+                .toString() + " " + valueWithType[1]
         }
     }
 

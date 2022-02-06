@@ -80,7 +80,6 @@
             android:id="@+id/field_of_target_valute"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusableInTouchMode="true"
             android:inputType="none"
             android:textColor="?attr/colorOnSecondary"
             android:textColorHighlight="?attr/colorSecondaryVariant" />
@@ -98,8 +97,9 @@
             android:id="@+id/result_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:focusable="true"
             android:fontFamily="@font/roboto_condensed_bold"
-            android:gravity="top"
             android:text="@string/result"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="18sp">
@@ -113,9 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:fontFamily="@font/roboto_condensed_bold"
-            android:gravity="top"
             android:maxLines="7"
-            android:textColor="?attr/colorOnSecondary">
+            android:textColor="?attr/colorPrimary">
 
         </TextView>
     </LinearLayout>

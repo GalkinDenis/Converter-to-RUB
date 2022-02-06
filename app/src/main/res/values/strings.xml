@@ -1,14 +1,18 @@
 <resources>
     <!-- APP -->
-    <string name="app_name">Converter to RUB</string>
+    <string name="app_name">Ковнвертер</string>
 
     <!-- PREFERENCES -->
     <string name="current_date">current_date</string>
 
     <!-- CURRENCIES FRAGMENT -->
+    <string name="code">Код</string>
+    <string name="currency">Валюта</string>
+    <string name="value">Курс</string>
+    <string name="change">Изменение</string>
     <string name="currencies">Курсы валют в рублях</string>
     <string name="plus_and_rub">+%1$s</string>
-    <string name="rub">%1$s p</string>
+    <string name="rub">%1$s RUB</string>
     <string name="last_date_update">Последнее обновление: %1$s</string>
     <string name="go_to_converter">Перейти на экран конвертера валют</string>
 

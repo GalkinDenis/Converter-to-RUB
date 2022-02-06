@@ -7,9 +7,9 @@
 
     <TextView
         android:id="@+id/code"
-        android:layout_width="45dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/roboto_slab_bold"
         android:gravity="center"
         android:textColor="?attr/colorOnSecondary"
@@ -21,9 +21,9 @@
 
     <TextView
         android:id="@+id/currency_name"
-        android:layout_width="135dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
+        android:layout_marginStart="10dp"
         android:fontFamily="@font/roboto_slab_bold"
         android:padding="10dp"
         android:textColor="?attr/colorOnSecondary"
@@ -35,10 +35,10 @@
 
     <TextView
         android:id="@+id/course"
-        android:layout_width="70dp"
+        android:layout_width="85dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
         android:fontFamily="@font/roboto_medium"
+        android:layout_marginStart="2dp"
         android:gravity="center"
         android:padding="10dp"
         android:textSize="12sp"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="10dp"
         android:padding="10dp"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="12sp"
