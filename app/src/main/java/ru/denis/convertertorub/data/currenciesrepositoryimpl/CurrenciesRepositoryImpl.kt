@@ -35,10 +35,6 @@ class CurrenciesRepositoryImpl @Inject constructor(
     override suspend fun getCodeAndValueCurrency(targetCurrencyName: String) =
         localDataSource.getCodeAndValueCurrency(targetCurrencyName).toCodeAndValueCurrency()
 
-    override suspend fun saveCurrencies(currencies: CurrencyEntity) {
-        localDataSource.saveCurrencies(currencies)
-    }
-
     override suspend fun saveCurrentDate(currentDate: String?) {
         localDataSource.saveCurrentDate(currentDate)
     }

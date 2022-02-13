@@ -7,7 +7,6 @@ import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 
 interface CurrenciesRepository {
     suspend fun getCurrencies()
-    suspend fun saveCurrencies(currencies: CurrencyEntity)
     suspend fun getSavedDate(): String
     suspend fun loadAllCurrencies(): Flow<List<ReadyCurrencies>>
     suspend fun getCodeAndValueCurrency(targetCurrencyName: String): CodeAndValueCurrency

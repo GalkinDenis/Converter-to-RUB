@@ -49,10 +49,11 @@
     <string name="end_point">daily_json.js</string>
 
     <!-- CONTACTS FRAGMENT -->
-    <string name="my_contacts">Mои контакты</string>
-    <string name="phone_number">Phone number: +79231078819</string>
-    <string name="email">Email: denisgalkin287@gmail.com</string>
+    <string name="my_contacts">Контакты</string>
+    <string name="phone_number">Телефон: +79231078819</string>
+    <string name="email">Почта: denisgalkin287@gmail.com</string>
     <string name="telegram">Telegram: @Denis_Galkin_1990</string>
+    <string name="art">Instagram: irinabush.art (Logo)</string>
     <string name="sources">GitHub</string>
 
     <!-- ACTION BAR MENU -->
