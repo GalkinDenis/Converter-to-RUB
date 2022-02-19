@@ -53,7 +53,8 @@
     <string name="phone_number">Телефон: +79231078819</string>
     <string name="email">Почта: denisgalkin287@gmail.com</string>
     <string name="telegram">Telegram: @Denis_Galkin_1990</string>
-    <string name="art">Instagram: irinabush.art (Logo)</string>
+    <string name="art">Logo: instagram.com/irinabush.art</string>
+    <string name="reference_on_irinabush_instagram">https://www.instagram.com/irinabush.art/</string>
     <string name="sources">GitHub</string>
 
     <!-- ACTION BAR MENU -->

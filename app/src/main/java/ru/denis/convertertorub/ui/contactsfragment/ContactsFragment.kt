@@ -5,10 +5,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.ContactsFragmentBinding
-import ru.denis.convertertorub.databinding.ConverterFragmentBinding
 
 class ContactsFragment : Fragment() {
 
@@ -36,6 +34,14 @@ class ContactsFragment : Fragment() {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
                     Uri.parse(getString(R.string.reference_on_my_github))
+                )
+                startActivity(browserIntent)
+            }
+
+            art.setOnClickListener {
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(getString(R.string.reference_on_irinabush_instagram))
                 )
                 startActivity(browserIntent)
             }
