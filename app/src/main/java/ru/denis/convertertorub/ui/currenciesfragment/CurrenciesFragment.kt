@@ -2,7 +2,6 @@ package ru.denis.convertertorub.ui.currenciesfragment
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +14,7 @@ import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.Currenci
 import javax.inject.Inject
 import android.view.*
 import androidx.fragment.app.commit
+import com.google.android.material.snackbar.Snackbar
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
@@ -86,8 +86,7 @@ class CurrenciesFragment : Fragment() {
 
             lifecycleScope.launchWhenStarted {
                 showDate().collect { date ->
-                    binding.lastDateUpdate.text =
-                        getString(R.string.last_date_update, date)
+                    binding.lastDateUpdate.text = getString(R.string.last_date_update, date)
                 }
             }
 
@@ -126,7 +125,7 @@ class CurrenciesFragment : Fragment() {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onDestroy() {

@@ -1,11 +1,11 @@
 package ru.denis.convertertorub.domain.entities
 
 data class ReadyCurrencies(
-    var _ID: String,
-    var numCode: String,
-    var charCode: String,
-    var name: String,
-    var value: String,
-    var difference: String,
+    val _ID: String,
+    val numCode: String,
+    val charCode: String,
+    val name: String,
+    val value: String,
+    val difference: String
 )
 

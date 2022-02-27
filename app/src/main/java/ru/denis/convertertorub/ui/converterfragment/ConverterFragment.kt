@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +18,7 @@ import javax.inject.Inject
 import android.view.MenuItem
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.commit
+import com.google.android.material.snackbar.Snackbar
 import ru.denis.convertertorub.databinding.ConverterFragmentBinding
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 
@@ -141,7 +141,7 @@ class ConverterFragment : Fragment() {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onDestroy() {

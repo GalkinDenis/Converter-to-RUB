@@ -12,7 +12,7 @@ data class CurrencyEntity(
     val ID: String,
     val NumCode: String,
     val CharCode: String,
-    var Nominal: Int,
+    val Nominal: Int,
     val Name: String,
     var Value: Double,
     var Previous: Double

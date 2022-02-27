@@ -16,5 +16,6 @@
         <item name="icon">@drawable/ic_baseline_error_outline_24_2</item>
         <item name="android:windowBackground">@drawable/light_start_screen</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="snackbarStyle">@style/MySnackBarStyle</item>
     </style>
 </resources>

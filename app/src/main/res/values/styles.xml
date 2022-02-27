@@ -37,4 +37,8 @@
 
     <style name="Widget.Inventory.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox"></style>
 
+    <!-- snackbar style -->
+    <style name="MySnackBarStyle" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@drawable/my_snackbar_background</item>
+    </style>
 </resources>

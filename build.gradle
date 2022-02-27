@@ -10,7 +10,7 @@ buildscript {
         core_ktx_version = "1.7.0"
         kotlin_version = "1.6.10"
         lifecycle_version = "2.4.0"
-        nav_version = "2.3.5"
+        nav_version = '2.4.1'
         fragment_version = "1.4.0"
         coroutines_version = "1.5.2"
         room_version = "2.4.0"
@@ -25,7 +25,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
