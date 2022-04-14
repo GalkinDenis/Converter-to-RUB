@@ -5,9 +5,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.ContactsFragmentBinding
 
+@AndroidEntryPoint
 class ContactsFragment : Fragment() {
 
     private var _binding: ContactsFragmentBinding? = null

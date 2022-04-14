@@ -19,24 +19,20 @@ import android.view.MenuItem
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.commit
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.databinding.ConverterFragmentBinding
+import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 
+@AndroidEntryPoint
 class ConverterFragment : Fragment() {
 
     private var adapter: ArrayAdapter<CharSequence>? = null
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val converterFragmentViewModel by viewModels<ConverterFragmentViewModel> { viewModelFactory }
+    private val converterFragmentViewModel by viewModels<ConverterFragmentViewModel>()
 
     private var _binding: ConverterFragmentBinding? = null
     private val binding get() = _binding!!
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (requireActivity().application as App).appComponent.injectConverterFragment(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

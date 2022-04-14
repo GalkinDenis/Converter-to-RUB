@@ -1,6 +1,9 @@
 package ru.denis.convertertorub.data.datasources.localdatasource
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import it.czerwinski.android.hilt.annotations.BoundTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.denis.convertertorub.R
@@ -10,10 +13,13 @@ import java.math.RoundingMode
 import javax.inject.Inject
 import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
 import ru.denis.convertertorub.data.model.CurrencyEntity
+import javax.inject.Singleton
 
+@Singleton
+@BoundTo(LocalDataSource::class, SingletonComponent::class)
 class LocalDataSourceImpl @Inject constructor(
-    private val context: Context,
-    private var dao: ItemDao,
+    @ApplicationContext private val context: Context,
+    private val dao: ItemDao,
     private val preferenceDatasource: PreferenceDatasource
 ) : LocalDataSource {
 

@@ -1,6 +1,7 @@
 package ru.denis.convertertorub.presentation.currenciesfragmentviewmodel
 
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -12,6 +13,7 @@ import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.baseviewmodels.BaseListOfCurrenciesViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class CurrenciesFragmentViewModel @Inject constructor(
     private val getCurrenciesUseCase: GetCurrenciesUseCase,
     private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase,

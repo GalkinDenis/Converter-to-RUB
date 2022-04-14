@@ -1,14 +1,18 @@
 package ru.denis.convertertorub.data.currenciesrepositoryimpl
 
+import dagger.hilt.components.SingletonComponent
+import it.czerwinski.android.hilt.annotations.BoundTo
 import kotlinx.coroutines.flow.map
 import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSource
 import ru.denis.convertertorub.data.datasources.database.toReadyCurrencies
 import ru.denis.convertertorub.data.datasources.localdatasource.LocalDataSource
-import ru.denis.convertertorub.data.model.CurrencyEntity
 import ru.denis.convertertorub.data.model.toCodeAndValueCurrency
 import ru.denis.convertertorub.domain.repository.CurrenciesRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
+@BoundTo(CurrenciesRepository::class, SingletonComponent::class)
 class CurrenciesRepositoryImpl @Inject constructor(
     private val cbRfDataSource: CbRfDataSource,
     private val localDataSource: LocalDataSource

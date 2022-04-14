@@ -1,6 +1,7 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
 import ru.denis.convertertorub.domain.usecases.GetCodeAndValueCurrencyUseCase
@@ -9,6 +10,7 @@ import ru.denis.convertertorub.presentation.baseviewmodels.BaseConverterViewMode
 import java.math.RoundingMode
 import javax.inject.Inject
 
+@HiltViewModel
 class ConverterFragmentViewModel @Inject constructor(
     private val getCodeAndValueCurrencyUseCase: GetCodeAndValueCurrencyUseCase,
     private val getResourcesStringsUseCase: GetResourcesStringsUseCase
