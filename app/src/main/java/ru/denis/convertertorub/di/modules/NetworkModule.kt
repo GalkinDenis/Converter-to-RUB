@@ -14,7 +14,7 @@ const val BASE_URL = "https://www.cbr-xml-daily.ru/"
 
 @Module
 @InstallIn(SingletonComponent::class)
-class  NetworkModule {
+class NetworkModule {
 
     @Provides
     @Singleton

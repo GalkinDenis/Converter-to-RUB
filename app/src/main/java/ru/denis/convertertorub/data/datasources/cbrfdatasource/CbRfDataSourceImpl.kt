@@ -2,8 +2,6 @@ package ru.denis.convertertorub.data.datasources.cbrfdatasource
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import it.czerwinski.android.hilt.annotations.BoundTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -11,10 +9,7 @@ import ru.denis.convertertorub.R
 import ru.denis.convertertorub.data.datasources.network.CbRfApi
 import ru.denis.convertertorub.data.model.CurrenciesEntity
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-@BoundTo(CbRfDataSource::class, SingletonComponent::class)
 class CbRfDataSourceImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     private val cbRfApi: CbRfApi
