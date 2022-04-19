@@ -1,19 +1,22 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
 import ru.denis.convertertorub.domain.usecases.GetCodeAndValueCurrencyUseCase
 import ru.denis.convertertorub.domain.usecases.GetResourcesStringsUseCase
 import ru.denis.convertertorub.presentation.baseviewmodels.BaseConverterViewModel
+import ru.denis.convertertorub.utils.navigation.Screens
 import java.math.RoundingMode
 import javax.inject.Inject
 
 @HiltViewModel
 class ConverterFragmentViewModel @Inject constructor(
     private val getCodeAndValueCurrencyUseCase: GetCodeAndValueCurrencyUseCase,
-    private val getResourcesStringsUseCase: GetResourcesStringsUseCase
+    private val getResourcesStringsUseCase: GetResourcesStringsUseCase,
+    private val router: Router
 ) : BaseConverterViewModel<String>() {
 
     init {
@@ -87,6 +90,14 @@ class ConverterFragmentViewModel @Inject constructor(
                 .setScale(2, RoundingMode.UP)
                 .toString() + " " + valueWithType[1]
         }
+    }
+
+    fun openContactsScreen() {
+        router.navigateTo(Screens.ContactsScreen())
+    }
+
+    fun navigateBack() {
+        router.exit()
     }
 
 }

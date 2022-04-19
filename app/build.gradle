@@ -88,4 +88,7 @@ dependencies {
 
     //Fragment-ktx
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    //Cicerone
+    implementation "com.github.terrakok:cicerone:$cicerone_version"
 }

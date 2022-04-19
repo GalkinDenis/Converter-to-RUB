@@ -5,7 +5,8 @@
     android:background="?attr/colorOnPrimary">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
+        android:id="@+id/main_container"
+        android:name="ru.denis.convertertorub.ui.currenciesfragment.CurrenciesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

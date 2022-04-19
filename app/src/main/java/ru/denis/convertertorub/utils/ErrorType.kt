@@ -1,4 +1,4 @@
-package ru.denis.convertertorub.presentation
+package ru.denis.convertertorub.utils
 
 enum class ErrorType {
     LOAD_ERROR,

@@ -2,31 +2,58 @@ package ru.denis.convertertorub.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.ActivityMainBinding
-import ru.denis.convertertorub.ui.currenciesfragment.CurrenciesFragment
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(ActivityMainBinding.inflate(layoutInflater).root)
-
-        if (null == savedInstanceState) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, CurrenciesFragment())
-                .addToBackStack("CurrenciesFragment")
-                .commit()
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
+    private val navigator = object : AppNavigator(this, R.id.main_container) {
+        override fun setupFragmentTransaction(
+            screen: FragmentScreen,
+            fragmentTransaction: FragmentTransaction,
+            currentFragment: Fragment?,
+            nextFragment: Fragment
+        ) {
+            fragmentTransaction.apply {
+                setCustomAnimations(
+                    R.anim.slide_in_from_bottom,
+                    R.anim.fade_out,
+                    R.anim.fade_in,
+                    R.anim.slide_out_to_bottom
+                )
+            }
+            super.setupFragmentTransaction(
+                screen,
+                fragmentTransaction,
+                currentFragment,
+                nextFragment
+            )
         }
     }
 
-    override fun onBackPressed() {
-        when(supportFragmentManager.backStackEntryCount > 1) {
-            true -> supportFragmentManager.popBackStack()
-            false -> finish()
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(ActivityMainBinding.inflate(layoutInflater).root)
+    }
+
+    override fun onResume() {
+        navigatorHolder.setNavigator(navigator)
+        super.onResume()
+    }
+
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 
 }

@@ -5,12 +5,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.ContactsFragmentBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ContactsFragment : Fragment() {
+
+    @Inject lateinit var router: Router
 
     private var _binding: ContactsFragmentBinding? = null
     private val binding get() = _binding!!
@@ -31,7 +35,7 @@ class ContactsFragment : Fragment() {
 
     private fun initClickListeners() {
         with(binding) {
-            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+            topAppBar.setNavigationOnClickListener { router.exit() }
             moveToSource.setOnClickListener {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,

@@ -17,7 +17,7 @@
     <string name="go_to_converter">Перейти на экран конвертера валют</string>
 
     <string name="load_currencies_error">Проверьте подключение к интернету,
-        возможно, курсы валют обновились.</string>
+        возможно курсы валют обновились.</string>
     <string name="show_currencies_error">При попытке загрузить курсы валют, произошла ошибка.</string>
     <string name="save_currencies_error">При попытке сохранить курсы валют, произошла ошибка.</string>
 

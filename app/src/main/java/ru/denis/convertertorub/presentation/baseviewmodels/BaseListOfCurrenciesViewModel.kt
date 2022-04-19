@@ -3,8 +3,8 @@ package ru.denis.convertertorub.presentation.baseviewmodels
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import ru.denis.convertertorub.presentation.ErrorType
-import ru.denis.convertertorub.presentation.SingleLiveEvent
+import ru.denis.convertertorub.utils.ErrorType
+import ru.denis.convertertorub.utils.SingleLiveEvent
 
 abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
 

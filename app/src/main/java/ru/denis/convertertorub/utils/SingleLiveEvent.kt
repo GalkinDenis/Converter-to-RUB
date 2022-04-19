@@ -1,4 +1,4 @@
-package ru.denis.convertertorub.presentation
+package ru.denis.convertertorub.utils
 
 import androidx.lifecycle.LifecycleOwner
 

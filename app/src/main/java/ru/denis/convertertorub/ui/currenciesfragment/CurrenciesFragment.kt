@@ -6,15 +6,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
-import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
 import android.view.*
-import androidx.fragment.app.commit
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
-import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
-import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
+import ru.denis.convertertorub.utils.ErrorType
 
 @AndroidEntryPoint
 class CurrenciesFragment : Fragment() {
@@ -45,11 +42,7 @@ class CurrenciesFragment : Fragment() {
     private fun onMenuItemClickListener(item: MenuItem) =
         when (item.itemId) {
             R.id.contacts -> {
-                parentFragmentManager.commit {
-                    replace(R.id.nav_host_fragment, ContactsFragment())
-                    setReorderingAllowed(true)
-                    addToBackStack("ContactsFragment")
-                }
+                currenciesFragmentViewModel.openContactsScreen()
                 true
             }
             else -> false
@@ -96,22 +89,18 @@ class CurrenciesFragment : Fragment() {
         with(binding) {
             swiperefresh.setOnRefreshListener {
                 currenciesFragmentViewModel.getCurrencies()
-                if(recyclerView.adapter?.itemCount != 0) {
+                if (recyclerView.adapter?.itemCount != 0) {
                     swiperefresh.isRefreshing = false
                 }
             }
             goToConverter.setOnClickListener { showConverterScreen() }
             topAppBar.setOnMenuItemClickListener { onMenuItemClickListener(it) }
-            topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+            //topAppBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
         }
     }
 
     private fun showConverterScreen() {
-        parentFragmentManager.commit {
-            replace(R.id.nav_host_fragment, ConverterFragment())
-            setReorderingAllowed(true)
-            addToBackStack("ConverterFragment")
-        }
+        currenciesFragmentViewModel.openConverterScreen()
     }
 
     private fun showToast(message: String) {
