@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorOnPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_item"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:navigationIconTint="?attr/colorOnSecondary"
+        app:title="@string/currencies_converter"
+        app:titleTextColor="?attr/colorOnSecondary" />
+
+    <TextView
+        android:id="@+id/mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/item_price_label"
+        style="@style/Widget.Inventory.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="?attr/colorSecondaryVariant"
+        app:boxStrokeColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/mark"
+        app:layout_constraintEnd_toEndOf="@+id/mark"
+        app:layout_constraintStart_toStartOf="@+id/mark"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
+        app:suffixTextColor="?attr/colorSecondaryVariant">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/field_of_rub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:textColor="?attr/colorOnSecondary"
+            android:textColorHighlight="?attr/colorSecondaryVariant"
+            app:suffixTextColor="?attr/colorSecondaryVariant" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/change_converter_type"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_import_export_24"
+        app:layout_constraintBottom_toTopOf="@+id/target_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_price_label"
+        android:contentDescription="@string/change_type_convert" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/target_value"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textColorHint="?attr/colorSecondaryVariant"
+        app:boxStrokeColor="?attr/colorOnSecondary"
+        app:counterTextColor="?attr/colorSecondaryVariant"
+        app:layout_constraintEnd_toEndOf="@+id/mark"
+        app:layout_constraintStart_toStartOf="@+id/mark"
+        app:layout_constraintTop_toBottomOf="@+id/item_price_label"
+        app:suffixTextColor="?attr/colorSecondaryVariant">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/field_of_target_valute"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:textColor="?attr/colorOnSecondary"
+            android:textColorHighlight="?attr/colorSecondaryVariant" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/result_value"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_condensed_bold"
+            android:text="@string/result"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="18sp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="@+id/target_value"
+            app:layout_constraintTop_toBottomOf="@+id/target_value">
+        </TextView>
+
+        <TextView
+            android:id="@+id/result_value_show"
+            style="@style/toResult"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:text="@string/result"
+            android:fontFamily="@font/roboto_condensed_bold"
+            android:maxLines="7"
+            android:layout_marginTop="54dp"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/target_value"
+            app:layout_constraintBottom_toBottomOf="@+id/result_value">
+        </TextView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/convert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="?attr/colorSecondary"
+        android:src="@drawable/ic_baseline_point_of_sale_24"
+        app:elevation="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/to_convert" />
+</androidx.constraintlayout.widget.ConstraintLayout>

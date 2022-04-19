@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/corners.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/custom_shadow_layout.xml" value="0.403125" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_alarm_on_24.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.142" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_autorenew_24.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_currency_ruble_24.xml" value="0.142" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_error_outline_24.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_error_outline_24_2.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_import_export_24.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_baseline_point_of_sale_24.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/ic_launcher_background.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/rounded_corner.xml" value="0.16203703703703703" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/rounded_corners.xml" value="0.25" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/drawable/splash_screen.xml" value="0.1" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout-land/converter_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/contacts_fragment.xml" value="0.46296296296296297" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/contacts_layout.xml" value="0.3768518518518518" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/converter_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/corners.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/currencies_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/currencies_item_view_holder.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/item_currencies_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/layout/wwerwr.xml" value="0.33" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/menu-v26/menu_item.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/menu/menu_item.xml" value="0.33" />
+        <entry key="..\:/Users/Denis/AndroidStudioProjects/ConvertertoRUB/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.169" />
+        <entry key="..\:/Users/Denis/AppData/Local/Android/Sdk/platforms/android-32/data/res/drawable/btn_dialog.xml" value="0.32407407407407407" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

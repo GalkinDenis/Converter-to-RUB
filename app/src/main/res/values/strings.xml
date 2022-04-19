@@ -1,0 +1,109 @@
+<resources>
+    <!-- APP -->
+    <string name="app_name">Конвертер валют</string>
+
+    <!-- PREFERENCES -->
+    <string name="current_date">current_date</string>
+
+    <!-- CURRENCIES FRAGMENT -->
+    <string name="code">Код</string>
+    <string name="currency">Валюта</string>
+    <string name="value">Курс</string>
+    <string name="change">Изменение</string>
+    <string name="currencies">Курсы валют в рублях</string>
+    <string name="plus_and_rub">+%1$s</string>
+    <string name="rub">%1$s RUB</string>
+    <string name="last_date_update">Последнее обновление: %1$s</string>
+    <string name="go_to_converter">Перейти на экран конвертера валют</string>
+
+    <string name="load_currencies_error">Проверьте подключение к интернету,
+        возможно дынные по курсам были обновлены.</string>
+    <string name="show_currencies_error">При попытке загрузить данные
+        по курсам валют, произошла ошибка.</string>
+    <string name="save_currencies_error">При попытке сохранить данные
+        по курсам валют, произошла ошибка.</string>
+
+    <!-- IS ON LAIN -->
+    <string name="Internet">Internet</string>
+    <string name="TRANSPORT_CELLULAR">NetworkCapabilities.TRANSPORT_CELLULAR</string>
+    <string name="TRANSPORT_WIFI">NetworkCapabilities.TRANSPORT_WIFI</string>
+    <string name="TRANSPORT_ETHERNET">NetworkCapabilities.TRANSPORT_ETHERNET</string>
+
+    <!-- CURRENCIES CONVERTER -->
+    <string name="change_type_convert">Изменить тип конвертации</string>
+    <string name="to_convert">Конвертировать</string>
+    <string name="currencies_converter">Конвертер валют</string>
+    <string name="enter_rub_value">Введите значение в рублях</string>
+    <string name="rubles">RUB</string>
+    <string name="select_target_currency_name">Конвертировать в</string>
+    <string name="convert">Конвертировать</string>
+    <string name="result">Результат:</string>
+    <string name="some_fields_is_empty">Не все поля заполненны</string>
+    <string name="other_currency">Введите сумму в валюте</string>
+    <string name="convert_from">Конвертировать в рубли из</string>
+    <string name="rub_currency">Введите сумму в рублях</string>
+    <string name="convert_to">Конвертировать в</string>
+    <string name="dash">-</string>
+
+    <!-- CBRF API -->
+    <string name="end_point">daily_json.js</string>
+
+    <!-- CONTACTS FRAGMENT -->
+    <string name="my_contacts">Контакты</string>
+    <string name="phone_number">Телефон: +79231078819</string>
+    <string name="email">Почта: denisgalkin287@gmail.com</string>
+    <string name="telegram">Telegram: @Denis_Galkin_1990</string>
+    <string name="art">Logo: instagram.com/irinabush.art</string>
+    <string name="reference_on_irinabush_instagram">https://www.instagram.com/irinabush.art/</string>
+    <string name="sources">GitHub</string>
+
+    <!-- ACTION BAR MENU -->
+    <string name="contacts">Контакты</string>
+    <string name="source_code">Исходный код</string>
+
+    <!-- VIEW MODEL FACTORY -->
+    <string name="undefined_model_class">Undefined model class</string>
+    <string name="reference_on_my_github">https://github.com/GalkinDenis/Converter-to-RUB/tree/master</string>
+
+    <!-- ПУНКТЫ МЕНЮ ВЫБОРА ЦЕЛЕВОЙ ВАЛЮТЫ ДЛЯ КОНВЕРТАЦИИ -->
+    <string-array name="currencies_name_list">
+        <item>Австралийский доллар</item>
+        <item>Азербайджанский манат</item>
+        <item>Фунт стерлингов Соединенного королевства</item>
+        <item>Армянских драмов</item>
+        <item>Белорусский рубль</item>
+        <item>Болгарский лев</item>
+        <item>Бразильский реал</item>
+        <item>Венгерских форинтов</item>
+        <item>Гонконгских долларов</item>
+        <item>Датская крона</item>
+        <item>Доллар США</item>
+        <item>Евро</item>
+        <item>Индийских рупий</item>
+        <item>Казахстанских тенге</item>
+        <item>Канадский доллар</item>
+        <item>Киргизских сомов</item>
+        <item>Китайский юань</item>
+        <item>Молдавских леев</item>
+        <item>Норвежских крон</item>
+        <item>Польский злотый</item>
+        <item>Румынский лей</item>
+        <item>СДР (специальные права заимствования)</item>
+        <item>Сингапурский доллар</item>
+        <item>Таджикских сомони</item>
+        <item>Турецких лир</item>
+        <item>Новый туркменский манат</item>
+        <item>Узбекских сумов</item>
+        <item>Украинских гривен</item>
+        <item>Чешских крон</item>
+        <item>Шведских крон</item>
+        <item>Швейцарский франк</item>
+        <item>Южноафриканских рэндов</item>
+        <item>Вон Республики Корея</item>
+        <item>Японских иен</item>
+    </string-array>
+
+</resources>
+
+
+
