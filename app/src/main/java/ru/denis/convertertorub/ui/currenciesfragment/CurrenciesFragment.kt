@@ -1,40 +1,30 @@
 package ru.denis.convertertorub.ui.currenciesfragment
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
-import ru.denis.convertertorub.di.App
 import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
-import javax.inject.Inject
 import android.view.*
 import androidx.fragment.app.commit
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
 
+@AndroidEntryPoint
 class CurrenciesFragment : Fragment() {
 
     private var currenciesAdapter: CurrenciesAdapter? = null
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val currenciesFragmentViewModel by viewModels<CurrenciesFragmentViewModel> { viewModelFactory }
+    private val currenciesFragmentViewModel by viewModels<CurrenciesFragmentViewModel>()
 
     private var _binding: CurrenciesFragmentBinding? = null
     private val binding get() = _binding!!
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (requireActivity().application as App)
-            .appComponent.injectCurrenciesFragment(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

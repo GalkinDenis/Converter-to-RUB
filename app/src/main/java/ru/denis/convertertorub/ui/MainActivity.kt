@@ -2,10 +2,12 @@ package ru.denis.convertertorub.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.databinding.ActivityMainBinding
 import ru.denis.convertertorub.ui.currenciesfragment.CurrenciesFragment
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

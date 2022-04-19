@@ -1,6 +1,7 @@
 package ru.denis.convertertorub.data.datasources.localdatasource
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.denis.convertertorub.R
@@ -12,8 +13,8 @@ import ru.denis.convertertorub.data.datasources.database.CurrencyEntityTable
 import ru.denis.convertertorub.data.model.CurrencyEntity
 
 class LocalDataSourceImpl @Inject constructor(
-    private val context: Context,
-    private var dao: ItemDao,
+    @ApplicationContext private val context: Context,
+    private val dao: ItemDao,
     private val preferenceDatasource: PreferenceDatasource
 ) : LocalDataSource {
 
