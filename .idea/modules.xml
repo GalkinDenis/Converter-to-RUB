@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Converter_to_RUB.iml" filepath="$PROJECT_DIR$/.idea/modules/Converter_to_RUB.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.unitTest.iml" />
     </modules>
   </component>
 </project>

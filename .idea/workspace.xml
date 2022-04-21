@@ -18,30 +18,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f01c417-a187-40c8-af55-08c33f153345" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Converter_to_RUB.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Converter_to_RUB.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Converter_to_RUB.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/ErrorType.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/ResourcesStrings.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/SingleLiveEvent.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/baseviewmodels/BaseConverterViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/baseviewmodels/BaseConverterViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/baseviewmodels/BaseListOfCurrenciesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/baseviewmodels/BaseListOfCurrenciesViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/converterfragmentviewmodel/ConverterFragmentViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/converterfragmentviewmodel/ConverterFragmentViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/currenciesfragmentviewmodel/CurrenciesFragmentViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/presentation/currenciesfragmentviewmodel/CurrenciesFragmentViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/contactsfragment/ContactsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/contactsfragment/ContactsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/converterfragment/ConverterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/converterfragment/ConverterFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/currenciesfragment/CurrenciesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ru/denis/convertertorub/ui/currenciesfragment/CurrenciesFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
