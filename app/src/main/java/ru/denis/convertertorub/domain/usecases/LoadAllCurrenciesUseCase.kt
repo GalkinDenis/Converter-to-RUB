@@ -1,10 +1,15 @@
 package ru.denis.convertertorub.domain.usecases
 
+import kotlinx.coroutines.CoroutineDispatcher
+import ru.denis.convertertorub.di.qualifiers.IoDispatcher
+import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 import ru.denis.convertertorub.domain.repository.CurrenciesRepository
+import ru.denis.convertertorub.domain.usecases.baseusecases.FlowSharedUseCases
 import javax.inject.Inject
 
 class LoadAllCurrenciesUseCase @Inject constructor(
+    @IoDispatcher private val dispatcher: CoroutineDispatcher,
     private val currenciesRepository: CurrenciesRepository
-) {
-     suspend operator fun invoke() = currenciesRepository.loadAllCurrencies()
+) : FlowSharedUseCases<ReadyCurrencies>(dispatcher) {
+    override suspend fun execute() = currenciesRepository.loadAllCurrencies()
 }

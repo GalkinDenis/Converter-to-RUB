@@ -3,35 +3,35 @@ package ru.denis.convertertorub.presentation.baseviewmodels
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import ru.denis.convertertorub.presentation.ErrorType
+import ru.denis.convertertorub.data.model.ErrorType
 import ru.denis.convertertorub.presentation.SingleLiveEvent
 
 abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
 
-    private val _getListOfCurrencies: MutableStateFlow<A?> = MutableStateFlow(null)
-    fun getListOfCurrencies(): StateFlow<A?> = _getListOfCurrencies
+    private val _totalListOfCurrencies: MutableStateFlow<A?> = MutableStateFlow(null)
+    fun totalListOfCurrencies(): StateFlow<A?> = _totalListOfCurrencies
 
-    protected var getListOfCurrencies: A
-        get() = _getListOfCurrencies.value
+    protected var totalListOfCurrencies: A
+        get() = _totalListOfCurrencies.value
             ?: throw UninitializedPropertyAccessException()
         set(value) {
-            if (_getListOfCurrencies.value == value) {
-                _getListOfCurrencies.value = null
+            if (_totalListOfCurrencies.value == value) {
+                _totalListOfCurrencies.value = null
             }
-            _getListOfCurrencies.value = value
+            _totalListOfCurrencies.value = value
         }
 
-    private val _errorHandler = SingleLiveEvent<ErrorType?>()
-    fun showError(): SingleLiveEvent<ErrorType?> = _errorHandler
+    private val _errorType = SingleLiveEvent<ErrorType?>()
+    fun showError(): SingleLiveEvent<ErrorType?> = _errorType
 
-    protected var errorHandler: ErrorType
-        get() = _errorHandler.value
+    protected var errorType: ErrorType
+        get() = _errorType.value
             ?: throw UninitializedPropertyAccessException()
         set(value) {
-            if (_errorHandler.value == value) {
-                _errorHandler.value = null
+            if (_errorType.value == value) {
+                _errorType.value = null
             }
-            _errorHandler.value = value
+            _errorType.value = value
         }
 
     private val _currentDate: MutableStateFlow<String?> = MutableStateFlow("")

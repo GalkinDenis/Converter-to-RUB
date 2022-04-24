@@ -39,3 +39,14 @@ fun CurrencyEntityTable.toReadyCurrencies(): ReadyCurrencies {
     )
 }
 
+fun ReadyCurrencies.readyCurrenciesToTableCurrencies(): CurrencyEntityTable {
+    return CurrencyEntityTable(
+        _ID = this._ID,
+        numCode = this.numCode,
+        charCode = this.charCode,
+        name = this.name,
+        value = this.value,
+        difference = this.difference
+    )
+}
+

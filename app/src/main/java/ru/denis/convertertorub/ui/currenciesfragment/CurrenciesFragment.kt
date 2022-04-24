@@ -66,7 +66,7 @@ class CurrenciesFragment : Fragment() {
         with(currenciesFragmentViewModel) {
 
             lifecycleScope.launchWhenStarted {
-                getListOfCurrencies().collect { listOfCurrencies ->
+                totalListOfCurrencies().collect { listOfCurrencies ->
                     listOfCurrencies?.let { list ->
                         currenciesAdapter?.submitList(list)
                     }
