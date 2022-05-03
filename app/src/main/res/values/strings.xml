@@ -18,8 +18,13 @@
 
     <string name="load_currencies_error">Проверьте подключение к интернету,
         возможно, курсы валют обновились.</string>
-    <string name="show_currencies_error">При попытке загрузить курсы валют, произошла ошибка.</string>
-    <string name="save_currencies_error">При попытке сохранить курсы валют, произошла ошибка.</string>
+    <string name="no_bd_connection">Отсутствует соединение с базой данных.</string>
+    <string name="forbidden">При загрузке произшла ошибка,
+        доступ запрещен.</string>
+    <string name="not_found">При загрузке произшла ошибка,
+        странница не найдена.</string>
+    <string name="unknown">При загрузке произшла ошибка,
+        неизвестная ошибка.</string>
 
     <!-- IS ON LAIN -->
     <string name="Internet">Internet</string>

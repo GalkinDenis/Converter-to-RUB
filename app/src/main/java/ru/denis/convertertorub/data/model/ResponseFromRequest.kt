@@ -2,6 +2,7 @@ package ru.denis.convertertorub.data.model
 
 import retrofit2.Response
 import ru.denis.convertertorub.domain.entities.DirtyCurrencies
+import ru.denis.convertertorub.domain.entities.ErrorType
 import ru.denis.convertertorub.domain.entities.ResponseFromRequest
 
 fun Response<CurrenciesEntity>.toDirtyCurrencies(): ResponseFromRequest {
@@ -15,7 +16,6 @@ fun Response<CurrenciesEntity>.toDirtyCurrencies(): ResponseFromRequest {
         )
     } else {
         val errorType = when (this.code()) {
-            401 -> ErrorType.Unauthorized
             403 -> ErrorType.Forbidden
             404 -> ErrorType.NotFound
             else -> ErrorType.Unknown

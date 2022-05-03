@@ -1,9 +1,10 @@
 package ru.denis.convertertorub.presentation.baseviewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import ru.denis.convertertorub.data.model.ErrorType
+import ru.denis.convertertorub.domain.entities.ErrorType
 import ru.denis.convertertorub.presentation.SingleLiveEvent
 
 abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
@@ -32,6 +33,10 @@ abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
                 _errorType.value = null
             }
             _errorType.value = value
+            Log.e(
+                "CurrenciesException",
+                "ResponseFromRequest.Error: $value"
+            )
         }
 
     private val _currentDate: MutableStateFlow<String?> = MutableStateFlow("")

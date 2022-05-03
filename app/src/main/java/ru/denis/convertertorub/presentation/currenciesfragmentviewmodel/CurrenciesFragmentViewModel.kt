@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import ru.denis.convertertorub.domain.entities.ErrorType
 import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 import ru.denis.convertertorub.domain.entities.ResponseFromRequest
 import ru.denis.convertertorub.domain.usecases.*
@@ -13,6 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CurrenciesFragmentViewModel @Inject constructor(
+    private val getNetWorkStatusUseCase: GetNetWorkStatusUseCase,
     private val getDirtyCurrenciesUseCase: GetDirtyCurrenciesUseCase,
     private val loadAllCurrenciesUseCase: LoadAllCurrenciesUseCase,
     private val getSavedDataUseCase: GetSavedDataUseCase,
@@ -21,7 +23,10 @@ class CurrenciesFragmentViewModel @Inject constructor(
 ) : BaseListOfCurrenciesViewModel<List<ReadyCurrencies>>() {
 
     private val getCurrenciesExceptionHandler = CoroutineExceptionHandler { context, exception ->
-        Log.e("CurrenciesExceptionHandler", "$context: $exception")
+        Log.e(
+            "CurrenciesException",
+            "getCurrenciesExceptionHandler: $context: $exception"
+        )
     }
 
     init {
@@ -32,14 +37,24 @@ class CurrenciesFragmentViewModel @Inject constructor(
     private fun loadCurrencies() {
         viewModelScope.launch {
             loadAllCurrenciesUseCase()
+                .catch { errorType = ErrorType.NoBDConnection }
                 .collect { listOfCurrencies ->
                     totalListOfCurrencies = listOfCurrencies
                 }
         }
     }
 
+    private suspend fun checkNetWorkStatus() =
+        if (getNetWorkStatusUseCase()) {
+            true
+        } else {
+            errorType = ErrorType.NoInternetConnection
+            false
+        }
+
     private fun getDirtyCurrencies() {
         viewModelScope.launch(getCurrenciesExceptionHandler) {
+            if (!checkNetWorkStatus()) return@launch
             when (val dirtyCurrencies = getDirtyCurrenciesUseCase()) {
                 is ResponseFromRequest.Success -> {
                     val date = dirtyCurrencies.timeStamp

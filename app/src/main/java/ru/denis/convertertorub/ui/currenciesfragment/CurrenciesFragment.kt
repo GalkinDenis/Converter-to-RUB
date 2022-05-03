@@ -6,13 +6,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
-import ru.denis.convertertorub.presentation.ErrorType
 import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
 import android.view.*
 import androidx.fragment.app.commit
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
+import ru.denis.convertertorub.domain.entities.ErrorType
+import ru.denis.convertertorub.domain.entities.getMessage
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
 
@@ -83,9 +84,11 @@ class CurrenciesFragment : Fragment() {
             showError().observe(viewLifecycleOwner) { errorType ->
                 binding.swiperefresh.isRefreshing = false
                 when (errorType) {
-                    ErrorType.GET_ERROR -> showToast(getString(R.string.show_currencies_error))
-                    ErrorType.LOAD_ERROR -> showToast(getString(R.string.load_currencies_error))
-                    ErrorType.INSERT_ERROR -> showToast(getString(R.string.save_currencies_error))
+                    ErrorType.NoBDConnection -> showToast(errorType.getMessage(requireContext()))
+                    ErrorType.NoInternetConnection -> showToast(errorType.getMessage(requireContext()))
+                    ErrorType.Forbidden -> showToast(errorType.getMessage(requireContext()))
+                    ErrorType.NotFound ->showToast(errorType.getMessage(requireContext()))
+                    ErrorType.Unknown -> showToast(errorType.getMessage(requireContext()))
                     else -> return@observe
                 }
             }
