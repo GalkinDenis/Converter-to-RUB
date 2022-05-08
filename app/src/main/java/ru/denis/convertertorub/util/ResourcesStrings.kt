@@ -1,4 +1,4 @@
-package ru.denis.convertertorub.presentation
+package ru.denis.convertertorub.util
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext

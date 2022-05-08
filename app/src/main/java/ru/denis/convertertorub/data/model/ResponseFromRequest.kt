@@ -2,8 +2,8 @@ package ru.denis.convertertorub.data.model
 
 import retrofit2.Response
 import ru.denis.convertertorub.domain.entities.DirtyCurrencies
-import ru.denis.convertertorub.domain.entities.ErrorType
 import ru.denis.convertertorub.domain.entities.ResponseFromRequest
+import ru.denis.convertertorub.util.ErrorType
 
 fun Response<CurrenciesEntity>.toDirtyCurrencies(): ResponseFromRequest {
     return if (this.isSuccessful) {

@@ -1,5 +1,7 @@
 package ru.denis.convertertorub.domain.entities
 
+import ru.denis.convertertorub.util.ErrorType
+
 sealed class ResponseFromRequest {
     data class Success(
         val timeStamp: String,

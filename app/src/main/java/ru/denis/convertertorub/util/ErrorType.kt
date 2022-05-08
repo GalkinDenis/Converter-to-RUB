@@ -1,4 +1,4 @@
-package ru.denis.convertertorub.domain.entities
+package ru.denis.convertertorub.util
 
 import android.content.Context
 import ru.denis.convertertorub.R

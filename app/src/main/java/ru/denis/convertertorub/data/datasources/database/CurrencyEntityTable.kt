@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import ru.denis.convertertorub.domain.entities.ReadyCurrencies
+import ru.denis.convertertorub.presentation.converterfragmentviewmodel.RUB
 
 @Entity(tableName = "currency_entity")
 data class CurrencyEntityTable(
@@ -34,8 +35,8 @@ fun CurrencyEntityTable.toReadyCurrencies(): ReadyCurrencies {
         numCode = this.numCode,
         charCode = this.charCode,
         name = this.name,
-        value = this.value,
-        difference = this.difference
+        value = this.value + RUB,
+        difference = this.difference + RUB
     )
 }
 

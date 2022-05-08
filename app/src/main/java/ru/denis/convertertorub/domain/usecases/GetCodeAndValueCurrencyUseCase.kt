@@ -10,7 +10,7 @@ import javax.inject.Inject
 class GetCodeAndValueCurrencyUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
     private val currenciesRepository: CurrenciesRepository
-): InOutSharedUseCase<String, CodeAndValueCurrency>(dispatcher) {
+) : InOutSharedUseCase<String, CodeAndValueCurrency>(dispatcher) {
     override suspend fun execute(parameter: String) =
         currenciesRepository.getCodeAndValueCurrency(parameter)
 }

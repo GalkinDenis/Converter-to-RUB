@@ -53,10 +53,8 @@ class SaveCurrenciesUseCase @Inject constructor(
     }
 
     private fun trimSize(value: Double) =
-        context.getString(
-            R.string.rub,
-            value
-                .toBigDecimal()
-                .setScale(2, RoundingMode.UP)
-        )
+        value
+            .toBigDecimal()
+            .setScale(2, RoundingMode.UP).toString()
+
 }

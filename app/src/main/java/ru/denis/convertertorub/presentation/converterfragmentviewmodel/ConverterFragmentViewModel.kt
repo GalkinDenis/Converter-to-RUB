@@ -1,5 +1,6 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -9,6 +10,8 @@ import ru.denis.convertertorub.domain.usecases.GetResourcesStringsUseCase
 import ru.denis.convertertorub.presentation.baseviewmodels.BaseConverterViewModel
 import java.math.RoundingMode
 import javax.inject.Inject
+
+const val RUB = " RUB"
 
 @HiltViewModel
 class ConverterFragmentViewModel @Inject constructor(
@@ -27,32 +30,36 @@ class ConverterFragmentViewModel @Inject constructor(
     }
 
     fun changeTypeConverter(fieldOfTargetCurrency: String) {
-        convertFromRubles = !convertFromRubles
-        when (convertFromRubles) {
-            false -> {
-                aTypeCurrencyInFirstField = getResourcesStringsUseCase().getOtherCurrency()
-                convertToOrFromState = getResourcesStringsUseCase().getConvertFrom()
+        viewModelScope.launch {
+            convertFromRubles = !convertFromRubles
+            when (convertFromRubles) {
+                false -> {
+                    typeCurrencyInFirstField = getResourcesStringsUseCase().getOtherCurrency()
+                    convertToOrFromState = getResourcesStringsUseCase().getConvertFrom()
+                }
+                true -> {
+                    typeCurrencyInFirstField = getResourcesStringsUseCase().getRubCurrency()
+                    convertToOrFromState = getResourcesStringsUseCase().getConvertTo()
+                }
             }
-            true -> {
-                aTypeCurrencyInFirstField = getResourcesStringsUseCase().getRubCurrency()
-                convertToOrFromState = getResourcesStringsUseCase().getConvertTo()
+            when {
+                (convertFromRubles) -> suffixText = getResourcesStringsUseCase().getRubles()
+                fieldOfTargetCurrency.isBlank() && !convertFromRubles -> suffixText =
+                    getResourcesStringsUseCase().getDash()
+                fieldOfTargetCurrency.isNotBlank() && !convertFromRubles -> suffixText =
+                    codeAndValueCurrency.charCode
             }
-        }
-        when {
-            (convertFromRubles) -> suffixText = getResourcesStringsUseCase().getRubles()
-            fieldOfTargetCurrency.isBlank() && !convertFromRubles -> suffixText = getResourcesStringsUseCase().getDash()
-            fieldOfTargetCurrency.isNotBlank() && !convertFromRubles -> suffixText = codeAndValueCurrency.charCode
         }
     }
 
-    fun getCodeAndValueCurrency(fieldOfTargetCurrency: String) {
-        if(fieldOfTargetCurrency.isNotBlank()) {
-            viewModelScope.launch(converterCurrencyExceptionHandler) {
-                codeAndValueCurrency = getCodeAndValueCurrencyUseCase(fieldOfTargetCurrency)
-                if (!convertFromRubles) suffixText = codeAndValueCurrency.charCode
+        fun getCodeAndValueCurrency(fieldOfTargetCurrency: String) {
+            if (fieldOfTargetCurrency.isNotBlank()) {
+                viewModelScope.launch(converterCurrencyExceptionHandler) {
+                    codeAndValueCurrency = getCodeAndValueCurrencyUseCase(fieldOfTargetCurrency)
+                    if (!convertFromRubles) suffixText = codeAndValueCurrency.charCode
+                }
             }
         }
-    }
 
     fun convert(fieldOfValue: String) {
         viewModelScope.launch(converterCurrencyExceptionHandler) {
@@ -69,7 +76,7 @@ class ConverterFragmentViewModel @Inject constructor(
     ) {
         withContext(Dispatchers.IO) {
             divisionResult =
-                (fieldOfRub.toDouble() / charCodeAndValueCurrency.value.split(" ")[0].toDouble())
+                (fieldOfRub.toDouble() / charCodeAndValueCurrency.value.toDouble())
                     .toBigDecimal()
                     .setScale(2, RoundingMode.UP)
                     .toString() + " " + charCodeAndValueCurrency.charCode
@@ -78,14 +85,13 @@ class ConverterFragmentViewModel @Inject constructor(
 
     private suspend fun convertToRubles(
         fieldOfRub: String,
-        codeAndValueCurrency: CodeAndValueCurrency
+        charCodeAndValueCurrency: CodeAndValueCurrency
     ) {
         withContext(Dispatchers.IO) {
-            val valueWithType = codeAndValueCurrency.value.split(" ")
-            divisionResult = (fieldOfRub.toDouble() * valueWithType[0].toDouble())
+            divisionResult = (fieldOfRub.toDouble() * charCodeAndValueCurrency.value.toDouble())
                 .toBigDecimal()
                 .setScale(2, RoundingMode.UP)
-                .toString() + " " + valueWithType[1]
+                .toString() + " " + RUB
         }
     }
 

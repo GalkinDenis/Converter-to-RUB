@@ -5,11 +5,11 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import ru.denis.convertertorub.domain.entities.ErrorType
 import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 import ru.denis.convertertorub.domain.entities.ResponseFromRequest
 import ru.denis.convertertorub.domain.usecases.*
 import ru.denis.convertertorub.presentation.baseviewmodels.BaseListOfCurrenciesViewModel
+import ru.denis.convertertorub.util.ErrorType
 import javax.inject.Inject
 
 @HiltViewModel

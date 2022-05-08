@@ -3,7 +3,7 @@ package ru.denis.convertertorub.presentation.baseviewmodels
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import ru.denis.convertertorub.presentation.SingleLiveEvent
+import ru.denis.convertertorub.util.SingleLiveEvent
 
 abstract class BaseConverterViewModel<A> : ViewModel() {
 
@@ -33,15 +33,15 @@ abstract class BaseConverterViewModel<A> : ViewModel() {
 
     protected var convertFromRubles: Boolean = false
 
-    private val _aTypeCurrencyInFirstField: MutableStateFlow<String> = MutableStateFlow("")
-    fun aTypeCurrencyInFirstField(): StateFlow<String> = _aTypeCurrencyInFirstField
-    protected var aTypeCurrencyInFirstField: String
-        get() = _aTypeCurrencyInFirstField.value
+    private val _typeCurrencyInFirstField: MutableStateFlow<String> = MutableStateFlow("")
+    fun typeCurrencyInFirstField(): StateFlow<String> = _typeCurrencyInFirstField
+    protected var typeCurrencyInFirstField: String
+        get() = _typeCurrencyInFirstField.value
         set(value) {
-            if (_aTypeCurrencyInFirstField.value == value) {
-                _aTypeCurrencyInFirstField.value = ""
+            if (_typeCurrencyInFirstField.value == value) {
+                _typeCurrencyInFirstField.value = ""
             }
-            _aTypeCurrencyInFirstField.value = value
+            _typeCurrencyInFirstField.value = value
         }
 
     private val _convertToOrFromState: MutableStateFlow<String> = MutableStateFlow("")

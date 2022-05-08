@@ -1,12 +1,14 @@
 package ru.denis.convertertorub.domain.usecases
 
-import ru.denis.convertertorub.presentation.ResourcesStrings
+import kotlinx.coroutines.CoroutineDispatcher
+import ru.denis.convertertorub.di.qualifiers.IoDispatcher
+import ru.denis.convertertorub.domain.usecases.baseusecases.OutSharedUseCase
+import ru.denis.convertertorub.util.ResourcesStrings
 import javax.inject.Inject
 
 class GetResourcesStringsUseCase @Inject constructor(
+    @IoDispatcher coroutineDispatcher: CoroutineDispatcher,
     private val resourcesStrings: ResourcesStrings
-) {
-
-     operator fun invoke() = resourcesStrings
-
+) : OutSharedUseCase<ResourcesStrings>(coroutineDispatcher) {
+    override suspend fun execute() = resourcesStrings
 }

@@ -12,7 +12,6 @@
     <string name="change">Изменение</string>
     <string name="currencies">Курсы валют в рублях</string>
     <string name="plus_and_rub">+%1$s</string>
-    <string name="rub">%1$s RUB</string>
     <string name="last_date_update">Последнее обновление: %1$s</string>
     <string name="go_to_converter">Перейти на экран конвертера валют</string>
 

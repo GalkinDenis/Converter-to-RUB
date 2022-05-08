@@ -12,10 +12,10 @@ import androidx.fragment.app.commit
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.databinding.CurrenciesFragmentBinding
-import ru.denis.convertertorub.domain.entities.ErrorType
-import ru.denis.convertertorub.domain.entities.getMessage
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 import ru.denis.convertertorub.ui.converterfragment.ConverterFragment
+import ru.denis.convertertorub.util.ErrorType
+import ru.denis.convertertorub.util.getMessage
 
 @AndroidEntryPoint
 class CurrenciesFragment : Fragment() {

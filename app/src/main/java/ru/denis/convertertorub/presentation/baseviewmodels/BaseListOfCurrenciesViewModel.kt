@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import ru.denis.convertertorub.domain.entities.ErrorType
-import ru.denis.convertertorub.presentation.SingleLiveEvent
+import ru.denis.convertertorub.util.ErrorType
+import ru.denis.convertertorub.util.SingleLiveEvent
 
 abstract class BaseListOfCurrenciesViewModel<A> : ViewModel() {
 

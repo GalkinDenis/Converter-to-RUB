@@ -1,6 +1,5 @@
 package ru.denis.convertertorub.ui.converterfragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,20 +7,16 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import ru.denis.convertertorub.R
-import ru.denis.convertertorub.di.App
 import ru.denis.convertertorub.presentation.converterfragmentviewmodel.ConverterFragmentViewModel
-import javax.inject.Inject
 import android.view.MenuItem
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.commit
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.denis.convertertorub.databinding.ConverterFragmentBinding
-import ru.denis.convertertorub.presentation.currenciesfragmentviewmodel.CurrenciesFragmentViewModel
 import ru.denis.convertertorub.ui.contactsfragment.ContactsFragment
 
 @AndroidEntryPoint
@@ -52,7 +47,7 @@ class ConverterFragment : Fragment() {
         with(converterFragmentViewModel) {
 
             lifecycleScope.launchWhenStarted {
-                aTypeCurrencyInFirstField().collect { result ->
+                typeCurrencyInFirstField().collect { result ->
                     binding.itemPriceLabel.hint = result
                 }
             }
@@ -78,7 +73,7 @@ class ConverterFragment : Fragment() {
             }
 
             showError().observe(viewLifecycleOwner) {
-                //showToast(getString(R.string.show_currencies_error))
+                showToast(getString(R.string.no_bd_connection))
             }
         }
     }
