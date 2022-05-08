@@ -25,7 +25,7 @@ class CurrenciesFragmentViewModel @Inject constructor(
     private val getCurrenciesExceptionHandler = CoroutineExceptionHandler { context, exception ->
         Log.e(
             "CurrenciesException",
-            "getCurrenciesExceptionHandler: $context: $exception"
+            "getCurrenciesExceptionHandler: Context: $context; Exception: $exception"
         )
     }
 
@@ -54,14 +54,17 @@ class CurrenciesFragmentViewModel @Inject constructor(
 
     private fun getDirtyCurrencies() {
         viewModelScope.launch(getCurrenciesExceptionHandler) {
+            val oldDate = getSavedDataUseCase()
+            currentDate = oldDate
+
             if (!checkNetWorkStatus()) return@launch
             when (val dirtyCurrencies = getDirtyCurrenciesUseCase()) {
                 is ResponseFromRequest.Success -> {
-                    val date = dirtyCurrencies.timeStamp
-                    when (date != getSavedDataUseCase()) {
+                    val newDate = dirtyCurrencies.timeStamp
+                    when (newDate != oldDate) {
                         true -> {
-                            saveDateUseCase(date)
-                            currentDate = date
+                            saveDateUseCase(newDate)
+                            currentDate = newDate
                             saveCurrenciesUseCase(dirtyCurrencies.currenciesList)
                         }
                         false -> return@launch

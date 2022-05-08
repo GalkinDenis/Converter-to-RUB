@@ -14,7 +14,7 @@ class NetWorkUtils @Inject constructor(
 
     private fun checkTypeOfTransport(capabilities: NetworkCapabilities, typeConnection: Int): Boolean {
         return if (capabilities.hasTransport(typeConnection)) {
-            Log.i(context.getString(R.string.Internet), typeConnection.toString())
+            Log.e(context.getString(R.string.Internet), typeConnection.toString())
             true
         } else {
             false

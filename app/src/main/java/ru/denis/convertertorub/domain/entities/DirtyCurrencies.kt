@@ -14,6 +14,6 @@ data class DirtyCurrencies(
     val CharCode: String,
     val Nominal: Int,
     val Name: String,
-    var Value: Double,
-    var Previous: Double
+    val Value: Double,
+    val Previous: Double
 )

@@ -30,7 +30,7 @@ fun timeFormat(currentTime: String?): String {
         ?.get(0)
         ?.split("-")
         ?.reversed()
-        .toString()
+        ?.joinToString(separator="-", prefix="", postfix="") ?: ""
 }
 
 fun CurrencyEntity.toDirtyCurrencies(): DirtyCurrencies {

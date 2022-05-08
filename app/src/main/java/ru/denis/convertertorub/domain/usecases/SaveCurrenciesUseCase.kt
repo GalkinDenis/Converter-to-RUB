@@ -27,17 +27,21 @@ class SaveCurrenciesUseCase @Inject constructor(
     }
 
     private fun formatCurrencies(currency: DirtyCurrencies): ReadyCurrencies {
-        if (currency.Nominal > 1) {
-            currency.Value /= currency.Nominal
-            currency.Previous /= currency.Nominal
+        var valueValue = currency.Value
+        var valuePrevious = currency.Previous
+        val valueNominal = currency.Nominal
+
+        if (valueNominal > 1) {
+            valueValue /= valueNominal
+            valuePrevious /= valueNominal
         }
         return ReadyCurrencies(
             _ID = currency.ID,
             numCode = currency.NumCode,
             charCode = currency.CharCode,
             name = currency.Name,
-            value = trimSize(currency.Value),
-            difference = getPrefixValue(currency.Value - currency.Previous)
+            value = trimSize(valueValue),
+            difference = getPrefixValue(valueValue - valuePrevious)
         )
     }
 

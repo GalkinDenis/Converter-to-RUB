@@ -78,7 +78,7 @@ class ConverterFragment : Fragment() {
             }
 
             showError().observe(viewLifecycleOwner) {
-                showToast(getString(R.string.show_currencies_error))
+                //showToast(getString(R.string.show_currencies_error))
             }
         }
     }
