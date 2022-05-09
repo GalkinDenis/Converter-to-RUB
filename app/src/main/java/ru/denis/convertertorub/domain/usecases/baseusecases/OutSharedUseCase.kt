@@ -12,5 +12,4 @@ abstract class OutSharedUseCase<out R>(
         }
 
     protected abstract suspend fun execute(): R
-
 }

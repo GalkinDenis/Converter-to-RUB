@@ -1,9 +1,9 @@
 package ru.denis.convertertorub.presentation.converterfragmentviewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import ru.denis.convertertorub.di.qualifiers.DefaultDispatcher
 import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
 import ru.denis.convertertorub.domain.usecases.GetCodeAndValueCurrencyUseCase
 import ru.denis.convertertorub.domain.usecases.GetResourcesStringsUseCase
@@ -15,6 +15,7 @@ const val RUB = " RUB"
 
 @HiltViewModel
 class ConverterFragmentViewModel @Inject constructor(
+    @DefaultDispatcher private val coroutineDispatcher: CoroutineDispatcher,
     private val getCodeAndValueCurrencyUseCase: GetCodeAndValueCurrencyUseCase,
     private val getResourcesStringsUseCase: GetResourcesStringsUseCase
 ) : BaseConverterViewModel<String>() {
@@ -30,7 +31,7 @@ class ConverterFragmentViewModel @Inject constructor(
     }
 
     fun changeTypeConverter(fieldOfTargetCurrency: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(converterCurrencyExceptionHandler) {
             convertFromRubles = !convertFromRubles
             when (convertFromRubles) {
                 false -> {
@@ -74,7 +75,7 @@ class ConverterFragmentViewModel @Inject constructor(
         fieldOfRub: String,
         charCodeAndValueCurrency: CodeAndValueCurrency
     ) {
-        withContext(Dispatchers.IO) {
+        withContext(coroutineDispatcher) {
             divisionResult =
                 (fieldOfRub.toDouble() / charCodeAndValueCurrency.value.toDouble())
                     .toBigDecimal()
@@ -87,7 +88,7 @@ class ConverterFragmentViewModel @Inject constructor(
         fieldOfRub: String,
         charCodeAndValueCurrency: CodeAndValueCurrency
     ) {
-        withContext(Dispatchers.IO) {
+        withContext(coroutineDispatcher) {
             divisionResult = (fieldOfRub.toDouble() * charCodeAndValueCurrency.value.toDouble())
                 .toBigDecimal()
                 .setScale(2, RoundingMode.UP)

@@ -7,6 +7,11 @@ plugins {
 }
 
 android {
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -40,8 +45,6 @@ android {
 
     kapt {
         correctErrorTypes true
-
-        generateStubs = true
     }
 }
 
@@ -52,9 +55,21 @@ dependencies {
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$junit_version"
-    androidTestImplementation "androidx.test.espresso:$espresso_core_version"
+
+    //Tests:
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit"
+    //JUnit 4 framework
+    testImplementation "junit:junit:$junit4"
+    //Robolectric environment
+    testImplementation "androidx.test:core:$testCore"
+    //Mockito framework
+    testImplementation "org.mockito:mockito-core:$mockito_framework"
+    //mockito-kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito"
+    //Mockk framework
+    testImplementation "io.mockk:mockk:$io_mockk"
 
     //Retrofit
     implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
