@@ -20,14 +20,14 @@ class ConverterFragmentViewModel @Inject constructor(
     private val getResourcesStringsUseCase: GetResourcesStringsUseCase
 ) : BaseConverterViewModel<String>() {
 
-    init {
-        changeTypeConverter("")
-    }
-
     private lateinit var codeAndValueCurrency: CodeAndValueCurrency
 
     private val converterCurrencyExceptionHandler = CoroutineExceptionHandler { _, error ->
         errorHandler = error
+    }
+
+    init {
+        changeTypeConverter("")
     }
 
     fun changeTypeConverter(fieldOfTargetCurrency: String) {
