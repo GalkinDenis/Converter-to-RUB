@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
+    id("com.shopify.testify")
 }
 
 android {
@@ -57,18 +58,22 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     //Tests:
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit"
-    //JUnit 4 framework
-    testImplementation "junit:junit:$junit4"
-    //Robolectric environment
-    testImplementation "androidx.test:core:$testCore"
-    //Mockito framework
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.test:rules:1.4.0"
+
+    //testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test"
+    //testImplementation "org.junit.jupiter:junit-jupiter-api:$junit"
+    //testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit"
+    //testImplementation "junit:junit:$junit4"
+    
+    //Robolectric
+    //testImplementation "androidx.test:core:$testCore"
+
+    //Mockito
     testImplementation "org.mockito:mockito-core:$mockito_framework"
-    //mockito-kotlin
     testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito"
-    //Mockk framework
     testImplementation "io.mockk:mockk:$io_mockk"
 
     //Retrofit
