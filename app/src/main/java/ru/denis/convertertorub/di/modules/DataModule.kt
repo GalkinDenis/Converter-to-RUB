@@ -34,7 +34,7 @@ object DataModule {
     @Provides
     fun provideDataBase(@ApplicationContext context: Context): CurrencyDataBase =
         Room.databaseBuilder(
-            context.applicationContext,
+            context,
             CurrencyDataBase::class.java,
             "CbRfApiDataBase.db"
         ).build()

@@ -15,5 +15,4 @@ interface ItemDao {
 
     @Query("SELECT CharCode, Value FROM currency_entity WHERE name = :nameItem")
     suspend fun getCodeAndValueCurrency(nameItem: String): CodeAndValueCurrencyEntity
-
 }

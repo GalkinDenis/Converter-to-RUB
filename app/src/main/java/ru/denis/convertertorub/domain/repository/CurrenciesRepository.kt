@@ -2,7 +2,6 @@ package ru.denis.convertertorub.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import ru.denis.convertertorub.domain.entities.CodeAndValueCurrency
-import ru.denis.convertertorub.domain.entities.DirtyCurrencies
 import ru.denis.convertertorub.domain.entities.ReadyCurrencies
 import ru.denis.convertertorub.domain.entities.ResponseFromRequest
 

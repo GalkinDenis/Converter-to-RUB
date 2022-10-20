@@ -31,23 +31,23 @@ data class CurrencyEntityTable(
 
 fun CurrencyEntityTable.toReadyCurrencies(): ReadyCurrencies {
     return ReadyCurrencies(
-        _ID = this._ID,
-        numCode = this.numCode,
-        charCode = this.charCode,
-        name = this.name,
-        value = this.value + RUB,
-        difference = this.difference + RUB
+        _ID = _ID,
+        numCode = numCode,
+        charCode = charCode,
+        name = name,
+        value = value + RUB,
+        difference = difference + RUB
     )
 }
 
 fun ReadyCurrencies.readyCurrenciesToTableCurrencies(): CurrencyEntityTable {
     return CurrencyEntityTable(
-        _ID = this._ID,
-        numCode = this.numCode,
-        charCode = this.charCode,
-        name = this.name,
-        value = this.value,
-        difference = this.difference
+        _ID = _ID,
+        numCode = numCode,
+        charCode = charCode,
+        name = name,
+        value = value,
+        difference = difference
     )
 }
 

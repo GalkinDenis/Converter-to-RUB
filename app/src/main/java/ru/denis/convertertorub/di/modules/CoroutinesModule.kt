@@ -20,5 +20,4 @@ object CoroutinesModule {
     @Provides
     @DefaultDispatcher
     fun providesDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
-
 }

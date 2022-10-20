@@ -2,33 +2,30 @@ package ru.denis.convertertorub.di.modules
 
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import ru.denis.convertertorub.data.currenciesrepositoryimpl.CurrenciesRepositoryImpl
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSource
 import ru.denis.convertertorub.data.datasources.cbrfdatasource.CbRfDataSourceImpl
 import ru.denis.convertertorub.data.datasources.localdatasource.LocalDataSource
 import ru.denis.convertertorub.data.datasources.localdatasource.LocalDataSourceImpl
 import ru.denis.convertertorub.data.datasources.preferencedatasource.PreferenceDatasource
 import ru.denis.convertertorub.data.datasources.preferencedatasource.PreferenceDatasourceImpl
-import ru.denis.convertertorub.domain.repository.CurrenciesRepository
-import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 interface DataSourceModule {
 
     @Binds
-    @Singleton
+    @ViewModelScoped
     fun provideLocalDataSource(dataSource: LocalDataSourceImpl): LocalDataSource
 
     @Binds
-    @Singleton
+    @ViewModelScoped
     fun provideCbRfDataSource(dataSource: CbRfDataSourceImpl): CbRfDataSource
 
     @Binds
-    @Singleton
+    @ViewModelScoped
     fun providePreferencesDataSource(dataSource: PreferenceDatasourceImpl): PreferenceDatasource
 
 }

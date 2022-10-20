@@ -95,5 +95,4 @@ class ConverterFragmentViewModel @Inject constructor(
                 .toString() + " " + RUB
         }
     }
-
 }

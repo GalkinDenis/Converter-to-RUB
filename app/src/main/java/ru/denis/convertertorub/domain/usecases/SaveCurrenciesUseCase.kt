@@ -2,6 +2,7 @@ package ru.denis.convertertorub.domain.usecases
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineDispatcher
 import ru.denis.convertertorub.R
 import ru.denis.convertertorub.di.qualifiers.IoDispatcher
@@ -12,6 +13,7 @@ import ru.denis.convertertorub.domain.usecases.baseusecases.InSharedUseCase
 import java.math.RoundingMode
 import javax.inject.Inject
 
+@ViewModelScoped
 class SaveCurrenciesUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
     @ApplicationContext private val context: Context,
@@ -56,5 +58,4 @@ class SaveCurrenciesUseCase @Inject constructor(
         value
             .toBigDecimal()
             .setScale(2, RoundingMode.UP).toString()
-
 }

@@ -8,9 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import ru.denis.convertertorub.R
 import javax.inject.Inject
 
-class NetWorkUtils @Inject constructor(
-    @ApplicationContext private val context: Context
-) {
+class NetWorkUtils @Inject constructor(@ApplicationContext private val context: Context) {
 
     private fun checkTypeOfTransport(capabilities: NetworkCapabilities, typeConnection: Int): Boolean {
         return if (capabilities.hasTransport(typeConnection)) {
@@ -25,7 +23,8 @@ class NetWorkUtils @Inject constructor(
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        return connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)?.let { capabilities ->
+        return connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)?.let {
+                capabilities ->
             when {
                 checkTypeOfTransport(capabilities, NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                 checkTypeOfTransport(capabilities, NetworkCapabilities.TRANSPORT_WIFI) -> true
